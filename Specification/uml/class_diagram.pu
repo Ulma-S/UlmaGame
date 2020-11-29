@@ -1,10 +1,25 @@
 @startuml
 title -Ulma Game-
 package System{
-    class Window{
+    class IWindow{
         
     }
 
-    
+    class WindowOpenGL{
+
+    }
+    IWindow <|.. WindowOpenGL
+
+    class IApplicationCore{
+
+    }
+
+    class ApplicationCoreOpenGL{
+
+    }
+    IApplicationCore <|.. ApplicationCoreOpenGL
+    WindowOpenGL <.. ApplicationCoreOpenGL
+
+
 }
 @enduml

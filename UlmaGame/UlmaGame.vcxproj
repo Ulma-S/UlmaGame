@@ -130,7 +130,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ApplicationCoreOpenGL.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WindowOpenGL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ApplicationCoreBase.h" />
+    <ClInclude Include="ApplicationCoreOpenGL.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="WindowOpenGL.h" />
+    <ClInclude Include="WindowBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
