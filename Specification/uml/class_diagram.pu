@@ -1,0 +1,10 @@
+@startuml
+title -Ulma Game-
+package System{
+    class Window{
+        
+    }
+
+    
+}
+@enduml
