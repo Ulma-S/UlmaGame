@@ -1,20 +1,20 @@
 #pragma once
 
-//ゲームループのコアを提供するインターフェース
-class IApplicationCore {
-public:
-	virtual ~IApplicationCore() = default;
-	
-	//初期化メソッド (UnityのStartメソッド的な感じ)
-	virtual bool Initialize() = 0;
+namespace System {
+	namespace Core {
+		//ゲームループのコアを提供するインターフェース
+		class IApplicationCore {
+		public:
+			virtual ~IApplicationCore() = default;
 
-	//ループメソッド (UnityのUpdateメソッド的な感じ)
-	virtual void Update() = 0;
+			//初期化メソッド (UnityのStartメソッド的な感じ)
+			virtual bool Initialize() = 0;
 
-	//終了処理
-	virtual void Finalize() = 0;
+			//ループメソッド (UnityのUpdateメソッド的な感じ)
+			virtual void Update() = 0;
 
-	virtual void AddActor(class Actor& actor) = 0;
-
-	virtual void RemoveActor(class Actor& actor) = 0;
-};
+			//終了処理
+			virtual void Finalize() = 0;
+		};
+	}
+}

@@ -1,23 +1,18 @@
 #include "SceneManager.h"
 #include "SceneBase.h"
 
-SceneManager::SceneManager(){}
+
+void System::SceneManagement::SceneManager::UpdateScene(){}
 
 
-SceneManager::~SceneManager(){}
+void System::SceneManagement::SceneManager::ChangeScene(){}
 
 
-void SceneManager::UpdateScene(){}
-
-
-void SceneManager::ChangeScene(){}
-
-
-void SceneManager::AddScene(ESceneType type, SceneBase& scene) {
+void System::SceneManagement::SceneManager::AddScene(ESceneType type, SceneBase& scene) {
 
 }
 
 
-void SceneManager::RemoveScene(ESceneType type) {
+void System::SceneManagement::SceneManager::RemoveScene(ESceneType type) {
 
 }

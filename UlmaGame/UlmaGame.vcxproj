@@ -131,20 +131,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="ApplicationCoreOpenGL.cpp" />
+    <ClCompile Include="ApplicationCore.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ApplicationCoreBase.h" />
-    <ClInclude Include="ApplicationCoreOpenGL.h" />
+    <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="WindowOpenGL.h" />
     <ClInclude Include="WindowBase.h" />
   </ItemGroup>

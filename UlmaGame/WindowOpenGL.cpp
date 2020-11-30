@@ -1,16 +1,16 @@
 #include <iostream>
 #include "WindowOpenGL.h"
 
-WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(640), m_windowHeight(480) {}
+System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(640), m_windowHeight(480) {}
 
 
-WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight) {}
+System::Core::WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight) {}
 
 
-WindowOpenGL::~WindowOpenGL() {}
+System::Core:: WindowOpenGL::~WindowOpenGL() {}
 
 
-bool WindowOpenGL::CreateWindow() {
+bool System::Core::WindowOpenGL::CreateWindow() {
 	//OpenGL ES 2.0プロファイルの設定
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
@@ -43,11 +43,11 @@ bool WindowOpenGL::CreateWindow() {
 }
 
 
-void WindowOpenGL::Finalize() {
+void System::Core::WindowOpenGL::Finalize() {
 	glfwTerminate();
 }
 
 
-bool WindowOpenGL::CanLoop() {
+bool System::Core::WindowOpenGL::CanLoop() {
 	return !glfwWindowShouldClose(m_window);
 }

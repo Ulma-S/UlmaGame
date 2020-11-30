@@ -2,23 +2,21 @@
 #include "ApplicationCoreBase.h"
 #include "Component.h"
 
-Actor::Actor(class IApplicationCore& appCore) 
-	: m_appCore(&appCore) 
+Game::Actor::Actor(System::SceneManagement::SceneBase& scene)
+	: m_scene(&scene) 
 	, m_state(Active)
 {
-	m_appCore->AddActor(*this);
 }
 
 
-Actor::~Actor(){
-	m_appCore->RemoveActor(*this);
+Game::Actor::~Actor(){
 }
 
 
-void Actor::Initialize(){}
+void Game::Actor::Initialize(){}
 
 
-void Actor::Update(float deltaTime) {
+void Game::Actor::Update(float deltaTime) {
 	if (m_state == Active) {
 		UpdateComponents(deltaTime);
 		UpdateActor(deltaTime);
@@ -26,21 +24,21 @@ void Actor::Update(float deltaTime) {
 }
 
 
-void Actor::UpdateActor(float deltaTime) {
+void Game::Actor::UpdateActor(float deltaTime) {
 
 }
 
 
-void Actor::UpdateComponents(float deltaTime) {
+void Game::Actor::UpdateComponents(float deltaTime) {
 
 }
 
 
-void Actor::AddComponent(Component& component) {
+void Game::Actor::AddComponent(Component& component) {
 	m_components.emplace_back(&component);
 }
 
 
-void Actor::RemoveComponent(Component& component) {
+void Game::Actor::RemoveComponent(Component& component) {
 
 }

@@ -1,25 +1,58 @@
 @startuml
 title -Ulma Game-
-package System{
-    class IWindow{
-        
-    }
-
-    class WindowOpenGL{
+package General{
+    class Singleton{
 
     }
-    IWindow <|.. WindowOpenGL
-
-    class IApplicationCore{
-
-    }
-
-    class ApplicationCoreOpenGL{
-
-    }
-    IApplicationCore <|.. ApplicationCoreOpenGL
-    WindowOpenGL <.. ApplicationCoreOpenGL
-
-
 }
+
+package System{
+    package Core{
+        interface IWindow{
+            bool CreateWindow() //ウィンドウ作る処理
+            void Finalize() //ウィンドウ閉じる処理
+            bool CanLoop()  //メインループ判定 (終了処理が呼ばれない限りtrue)
+        }
+
+        class WindowOpenGL{
+        }
+        IWindow <|.. WindowOpenGL
+
+        interface IApplicationCore{
+            void Initialize()
+            void Update()
+            void Finalize()
+        }
+
+        class ApplicationCore{
+
+        }
+        IApplicationCore <|.. ApplicationCore
+        IWindow <.. ApplicationCore
+    }
+
+    package SceneManagement{
+        class SceneManager{
+
+        }
+
+        class SceneBase{
+
+        }
+        SceneManager o-- SceneBase
+    }
+    IApplicationCore -- SceneManager
+}
+
+package Game{
+    class Actor{
+
+    }
+
+    class Component{
+
+    }
+}
+SceneBase -- Actor
+Actor o-- Component
 @enduml
