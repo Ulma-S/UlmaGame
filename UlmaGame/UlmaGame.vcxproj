@@ -134,6 +134,7 @@
     <ClCompile Include="ApplicationCoreOpenGL.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,9 @@
     <ClInclude Include="ApplicationCoreBase.h" />
     <ClInclude Include="ApplicationCoreOpenGL.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="SceneList.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="WindowOpenGL.h" />
     <ClInclude Include="WindowBase.h" />
   </ItemGroup>
