@@ -48,6 +48,11 @@ void System::Core::WindowOpenGL::Finalize() {
 }
 
 
+void System::Core::WindowOpenGL::PollEvent() {
+	glfwPollEvents();
+}
+
+
 bool System::Core::WindowOpenGL::CanLoop() {
 	return !glfwWindowShouldClose(m_window);
 }

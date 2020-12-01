@@ -1,15 +1,15 @@
 #include "Component.h"
 #include "Actor.h"
 
-Component::Component(Actor& owner, int updateOrder)
+Game::Component::Component(Actor& owner, int updateOrder)
 	: m_owner(&owner)
 	, m_updateOrder(updateOrder)
 {}
 
 
-Component::~Component(){}
+Game::Component::~Component(){}
 
 
-void Component::Update(float deltaTime) {
+void Game::Component::Update(float deltaTime) {
 
 }

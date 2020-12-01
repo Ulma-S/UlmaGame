@@ -1,6 +1,7 @@
 #include "Actor.h"
-#include "ApplicationCoreBase.h"
+#include "IApplicationCore.h"
 #include "Component.h"
+#include "SceneBase.h"
 
 Game::Actor::Actor(System::SceneManagement::SceneBase& scene)
 	: m_scene(&scene) 
@@ -10,6 +11,7 @@ Game::Actor::Actor(System::SceneManagement::SceneBase& scene)
 
 
 Game::Actor::~Actor(){
+	m_scene->RemoveActor(*this);
 }
 
 
@@ -24,21 +26,33 @@ void Game::Actor::Update(float deltaTime) {
 }
 
 
-void Game::Actor::UpdateActor(float deltaTime) {
-
-}
+void Game::Actor::UpdateActor(float deltaTime) {}
 
 
 void Game::Actor::UpdateComponents(float deltaTime) {
-
+	for (auto component : m_components) {
+		component->Update(deltaTime);
+	}
 }
 
 
 void Game::Actor::AddComponent(Component& component) {
-	m_components.emplace_back(&component);
+	//既に追加されていたらreturn
+	auto it = std::find(m_components.begin(), m_components.end(), &component);
+	if (it == m_components.end()) return;
+	
+	for (; it != m_components.end(); ++it) {
+		if (component.GetUpdateOrder() < (*it)->GetUpdateOrder()) {
+			break;
+		}
+	}
+	m_components.insert(it, &component);
 }
 
 
 void Game::Actor::RemoveComponent(Component& component) {
-
+	//コンポーネントが存在しなければreturn
+	auto it = std::find(m_components.begin(), m_components.end(), &component);
+	if (it == m_components.end()) return;
+	m_components.erase(it);
 }

@@ -11,6 +11,7 @@ namespace System {
 			virtual bool CreateWindow() = 0;
 			virtual void Finalize() = 0;
 
+			virtual void PollEvent() = 0;
 			virtual bool CanLoop() = 0;
 
 			virtual int GetWindowWidth() const = 0;

@@ -32,16 +32,29 @@ package System{
     }
 
     package SceneManagement{
-        class SceneManager{
+        interface ISceneManager{
+            //Stateパターン
+            void UpdateScene()
+            void LoadScene()
+            void AddScene()
+            void RemoveScene()
+        }
 
+        class SceneManager{
+            //Singletonパターン
         }
 
         class SceneBase{
-
+            void OnEnter()  //シーンの読み込み時に呼ばれる処理
+            void Update()
+            void OnExit()   //シーンの終了時に呼ばれる処理
+            void AddActor()
+            void RemoveActor()
         }
+        ISceneManager <.. SceneManager
         SceneManager o-- SceneBase
     }
-    IApplicationCore -- SceneManager
+    ISceneManager <.. ApplicationCore
 }
 
 package Game{
@@ -53,6 +66,6 @@ package Game{
 
     }
 }
-SceneBase -- Actor
+SceneBase <.. Actor
 Actor o-- Component
 @enduml

@@ -1,7 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "WindowBase.h"
+#include "IWindow.h"
 
 namespace System {
 	namespace Core {
@@ -14,6 +14,7 @@ namespace System {
 			bool CreateWindow() override;
 			void Finalize() override;
 
+			void PollEvent() override;
 			bool CanLoop() override;
 
 			inline int GetWindowWidth() const { return m_windowWidth; }

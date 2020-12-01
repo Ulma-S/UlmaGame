@@ -1,6 +1,8 @@
 #pragma once
 
-enum ESceneType {
-	Title,
-	Game,
-};
+namespace Game {
+	enum ESceneType {
+		Title,
+		Game,
+	};
+}

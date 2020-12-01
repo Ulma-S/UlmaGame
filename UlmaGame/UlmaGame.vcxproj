@@ -140,15 +140,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
-    <ClInclude Include="ApplicationCoreBase.h" />
+    <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="WindowOpenGL.h" />
-    <ClInclude Include="WindowBase.h" />
+    <ClInclude Include="IWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

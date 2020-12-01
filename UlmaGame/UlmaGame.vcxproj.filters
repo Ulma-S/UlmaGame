@@ -13,60 +13,90 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\System">
+      <UniqueIdentifier>{be51d7d2-1b27-4adc-8935-5f05440c9245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\System\Core">
+      <UniqueIdentifier>{3298f5e7-af29-446c-82c2-cb9e0e3c8a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\System\SceneManagement">
+      <UniqueIdentifier>{9da47c53-688c-4133-b2f4-8645d2443117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game">
+      <UniqueIdentifier>{22709b76-22a6-45b9-8e6f-79cf8377fe0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\General">
+      <UniqueIdentifier>{80b48af2-172c-4f79-94f6-baa3e704bdcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{de8353a7-2d6d-4c4c-a569-5176de9b3c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{9650c5c3-8554-42d6-9874-de6beaca86b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\Core">
+      <UniqueIdentifier>{659194c1-3d93-465f-8652-41009d1fc963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\SceneManagement">
+      <UniqueIdentifier>{4b8dce04-5d27-4755-8d29-2c372c989a8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="WindowOpenGL.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
     <ClCompile Include="ApplicationCore.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>ソース ファイル\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>ソース ファイル\System\SceneManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\System\SceneManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowOpenGL.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApplicationCoreBase.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="ApplicationCore.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
-    <ClInclude Include="WindowBase.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowOpenGL.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="IApplicationCore.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="ISceneManager.h">
+      <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="SceneBase.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="SceneList.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\General</Filter>
     </ClInclude>
-    <ClInclude Include="ApplicationCore.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="IWindow.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowOpenGL.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

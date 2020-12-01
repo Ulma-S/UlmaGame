@@ -1,28 +1,21 @@
 #pragma once
-#include "ApplicationCoreBase.h"
+#include "IApplicationCore.h"
 
 namespace System {
-	namespace SceneManagement {
-		class SceneManager;
-	}
-}
-
-namespace System {
-
 	namespace Core {
 		class ApplicationCore : public IApplicationCore {
 		public:
-			ApplicationCore(class IWindow& window, System::SceneManagement::SceneManager& sceneManager);
+			ApplicationCore();
+			ApplicationCore(class IWindow& window);
 			~ApplicationCore();
 
-			bool Initialize() override;
+			bool Initialize(class IWindow& window) override;
 			void Update() override;
 			void Finalize() override;
 
 
 		private:
 			class IWindow* m_window;
-			System::SceneManagement::SceneManager* m_sceneManager;
 		};
 	}
 }
