@@ -1,9 +1,9 @@
 #include "Actor.h"
 #include "IApplicationCore.h"
 #include "Component.h"
-#include "SceneBase.h"
+#include "Scene.h"
 
-Game::Actor::Actor(System::SceneManagement::SceneBase& scene)
+Game::Actor::Actor(System::SceneManagement::Scene& scene)
 	: m_scene(&scene) 
 	, m_state(Active)
 {
@@ -12,6 +12,8 @@ Game::Actor::Actor(System::SceneManagement::SceneBase& scene)
 
 Game::Actor::~Actor(){
 	m_scene->RemoveActor(*this);
+
+	std::vector<Component*>().swap(m_components);
 }
 
 

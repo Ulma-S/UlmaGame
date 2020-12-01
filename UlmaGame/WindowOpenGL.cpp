@@ -38,8 +38,18 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	if (glewInit() != GLEW_OK) {
 		return -1;
 	}
-
 	return true;
+}
+
+
+void System::Core::WindowOpenGL::ClearDisplayBuffer() {
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+}
+
+
+void System::Core::WindowOpenGL::SwapBuffer() {
+	glfwSwapBuffers(m_window);
 }
 
 

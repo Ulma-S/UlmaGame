@@ -134,7 +134,7 @@
     <ClCompile Include="ApplicationCore.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
@@ -144,7 +144,7 @@
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ISceneManager.h" />
-    <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />

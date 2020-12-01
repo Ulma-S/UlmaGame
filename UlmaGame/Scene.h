@@ -8,23 +8,25 @@ namespace Game {
 
 namespace System {
 	namespace SceneManagement {
-		class SceneBase {
+		class Scene {
 		public:
-			SceneBase(class SceneManager& sceneManager, Game::ESceneType sceneType);
-			virtual ~SceneBase() = default;
+			Scene(class ISceneManager& sceneManager, Game::ESceneType sceneType);
+			virtual ~Scene();
 
-			virtual void OnEnter() = 0;
-			virtual void Update(float deltaTime) = 0;
-			virtual void OnExit() = 0;
+			void OnEnter();
+			void Update(float deltaTime);
+			void OnExit();
 
 			void AddActor(Game::Actor& actor);
 			void RemoveActor(Game::Actor& actor);
 
 
 		protected:
-			class SceneManager* m_sceneManager;
+			class ISceneManager* m_sceneManager;
 			Game::ESceneType m_sceneType;
 			std::vector<Game::Actor*> m_sceneActors;
+			std::vector<Game::Actor*> m_pendingActors;
+			bool m_isUpdating;
 		};
 	}
 }

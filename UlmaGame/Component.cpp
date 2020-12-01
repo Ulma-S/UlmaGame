@@ -7,7 +7,9 @@ Game::Component::Component(Actor& owner, int updateOrder)
 {}
 
 
-Game::Component::~Component(){}
+Game::Component::~Component(){
+	m_owner->RemoveComponent(*this);
+}
 
 
 void Game::Component::Update(float deltaTime) {

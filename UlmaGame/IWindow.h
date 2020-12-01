@@ -9,6 +9,8 @@ namespace System {
 			virtual ~IWindow() = default;
 
 			virtual bool CreateWindow() = 0;
+			virtual void ClearDisplayBuffer() = 0;
+			virtual void SwapBuffer() = 0;
 			virtual void Finalize() = 0;
 
 			virtual void PollEvent() = 0;

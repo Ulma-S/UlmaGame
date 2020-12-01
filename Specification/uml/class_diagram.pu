@@ -10,6 +10,8 @@ package System{
     package Core{
         interface IWindow{
             bool CreateWindow() //ウィンドウ作る処理
+            void ClearDisplayBuffer()
+            void SwapBuffer()
             void Finalize() //ウィンドウ閉じる処理
             bool CanLoop()  //メインループ判定 (終了処理が呼ばれない限りtrue)
         }
@@ -44,7 +46,7 @@ package System{
             //Singletonパターン
         }
 
-        class SceneBase{
+        class Scene{
             void OnEnter()  //シーンの読み込み時に呼ばれる処理
             void Update()
             void OnExit()   //シーンの終了時に呼ばれる処理
@@ -52,7 +54,8 @@ package System{
             void RemoveActor()
         }
         ISceneManager <.. SceneManager
-        SceneManager o-- SceneBase
+        ISceneManager <.. Scene
+        SceneManager o-- Scene
     }
     ISceneManager <.. ApplicationCore
 }
@@ -66,6 +69,6 @@ package Game{
 
     }
 }
-SceneBase <.. Actor
+Scene <.. Actor
 Actor o-- Component
 @enduml

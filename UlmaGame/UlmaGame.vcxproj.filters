@@ -54,14 +54,14 @@
     <ClCompile Include="Component.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル\System\SceneManagement</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\System\SceneManagement</Filter>
     </ClCompile>
     <ClCompile Include="WindowOpenGL.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>ソース ファイル\System\SceneManagement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +80,6 @@
     <ClInclude Include="ISceneManager.h">
       <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
     </ClInclude>
-    <ClInclude Include="SceneBase.h">
-      <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
-    </ClInclude>
     <ClInclude Include="SceneList.h">
       <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
@@ -97,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="WindowOpenGL.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

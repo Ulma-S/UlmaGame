@@ -10,7 +10,7 @@ namespace System {
 			virtual void UpdateScene(float deltaTime) = 0;
 			virtual void LoadScene(Game::ESceneType sceneType) = 0;
 
-			virtual void AddScene(Game::ESceneType type, class SceneBase& scene) = 0;
+			virtual void AddScene(Game::ESceneType type, class Scene& scene) = 0;
 			virtual void RemoveScene(Game::ESceneType type) = 0;
 		};
 	}

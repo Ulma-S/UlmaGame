@@ -12,6 +12,8 @@ namespace System {
 			~WindowOpenGL();
 
 			bool CreateWindow() override;
+			void ClearDisplayBuffer() override;
+			void SwapBuffer() override;
 			void Finalize() override;
 
 			void PollEvent() override;

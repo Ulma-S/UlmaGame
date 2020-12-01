@@ -1,8 +1,13 @@
 #include "SceneManager.h"
-#include "SceneBase.h"
-
+#include "Scene.h"
 
 System::SceneManagement::SceneManager::SceneManager() : m_currentScene(nullptr) {}
+
+
+System::SceneManagement::SceneManager::~SceneManager() {
+	std::unordered_map<Game::ESceneType, Scene*>().swap(m_sceneMap);
+}
+
 
 void System::SceneManagement::SceneManager::UpdateScene(float deltaTime){
 	if (m_currentScene == nullptr) return;
@@ -24,7 +29,7 @@ void System::SceneManagement::SceneManager::LoadScene(Game::ESceneType sceneType
 }
 
 
-void System::SceneManagement::SceneManager::AddScene(Game::ESceneType sceneType, SceneBase& scene) {
+void System::SceneManagement::SceneManager::AddScene(Game::ESceneType sceneType, Scene& scene) {
 	//Šù‚É’Ç‰Á‚µ‚Ä‚¢‚½‚çreturn
 	if (m_sceneMap.count(sceneType) != 0) return;
 	m_sceneMap[sceneType] = &scene;

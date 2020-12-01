@@ -2,6 +2,9 @@
 #include "Actor.h"
 #include "WindowOpenGL.h"
 #include "SceneManager.h"
+#include "Scene.h"
+
+using namespace System::SceneManagement;
 
 System::Core::ApplicationCore::ApplicationCore(){}
 
@@ -23,6 +26,10 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	if (!success) {
 		return false;
 	}
+
+	//ƒV[ƒ“ì¬
+	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);
+	SceneManager::GetInstance().AddScene(Game::Game, *gameScene);
 	return true;
 }
 
@@ -30,7 +37,12 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 void System::Core::ApplicationCore::Update() {
 	float deltaTime = 0.0f;
 	while (m_window->CanLoop()) {
+		m_window->ClearDisplayBuffer();
+
 		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);
+
+		m_window->SwapBuffer();
+
 		m_window->PollEvent();
 	}
 	Finalize();
