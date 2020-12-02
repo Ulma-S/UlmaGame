@@ -37,10 +37,12 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 void System::Core::ApplicationCore::Update() {
 	float deltaTime = 0.0f;
 	while (m_window->CanLoop()) {
+		//ディスプレイバッファのクリア
 		m_window->ClearDisplayBuffer();
 
 		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);
 
+		//ダブルバッファのスワップ
 		m_window->SwapBuffer();
 
 		m_window->PollEvent();

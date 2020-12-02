@@ -16,7 +16,7 @@ namespace System {
 			void OnEnter();
 			void Update(float deltaTime);
 			void OnExit();
-
+			
 			void AddActor(Game::Actor& actor);
 			void RemoveActor(Game::Actor& actor);
 

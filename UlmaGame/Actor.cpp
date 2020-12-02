@@ -7,6 +7,7 @@ Game::Actor::Actor(System::SceneManagement::Scene& scene)
 	: m_scene(&scene) 
 	, m_state(Active)
 {
+	m_scene->AddActor(*this);
 }
 
 
