@@ -16,6 +16,7 @@ namespace System {
 
 		private:
 			class IWindow* m_window;
+			float m_frameTime;
 		};
 	}
 }

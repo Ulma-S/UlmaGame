@@ -134,16 +134,19 @@
     <ClCompile Include="ApplicationCore.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />

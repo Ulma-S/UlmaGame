@@ -15,6 +15,7 @@ namespace System {
 
 			virtual void PollEvent() = 0;
 			virtual bool CanLoop() = 0;
+			virtual float GetCurrentTime() = 0;
 
 			virtual int GetWindowWidth() const = 0;
 			virtual int GetWindowHeight() const = 0;

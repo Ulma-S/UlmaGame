@@ -21,7 +21,9 @@ void System::SceneManagement::SceneManager::LoadScene(Game::ESceneType sceneType
 	if (it == m_sceneMap.end()) return;
 
 	//シーンの終了処理
-	m_currentScene->OnExit();
+	if (m_currentScene != nullptr) {
+		m_currentScene->OnExit();
+	}
 
 	//シーンの読み込み時の処理
 	m_currentScene = it->second;

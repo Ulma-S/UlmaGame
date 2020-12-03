@@ -18,6 +18,7 @@ namespace System {
 
 			void PollEvent() override;
 			bool CanLoop() override;
+			float GetCurrentTime() override;
 
 			inline int GetWindowWidth() const { return m_windowWidth; }
 			inline int GetWindowHeight() const { return m_windowHeight; }

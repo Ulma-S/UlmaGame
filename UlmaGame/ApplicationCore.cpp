@@ -3,14 +3,19 @@
 #include "WindowOpenGL.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "Player.h"
 
 using namespace System::SceneManagement;
 
-System::Core::ApplicationCore::ApplicationCore(){}
+System::Core::ApplicationCore::ApplicationCore()
+	: m_window(nullptr)
+	, m_frameTime(0.0)
+{}
 
 
 System::Core::ApplicationCore::ApplicationCore(IWindow& window)
 	: m_window(&window)
+	, m_frameTime(0.0)
 {}
 
 
@@ -27,25 +32,34 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 		return false;
 	}
 
-	//シーン作成
+	//Scene作成
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);
 	SceneManager::GetInstance().AddScene(Game::Game, *gameScene);
+
+	//Actor作成
+	Game::Player* player = new Game::Player(*gameScene);
+
+	SceneManager::GetInstance().LoadScene(Game::Game);
 	return true;
 }
 
 
 void System::Core::ApplicationCore::Update() {
-	float deltaTime = 0.0f;
 	while (m_window->CanLoop()) {
-		//ディスプレイバッファのクリア
-		m_window->ClearDisplayBuffer();
+		//delta time計算
+		float deltaTime = m_window->GetCurrentTime() - m_frameTime;
+		if (deltaTime > 0.05f) {
+			deltaTime = 0.05f;
+		}
+		m_frameTime = m_window->GetCurrentTime();
 
-		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);
+		m_window->ClearDisplayBuffer();	//ディスプレイバッファのクリア
 
-		//ダブルバッファのスワップ
-		m_window->SwapBuffer();
+		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);	//シーンのUpdate
 
-		m_window->PollEvent();
+		m_window->SwapBuffer();	//ダブルバッファのスワップ
+
+		m_window->PollEvent();	//イベント処理
 	}
 	Finalize();
 }

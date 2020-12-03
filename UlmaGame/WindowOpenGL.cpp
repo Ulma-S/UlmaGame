@@ -35,6 +35,7 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	glfwSwapInterval(1);
 
 	//GLEWÇÃèâä˙âª
+	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK) {
 		return -1;
 	}
@@ -65,4 +66,9 @@ void System::Core::WindowOpenGL::PollEvent() {
 
 bool System::Core::WindowOpenGL::CanLoop() {
 	return !glfwWindowShouldClose(m_window);
+}
+
+
+float System::Core::WindowOpenGL::GetCurrentTime() {
+	return glfwGetTime();
 }
