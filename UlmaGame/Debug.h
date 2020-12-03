@@ -1,14 +1,18 @@
 #pragma once
 #include <iostream>
-#define DEBUG
 
-#ifdef DEBUG
+#ifdef _DEBUG
 namespace System {
 	class Debug {
 	public:
 		template<class T>
 		inline static void Log(T t) {
 			std::cout << t << std::endl;
+		}
+
+		template<class T>
+		inline static void LogError(T t) {
+			std::cerr << t << std::endl;
 		}
 	};
 }

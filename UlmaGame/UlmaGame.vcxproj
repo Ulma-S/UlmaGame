@@ -137,6 +137,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShaderLoaderOpenGL.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,12 +148,21 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShaderLoaderOpenGL.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="WindowOpenGL.h" />
     <ClInclude Include="IWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UlmaGame.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="unlit.frag" />
+    <None Include="unlit.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

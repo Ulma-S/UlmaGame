@@ -9,5 +9,8 @@ namespace Game {
 
 		void Initialize() override;
 		void UpdateActor(float deltaTime) override;
+
+	private:
+		int programId;
 	};
 };

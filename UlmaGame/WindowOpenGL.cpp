@@ -37,6 +37,7 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	//GLEW‚Ì‰Šú‰»
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK) {
+		std::cout << "GLEW‚Ì‰Šú‰»‚É¸”s‚µ‚Ü‚µ‚½" << std::endl;
 		return -1;
 	}
 	return true;
@@ -45,7 +46,8 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 
 void System::Core::WindowOpenGL::ClearDisplayBuffer() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearDepth(1.0f);
 }
 
 
