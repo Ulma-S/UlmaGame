@@ -1,5 +1,6 @@
 #include "ApplicationCore.h"
 #include "WindowOpenGL.h"
+#include "InputManagerOpenGL.h"
 
 using namespace System::Core;
 
@@ -8,6 +9,10 @@ int main() {
 	ApplicationCore appCore;
 
 	bool success = appCore.Initialize(window);
+
+	//InputManagerèâä˙âª
+	InputSystem::InputManagerOpenGL::GetInstance().SetWindow(window);
+
 	if (success) {
 		appCore.Update();
 	}

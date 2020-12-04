@@ -72,6 +72,9 @@
     <ClCompile Include="ShaderLoaderOpenGL.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
     </ClCompile>
+    <ClCompile Include="InputManagerOpenGL.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -118,6 +121,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputManager.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManagerOpenGL.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

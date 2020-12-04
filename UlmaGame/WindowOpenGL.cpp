@@ -1,10 +1,10 @@
 #include <iostream>
 #include "WindowOpenGL.h"
 
-System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(640), m_windowHeight(480) {}
+System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(640), m_windowHeight(480), m_scale(100.0f) {}
 
 
-System::Core::WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight) {}
+System::Core::WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight), m_scale(100.0f) {}
 
 
 System::Core:: WindowOpenGL::~WindowOpenGL() {}
@@ -13,8 +13,8 @@ System::Core:: WindowOpenGL::~WindowOpenGL() {}
 bool System::Core::WindowOpenGL::CreateWindow() {
 	//OpenGL ES 2.0プロファイルの設定
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
 	//GLFWの初期化
@@ -40,6 +40,8 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 		std::cout << "GLEWの初期化に失敗しました" << std::endl;
 		return -1;
 	}
+
+	glViewport(120, 20, 400, 400);
 	return true;
 }
 

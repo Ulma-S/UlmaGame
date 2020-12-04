@@ -43,7 +43,7 @@ package System{
         }
 
         class SceneManager{
-            //Singletonパターン
+            //Singleton
         }
 
         class Scene{
@@ -58,6 +58,19 @@ package System{
         SceneManager o-- Scene
     }
     ISceneManager <.. ApplicationCore
+
+    package InputSystem{
+    interface IInputManager{
+
+    }
+
+    class InputManagerOpenGL{
+        //Singleton
+    }
+    IInputManager <|.. InputManagerOpenGL
+    WindowOpenGL <.. InputManagerOpenGL
+    IInputManager <.. ApplicationCore
+    }
 }
 
 package Game{

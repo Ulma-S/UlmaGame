@@ -20,14 +20,17 @@ namespace System {
 			bool CanLoop() override;
 			float GetCurrentTime() override;
 
+			inline GLFWwindow& GetWindow() { return *m_window; }
 			inline int GetWindowWidth() const { return m_windowWidth; }
 			inline int GetWindowHeight() const { return m_windowHeight; }
+			inline float GetScale() const { return m_scale; }
 
 		private:
 			GLFWwindow* m_window;
 
 			int m_windowWidth;
 			int m_windowHeight;
+			float m_scale;
 		};
 	}
 }

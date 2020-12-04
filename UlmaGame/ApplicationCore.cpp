@@ -1,6 +1,6 @@
 #include "ApplicationCore.h"
 #include "Actor.h"
-#include "WindowOpenGL.h"
+#include "IWindow.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Player.h"

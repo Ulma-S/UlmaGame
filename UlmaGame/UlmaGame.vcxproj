@@ -133,6 +133,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ApplicationCore.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -146,6 +147,8 @@
     <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="IInputManager.h" />
+    <ClInclude Include="InputManagerOpenGL.h" />
     <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />

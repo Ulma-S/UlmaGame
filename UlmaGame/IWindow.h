@@ -19,6 +19,7 @@ namespace System {
 
 			virtual int GetWindowWidth() const = 0;
 			virtual int GetWindowHeight() const = 0;
+			virtual float GetScale() = 0;	//ƒ[ƒ‹ƒhÀ•WŒn‚É‚¨‚¯‚é1‚É‘Î‰‚·‚é‰æ‘f”
 		};
 	}
 }

@@ -1,6 +1,5 @@
-#version 150 core
-out vec4 fragment;
+#version 100
 
 void main(){
-	fragment = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 }
