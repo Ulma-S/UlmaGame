@@ -43,6 +43,18 @@
     <Filter Include="ソース ファイル\Shader">
       <UniqueIdentifier>{66e26412-9d83-424d-9540-3939f7fdffb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\System\Core\Shader">
+      <UniqueIdentifier>{959c3218-06ae-45ad-9840-d49aa199b3b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\Core\Shader">
+      <UniqueIdentifier>{3a38aacb-e25a-4a30-930b-d2e1db101d62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Math">
+      <UniqueIdentifier>{bc0d0f2e-e005-427d-a6d0-d5e5e1855fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math">
+      <UniqueIdentifier>{d8b02766-3db1-438c-9fc8-1addca995400}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,11 +81,14 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderLoaderOpenGL.cpp">
-      <Filter>ソース ファイル\System\Core</Filter>
-    </ClCompile>
     <ClCompile Include="InputManagerOpenGL.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoaderOpenGL.cpp">
+      <Filter>ソース ファイル\System\Core\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,9 +131,6 @@
     <ClInclude Include="Debug.h">
       <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoaderOpenGL.h">
-      <Filter>ヘッダー ファイル\System\Core</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -127,6 +139,15 @@
     </ClInclude>
     <ClInclude Include="InputManagerOpenGL.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoaderOpenGL.h">
+      <Filter>ヘッダー ファイル\System\Core\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>ヘッダー ファイル\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -48,6 +48,7 @@ GLuint System::Core::ShaderLoaderOpenGL::CreateProgram(const char* vsrc, const c
 	glLinkProgram(programId);
 
 	glUseProgram(programId);
+	//glDeleteProgram(programId);
 
 	return programId;
 }

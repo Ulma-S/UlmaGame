@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "Vector.h"
 
 namespace System {
 	namespace SceneManagement {
@@ -15,6 +16,7 @@ namespace Game {
 			Inactive,
 		};
 
+		Actor();
 		Actor(System::SceneManagement::Scene& scene);
 		virtual ~Actor();
 
@@ -31,5 +33,8 @@ namespace Game {
 		System::SceneManagement::Scene* m_scene;
 		EActorState m_state;
 		std::vector<class Component*> m_components;
+		Math::Vector2 m_position;
+		Math::Vector2 m_scale;
+		float m_rotation;
 	};
 }

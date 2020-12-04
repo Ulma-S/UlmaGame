@@ -60,16 +60,24 @@ package System{
     ISceneManager <.. ApplicationCore
 
     package InputSystem{
-    interface IInputManager{
+        interface IInputManager{
 
+        }
+
+        class InputManagerOpenGL{
+            //Singleton
+        }
+        IInputManager <|.. InputManagerOpenGL
+        WindowOpenGL <.. InputManagerOpenGL
+        IInputManager <.. ApplicationCore
     }
 
-    class InputManagerOpenGL{
-        //Singleton
-    }
-    IInputManager <|.. InputManagerOpenGL
-    WindowOpenGL <.. InputManagerOpenGL
-    IInputManager <.. ApplicationCore
+    package Shader{
+        class ShaderLoaderOpenGL{
+            GLuint LoadProgram()
+            GLuint CreateProgram()
+            bool ReadShaderSource()
+        }
     }
 }
 

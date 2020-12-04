@@ -139,6 +139,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
+    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,8 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoaderOpenGL.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="WindowOpenGL.h" />
     <ClInclude Include="IWindow.h" />
   </ItemGroup>

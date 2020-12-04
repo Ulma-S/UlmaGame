@@ -31,12 +31,19 @@ void Game::Player::UpdateActor(float deltaTime){
 
 	// 何番目のattribute変数か
 	int attLocation = glGetAttribLocation(programId, "position");
+	int sizeLoc = glGetUniformLocation(programId, "size");
+	int scaleLoc = glGetUniformLocation(programId, "scale");
 
 	// attribute属性を有効にする
 	glEnableVertexAttribArray(attLocation);
 
 	// OpenGLからシェーダに頂点情報を渡す
 	glVertexAttribPointer(attLocation, 2, GL_FLOAT, false, 0, vertex_position);
+
+	float size[] = {640.0f, 480.0f};
+	float scale = 100.0f;
+	glUniform2fv(sizeLoc, 1, size);
+	glUniform1f(scaleLoc , scale);
 
 	// モデルの描画
 	glDrawArrays(GL_TRIANGLES, 0, 3);

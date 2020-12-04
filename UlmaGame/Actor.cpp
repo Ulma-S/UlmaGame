@@ -3,9 +3,21 @@
 #include "Component.h"
 #include "Scene.h"
 
+Game::Actor::Actor()
+	: m_scene(nullptr)
+	, m_state(Active)
+	, m_position(0.0f, 0.0f)
+	, m_scale(Math::Vector2(1.0f, 1.0f))
+	, m_rotation(0.0f)
+{}
+
+
 Game::Actor::Actor(System::SceneManagement::Scene& scene)
 	: m_scene(&scene) 
 	, m_state(Active)
+	, m_position(0.0f, 0.0f)
+	, m_scale(Math::Vector2(1.0f, 1.0f))
+	, m_rotation(0.0f)
 {
 	m_scene->AddActor(*this);
 }

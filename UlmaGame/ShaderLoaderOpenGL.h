@@ -6,6 +6,8 @@
 
 namespace System {
 	namespace Core {
+		class IWindow;
+
 		class ShaderLoaderOpenGL : public General::Singleton<ShaderLoaderOpenGL> {
 		public:
 			~ShaderLoaderOpenGL();
@@ -14,8 +16,9 @@ namespace System {
 
 		private:
 			GLuint CreateProgram(const char* vert, const char* frag);
-
 			bool ReadShaderSource(const char* name, std::vector<GLchar>& buffer);
+		
+			IWindow* m_window;
 		};
 	}
 }

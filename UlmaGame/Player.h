@@ -12,7 +12,7 @@ namespace Game {
 
 	private:
 		int programId;
-		float posx = 0.0;
-		float posy = 0.0;
+		float posx = 0.0f;
+		float posy = 0.0f;
 	};
 };
