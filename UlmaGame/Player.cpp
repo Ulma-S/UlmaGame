@@ -7,7 +7,7 @@
 using namespace System::Core::InputSystem;
 
 Game::Player::Player(System::SceneManagement::Scene& scene) 
-	: Game::Actor::Actor(scene)
+	: Game::Core::Actor::Actor(scene)
 {}
 
 
@@ -16,7 +16,9 @@ Game::Player::~Player(){}
 
 void Game::Player::Initialize(){
 	System::Debug::Log("Initialize player");
-	programId = System::Core::ShaderLoaderOpenGL::GetInstance().LoadProgram("unlit.vert", "unlit.frag");
+	System::Core::ShaderLoaderOpenGL shader;
+	programId = shader.LoadProgram("unlit.vert", "unlit.frag");
+	shader.Activate();
 	GetTransform().localPosition = Math::Vector2(1.0f, 0.0f);
 }
 

@@ -2,7 +2,7 @@
 #include "Actor.h"
 
 namespace Game {
-	class Player : public Actor {
+	class Player : public Core::Actor {
 	public:
 		Player(System::SceneManagement::Scene& scene);
 		~Player();

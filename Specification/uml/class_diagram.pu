@@ -81,13 +81,26 @@ package System{
     }
 }
 
-package Game{
-    class Actor{
+package Math{
+    class Vector2{
 
     }
+}
 
-    class Component{
+package Game{
+    package "Core " {
+        class Actor{
 
+        }
+
+        class Component{
+            
+        }
+
+        class Transform{
+
+        }
+        Transform <.. Actor
     }
 }
 Scene <.. Actor

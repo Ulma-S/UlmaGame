@@ -1,7 +1,11 @@
 #include <string>
 #include <fstream>
 #include "ShaderLoaderOpenGL.h"
+#include "Vector.h"
 #include "Debug.h"
+
+System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL(){}
+
 
 System::Core::ShaderLoaderOpenGL::~ShaderLoaderOpenGL(){}
 
@@ -22,16 +26,38 @@ GLuint System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char
 }
 
 
+void System::Core::ShaderLoaderOpenGL::Activate() {
+	glUseProgram(m_programId);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::Unload() {
+	glDeleteProgram(m_programId);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, GLfloat value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	glUniform1f(loc, value);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, Math::Vector2& value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	glUniform2f(loc, value.x, value.y);
+}
+
+
 GLuint System::Core::ShaderLoaderOpenGL::CreateProgram(const char* vsrc, const char* fsrc) {
 	//プログラムオブジェクトの作成
-	GLuint programId = glCreateProgram();
+	m_programId = glCreateProgram();
 
 	if (vsrc != nullptr) {
 		//バーテックスシェーダのコンパイル
 		GLuint vobj = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vobj, 1, &vsrc, nullptr);
 		glCompileShader(vobj);
-		glAttachShader(programId, vobj);
+		glAttachShader(m_programId, vobj);
 		glDeleteShader(vobj);
 	}
 
@@ -40,17 +66,14 @@ GLuint System::Core::ShaderLoaderOpenGL::CreateProgram(const char* vsrc, const c
 		GLuint fobj = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fobj, 1, &fsrc, nullptr);
 		glCompileShader(fobj);
-		glAttachShader(programId, fobj);
+		glAttachShader(m_programId, fobj);
 		glDeleteShader(fobj);
 	}
 
 	// リンク
-	glLinkProgram(programId);
+	glLinkProgram(m_programId);
 
-	glUseProgram(programId);
-	//glDeleteProgram(programId);
-
-	return programId;
+	return m_programId;
 }
 
 

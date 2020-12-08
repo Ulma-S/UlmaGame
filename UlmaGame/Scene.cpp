@@ -2,6 +2,8 @@
 #include "ISceneManager.h"
 #include "Actor.h"
 
+using namespace Game::Core;
+
 System::SceneManagement::Scene::Scene(ISceneManager& sceneManager, Game::ESceneType sceneType)
 	: m_sceneManager(&sceneManager)
 	, m_sceneType(sceneType)
@@ -14,8 +16,8 @@ System::SceneManagement::Scene::Scene(ISceneManager& sceneManager, Game::ESceneT
 System::SceneManagement::Scene::~Scene() {
 	m_sceneManager->RemoveScene(m_sceneType);
 
-	std::vector<Game::Actor*>().swap(m_sceneActors);
-	std::vector<Game::Actor*>().swap(m_pendingActors);
+	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
+	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
 }
 
 
@@ -41,12 +43,12 @@ void System::SceneManagement::Scene::Update(float deltaTime) {
 
 
 void System::SceneManagement::Scene::OnExit() {
-	std::vector<Game::Actor*>().swap(m_sceneActors);
-	std::vector<Game::Actor*>().swap(m_pendingActors);
+	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
+	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
 }
 
 
-void System::SceneManagement::Scene::AddActor(Game::Actor& actor) {
+void System::SceneManagement::Scene::AddActor(Actor& actor) {
 	//Šù‚É’Ç‰Á‚µ‚Ä‚¢‚½‚çreturn
 	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) return;
@@ -60,7 +62,7 @@ void System::SceneManagement::Scene::AddActor(Game::Actor& actor) {
 }
 
 
-void System::SceneManagement::Scene::RemoveActor(Game::Actor& actor) {
+void System::SceneManagement::Scene::RemoveActor(Actor& actor) {
 	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) {
 		m_sceneActors.erase(it);

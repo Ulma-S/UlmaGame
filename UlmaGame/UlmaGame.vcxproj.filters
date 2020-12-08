@@ -43,12 +43,6 @@
     <Filter Include="ソース ファイル\Shader">
       <UniqueIdentifier>{66e26412-9d83-424d-9540-3939f7fdffb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\System\Core\Shader">
-      <UniqueIdentifier>{959c3218-06ae-45ad-9840-d49aa199b3b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\System\Core\Shader">
-      <UniqueIdentifier>{3a38aacb-e25a-4a30-930b-d2e1db101d62}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Math">
       <UniqueIdentifier>{bc0d0f2e-e005-427d-a6d0-d5e5e1855fa3}</UniqueIdentifier>
     </Filter>
@@ -84,9 +78,6 @@
     <ClCompile Include="InputManagerOpenGL.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderLoaderOpenGL.cpp">
-      <Filter>ソース ファイル\System\Core\Shader</Filter>
-    </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
@@ -99,6 +90,12 @@
     <ClCompile Include="Transform.cpp">
       <Filter>ソース ファイル\Game\Core</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderLoaderOpenGL.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -106,12 +103,6 @@
     </ClInclude>
     <ClInclude Include="IApplicationCore.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>ヘッダー ファイル\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
     <ClInclude Include="ISceneManager.h">
       <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
@@ -149,9 +140,6 @@
     <ClInclude Include="InputManagerOpenGL.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoaderOpenGL.h">
-      <Filter>ヘッダー ファイル\System\Core\Shader</Filter>
-    </ClInclude>
     <ClInclude Include="Triangle.h">
       <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
@@ -160,6 +148,21 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteType.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoaderOpenGL.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
