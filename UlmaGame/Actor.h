@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Vector.h"
+#include "Transform.h"
 
 namespace System {
 	namespace SceneManagement {
@@ -25,6 +26,8 @@ namespace Game {
 		void AddComponent(class Component& component);
 		void RemoveComponent(class Component& component);
 
+		inline Core::Transform& GetTransform() const { return *m_transform; }
+
 
 	protected:
 		void UpdateComponents(float deltaTime);
@@ -33,8 +36,8 @@ namespace Game {
 		System::SceneManagement::Scene* m_scene;
 		EActorState m_state;
 		std::vector<class Component*> m_components;
-		Math::Vector2 m_position;
-		Math::Vector2 m_scale;
-		float m_rotation;
+
+	private:
+		Core::Transform* m_transform;
 	};
 }

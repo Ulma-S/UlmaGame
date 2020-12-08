@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Game{
-	namespace PrimitivePolygon {
+	namespace Core {
 		class Triangle {
 		public:
 			Triangle();

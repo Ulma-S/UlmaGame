@@ -55,19 +55,19 @@
     <Filter Include="ソース ファイル\Math">
       <UniqueIdentifier>{d8b02766-3db1-438c-9fc8-1addca995400}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Core">
+      <UniqueIdentifier>{95c9227e-9bc4-4d77-b06b-9d751cc75d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Core">
+      <UniqueIdentifier>{6ad808a8-f9ee-4175-8a24-777c8119817c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>ソース ファイル\Game</Filter>
-    </ClCompile>
     <ClCompile Include="ApplicationCore.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\System\SceneManagement</Filter>
@@ -89,6 +89,15 @@
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
