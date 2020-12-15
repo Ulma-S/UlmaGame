@@ -19,7 +19,7 @@ void Game::Player::Initialize(){
 	System::Core::ShaderLoaderOpenGL shader;
 	programId = shader.LoadProgram("unlit.vert", "unlit.frag");
 	shader.Activate();
-	GetTransform().localPosition = Math::Vector2(1.0f, 0.0f);
+	GetTransform().localPosition = Math::Vector2(0.0f, 0.0f);
 }
 
 
