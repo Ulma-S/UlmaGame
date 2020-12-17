@@ -17,13 +17,17 @@ namespace System {
 			ShaderLoaderOpenGL();
 			~ShaderLoaderOpenGL();
 
-			GLuint LoadProgram(const char* vert, const char* frag);
-			void Activate();	//シェーダーを使用可能にする
+			bool LoadProgram(const char* vert, const char* frag);
+			void Activate();	//シェーダーの使用を宣言
 			void Unload();	//プログラムオブジェクトのメモリ開放
+
+
+			//シェーダーのin変数をセット
+			void SetAttributeVerticies(const char* attrib, float verticies[]);
 
 			//シェーダーのuniform変数をセット
 			void SetUniformFloat(const char* uniform, GLfloat value);
-			void SetUniformVec2(const char* uniform, Math::Vector2& value);
+			void SetUniformVec2(const char* uniform, const Math::Vector2& value);
 
 		private:
 			GLuint CreateProgram(const char* vert, const char* frag);	//シェーダーファイルのコンパイル

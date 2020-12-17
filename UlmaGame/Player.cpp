@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include "ShaderLoaderOpenGL.h"
 #include "InputManagerOpenGL.h"
+#include "Vector.h"
 #include <string>
 
 using namespace System::Core::InputSystem;
@@ -11,14 +12,16 @@ Game::Player::Player(System::SceneManagement::Scene& scene)
 {}
 
 
-Game::Player::~Player(){}
+Game::Player::~Player(){
+	delete m_shader;
+}
 
 
 void Game::Player::Initialize(){
 	System::Debug::Log("Initialize player");
-	System::Core::ShaderLoaderOpenGL shader;
-	programId = shader.LoadProgram("unlit.vert", "unlit.frag");
-	shader.Activate();
+	m_shader = new System::Core::ShaderLoaderOpenGL();
+	m_shader->LoadProgram("unlit.vert", "unlit.frag");
+	m_shader->Activate();
 	GetTransform().localPosition = Math::Vector2(0.0f, 0.0f);
 }
 
@@ -34,21 +37,11 @@ void Game::Player::UpdateActor(float deltaTime){
 	   posx - 0.4f, posy - 0.25f,
 	};
 
-	// 何番目のattribute変数か
-	int attLocation = glGetAttribLocation(programId, "position");
-	int sizeLoc = glGetUniformLocation(programId, "size");
-	int scaleLoc = glGetUniformLocation(programId, "scale");
-
-	// attribute属性を有効にする
-	glEnableVertexAttribArray(attLocation);
-
-	// OpenGLからシェーダに頂点情報を渡す
-	glVertexAttribPointer(attLocation, 2, GL_FLOAT, false, 0, vertex_position);
-
-	float size[] = {640.0f, 480.0f};
-	float scale = 100.0f;
-	glUniform2fv(sizeLoc, 1, size);
-	glUniform1f(scaleLoc , scale);
+	//シェーダーに値をセット
+	m_shader->SetAttributeVerticies("position", vertex_position);
+	m_shader->SetUniformVec2("size", Math::Vector2(640.0f, 480.0f));
+	m_shader->SetUniformFloat("scale", 100.0f);
+	m_shader->Activate();
 
 	// モデルの描画
 	glDrawArrays(GL_TRIANGLES, 0, 3);

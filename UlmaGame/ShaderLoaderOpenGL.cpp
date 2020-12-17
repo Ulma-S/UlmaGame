@@ -10,7 +10,7 @@ System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL(){}
 System::Core::ShaderLoaderOpenGL::~ShaderLoaderOpenGL(){}
 
 
-GLuint System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char* frag) {
+bool System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char* frag) {
 	//シェーダーソースの読み込み
 	std::vector<GLchar> vsrc;
 	const bool vstat= ReadShaderSource(vert, vsrc);
@@ -18,10 +18,11 @@ GLuint System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char
 	const bool fstat = ReadShaderSource(frag, fsrc);
 
 	if (vstat && fstat) {
-		return CreateProgram(vsrc.data(), fsrc.data());
+		CreateProgram(vsrc.data(), fsrc.data());
+		return true;
 	}
 	else {
-		return 0;
+		return false;
 	}
 }
 
@@ -36,13 +37,20 @@ void System::Core::ShaderLoaderOpenGL::Unload() {
 }
 
 
+void System::Core::ShaderLoaderOpenGL::SetAttributeVerticies(const char* attribName, float verticies[]) {
+	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
+	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
+	glVertexAttribPointer(attLocation, 2, GL_FLOAT, false, 0, verticies);	//OpenGLからシェーダーに値をセット
+}
+
+
 void System::Core::ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, GLfloat value) {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform1f(loc, value);
 }
 
 
-void System::Core::ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, Math::Vector2& value) {
+void System::Core::ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, const Math::Vector2& value) {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform2f(loc, value.x, value.y);
 }
