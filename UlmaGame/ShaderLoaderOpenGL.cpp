@@ -1,12 +1,16 @@
 #include <string>
 #include <fstream>
 #include "ShaderLoaderOpenGL.h"
+#include "Vector.h"
 #include "Debug.h"
+
+System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL(){}
+
 
 System::Core::ShaderLoaderOpenGL::~ShaderLoaderOpenGL(){}
 
 
-GLuint System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char* frag) {
+bool System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char* frag) {
 	//シェーダーソースの読み込み
 	std::vector<GLchar> vsrc;
 	const bool vstat= ReadShaderSource(vert, vsrc);
@@ -14,24 +18,54 @@ GLuint System::Core::ShaderLoaderOpenGL::LoadProgram(const char*vert, const char
 	const bool fstat = ReadShaderSource(frag, fsrc);
 
 	if (vstat && fstat) {
-		return CreateProgram(vsrc.data(), fsrc.data());
+		CreateProgram(vsrc.data(), fsrc.data());
+		return true;
 	}
 	else {
-		return 0;
+		return false;
 	}
+}
+
+
+void System::Core::ShaderLoaderOpenGL::Activate() {
+	glUseProgram(m_programId);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::Unload() {
+	glDeleteProgram(m_programId);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetAttributeVerticies(const char* attribName, float verticies[]) {
+	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
+	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
+	glVertexAttribPointer(attLocation, 2, GL_FLOAT, false, 0, verticies);	//OpenGLからシェーダーに値をセット
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, GLfloat value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	glUniform1f(loc, value);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, const Math::Vector2& value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	glUniform2f(loc, value.x, value.y);
 }
 
 
 GLuint System::Core::ShaderLoaderOpenGL::CreateProgram(const char* vsrc, const char* fsrc) {
 	//プログラムオブジェクトの作成
-	GLuint programId = glCreateProgram();
+	m_programId = glCreateProgram();
 
 	if (vsrc != nullptr) {
 		//バーテックスシェーダのコンパイル
 		GLuint vobj = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vobj, 1, &vsrc, nullptr);
 		glCompileShader(vobj);
-		glAttachShader(programId, vobj);
+		glAttachShader(m_programId, vobj);
 		glDeleteShader(vobj);
 	}
 
@@ -40,16 +74,14 @@ GLuint System::Core::ShaderLoaderOpenGL::CreateProgram(const char* vsrc, const c
 		GLuint fobj = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fobj, 1, &fsrc, nullptr);
 		glCompileShader(fobj);
-		glAttachShader(programId, fobj);
+		glAttachShader(m_programId, fobj);
 		glDeleteShader(fobj);
 	}
 
 	// リンク
-	glLinkProgram(programId);
+	glLinkProgram(m_programId);
 
-	glUseProgram(programId);
-
-	return programId;
+	return m_programId;
 }
 
 

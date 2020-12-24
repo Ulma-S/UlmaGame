@@ -135,10 +135,14 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,13 +154,19 @@
     <ClInclude Include="IInputManager.h" />
     <ClInclude Include="InputManagerOpenGL.h" />
     <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SpriteType.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneList.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoaderOpenGL.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="WindowOpenGL.h" />
     <ClInclude Include="IWindow.h" />
   </ItemGroup>

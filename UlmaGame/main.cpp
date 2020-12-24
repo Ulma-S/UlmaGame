@@ -1,6 +1,7 @@
 #include "ApplicationCore.h"
 #include "WindowOpenGL.h"
 #include "InputManagerOpenGL.h"
+#include "ShaderLoaderOpenGL.h"
 
 using namespace System::Core;
 

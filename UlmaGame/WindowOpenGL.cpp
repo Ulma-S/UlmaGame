@@ -11,17 +11,18 @@ System::Core:: WindowOpenGL::~WindowOpenGL() {}
 
 
 bool System::Core::WindowOpenGL::CreateWindow() {
-	//OpenGL ES 2.0プロファイルの設定
-	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	
+
 	//GLFWの初期化
 	if (!glfwInit()) {
 		std::cout << "GLFWの初期化に失敗しました。" << std::endl;
 		return false;
 	}
+	
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);	//ウィンドウのサイズ変更禁止
+
 
 	//ウィンドウ作成
 	m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Ulma Game", nullptr, nullptr);
@@ -37,11 +38,12 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	//GLEWの初期化
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK) {
-		std::cout << "GLEWの初期化に失敗しました" << std::endl;
+		std::cout << "GLEWの初期化に失敗しました。" << std::endl;
 		return -1;
 	}
-
-	glViewport(120, 20, 400, 400);
+	//glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);	//OpenGL ES 2.0プロファイルの設定
+	
+	glViewport(0, 0, m_windowWidth, m_windowHeight);
 	return true;
 }
 
@@ -50,6 +52,10 @@ void System::Core::WindowOpenGL::ClearDisplayBuffer() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearDepth(1.0f);
+
+	//アルファブレンディング
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 

@@ -1,8 +1,14 @@
 #pragma once
 #include "Actor.h"
 
+namespace System {
+	namespace Core {
+		class ShaderLoaderOpenGL;
+	}
+};
+
 namespace Game {
-	class Player : public Actor {
+	class Player : public Core::Actor {
 	public:
 		Player(System::SceneManagement::Scene& scene);
 		~Player();
@@ -11,8 +17,6 @@ namespace Game {
 		void UpdateActor(float deltaTime) override;
 
 	private:
-		int programId;
-		float posx = 0.0;
-		float posy = 0.0;
+		System::Core::ShaderLoaderOpenGL* m_shader;
 	};
 };

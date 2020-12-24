@@ -60,26 +60,47 @@ package System{
     ISceneManager <.. ApplicationCore
 
     package InputSystem{
-    interface IInputManager{
+        interface IInputManager{
 
+        }
+
+        class InputManagerOpenGL{
+            //Singleton
+        }
+        IInputManager <|.. InputManagerOpenGL
+        WindowOpenGL <.. InputManagerOpenGL
+        IInputManager <.. ApplicationCore
     }
 
-    class InputManagerOpenGL{
-        //Singleton
+    package Shader{
+        class ShaderLoaderOpenGL{
+            GLuint LoadProgram()
+            GLuint CreateProgram()
+            bool ReadShaderSource()
+        }
     }
-    IInputManager <|.. InputManagerOpenGL
-    WindowOpenGL <.. InputManagerOpenGL
-    IInputManager <.. ApplicationCore
+}
+
+package Math{
+    class Vector2{
+
     }
 }
 
 package Game{
-    class Actor{
+    package "Core " {
+        class Actor{
 
-    }
+        }
 
-    class Component{
+        class Component{
+            
+        }
 
+        class Transform{
+
+        }
+        Transform <.. Actor
     }
 }
 Scene <.. Actor

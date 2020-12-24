@@ -3,25 +3,36 @@
 #include "Component.h"
 #include "Scene.h"
 
-Game::Actor::Actor(System::SceneManagement::Scene& scene)
+using namespace Game::Core;
+
+Actor::Actor()
+	: m_scene(nullptr)
+	, m_transform(new Core::Transform())
+	, m_state(Active)
+{}
+
+
+Actor::Actor(System::SceneManagement::Scene& scene)
 	: m_scene(&scene) 
+	, m_transform(new Core::Transform())
 	, m_state(Active)
 {
 	m_scene->AddActor(*this);
 }
 
 
-Game::Actor::~Actor(){
-	m_scene->RemoveActor(*this);
+Actor::~Actor(){
+	delete m_transform;
 
+	m_scene->RemoveActor(*this);
 	std::vector<Component*>().swap(m_components);
 }
 
 
-void Game::Actor::Initialize(){}
+void Actor::Initialize(){}
 
 
-void Game::Actor::Update(float deltaTime) {
+void Actor::Update(float deltaTime) {
 	if (m_state == Active) {
 		UpdateComponents(deltaTime);
 		UpdateActor(deltaTime);
@@ -29,17 +40,17 @@ void Game::Actor::Update(float deltaTime) {
 }
 
 
-void Game::Actor::UpdateActor(float deltaTime) {}
+void Actor::UpdateActor(float deltaTime) {}
 
 
-void Game::Actor::UpdateComponents(float deltaTime) {
+void Actor::UpdateComponents(float deltaTime) {
 	for (auto component : m_components) {
 		component->Update(deltaTime);
 	}
 }
 
 
-void Game::Actor::AddComponent(Component& component) {
+void Actor::AddComponent(Component& component) {
 	//既に追加されていたらreturn
 	auto it = std::find(m_components.begin(), m_components.end(), &component);
 	if (it == m_components.end()) return;
@@ -53,7 +64,7 @@ void Game::Actor::AddComponent(Component& component) {
 }
 
 
-void Game::Actor::RemoveComponent(Component& component) {
+void Actor::RemoveComponent(Component& component) {
 	//コンポーネントが存在しなければreturn
 	auto it = std::find(m_components.begin(), m_components.end(), &component);
 	if (it == m_components.end()) return;

@@ -9,13 +9,13 @@ using namespace System::SceneManagement;
 
 System::Core::ApplicationCore::ApplicationCore()
 	: m_window(nullptr)
-	, m_frameTime(0.0)
+	, m_frameTime(0.0f)
 {}
 
 
 System::Core::ApplicationCore::ApplicationCore(IWindow& window)
 	: m_window(&window)
-	, m_frameTime(0.0)
+	, m_frameTime(0.0f)
 {}
 
 

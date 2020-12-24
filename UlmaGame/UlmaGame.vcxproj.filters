@@ -43,19 +43,25 @@
     <Filter Include="ソース ファイル\Shader">
       <UniqueIdentifier>{66e26412-9d83-424d-9540-3939f7fdffb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Math">
+      <UniqueIdentifier>{bc0d0f2e-e005-427d-a6d0-d5e5e1855fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math">
+      <UniqueIdentifier>{d8b02766-3db1-438c-9fc8-1addca995400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Core">
+      <UniqueIdentifier>{95c9227e-9bc4-4d77-b06b-9d751cc75d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Core">
+      <UniqueIdentifier>{6ad808a8-f9ee-4175-8a24-777c8119817c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>ソース ファイル\Game</Filter>
-    </ClCompile>
     <ClCompile Include="ApplicationCore.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\System\SceneManagement</Filter>
@@ -69,11 +75,29 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
+    <ClCompile Include="InputManagerOpenGL.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
     <ClCompile Include="ShaderLoaderOpenGL.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
     </ClCompile>
-    <ClCompile Include="InputManagerOpenGL.cpp">
-      <Filter>ソース ファイル\System\Core</Filter>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>ソース ファイル\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,12 +106,6 @@
     </ClInclude>
     <ClInclude Include="IApplicationCore.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>ヘッダー ファイル\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
     <ClInclude Include="ISceneManager.h">
       <Filter>ヘッダー ファイル\System\SceneManagement</Filter>
@@ -116,9 +134,6 @@
     <ClInclude Include="Debug.h">
       <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoaderOpenGL.h">
-      <Filter>ヘッダー ファイル\System\Core</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -127,6 +142,33 @@
     </ClInclude>
     <ClInclude Include="InputManagerOpenGL.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>ヘッダー ファイル\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteType.h">
+      <Filter>ヘッダー ファイル\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoaderOpenGL.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

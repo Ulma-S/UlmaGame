@@ -3,7 +3,9 @@
 #include "SceneList.h"
 
 namespace Game {
-	class Actor;
+	namespace Core {
+		class Actor;
+	}
 }
 
 namespace System {
@@ -17,15 +19,15 @@ namespace System {
 			void Update(float deltaTime);
 			void OnExit();
 			
-			void AddActor(Game::Actor& actor);
-			void RemoveActor(Game::Actor& actor);
+			void AddActor(Game::Core::Actor& actor);
+			void RemoveActor(Game::Core::Actor& actor);
 
 
 		protected:
 			class ISceneManager* m_sceneManager;
 			Game::ESceneType m_sceneType;
-			std::vector<Game::Actor*> m_sceneActors;
-			std::vector<Game::Actor*> m_pendingActors;
+			std::vector<Game::Core::Actor*> m_sceneActors;
+			std::vector<Game::Core::Actor*> m_pendingActors;
 			bool m_isUpdating;
 		};
 	}

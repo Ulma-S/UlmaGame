@@ -19,7 +19,7 @@ namespace System {
 
 			virtual int GetWindowWidth() const = 0;
 			virtual int GetWindowHeight() const = 0;
-			virtual float GetScale() = 0;	//ワールド座標系における1に対応する画素数
+			virtual float GetScale() const = 0;	//ワールド座標系における1に対応する画素数
 		};
 	}
 }
