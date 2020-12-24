@@ -17,6 +17,15 @@ Transform::Transform()
 Transform::~Transform(){}
 
 
+void Transform::CalcWorldTransform() {
+	m_worldTransform = Math::Matrix4::CreateScale(m_scale);
+	m_worldTransform *= Math::Matrix4::CreateRotationZ(m_rotation.z);
+	m_worldTransform *= Math::Matrix4::CreateRotationX(m_rotation.x);
+	m_worldTransform *= Math::Matrix4::CreateRotationY(m_rotation.y);
+	m_worldTransform *= Math::Matrix4::CreateTranslation(m_position);
+}
+
+
 Vector2 Transform::GetWorldPosition() const{
 	Vector2 vec;
 	vec = localPosition;

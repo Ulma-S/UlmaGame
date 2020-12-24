@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector.h"
+#include "MathExt.h"
 
 namespace Math {
 	class Matrix4 {
@@ -125,7 +126,88 @@ namespace Math {
 		}
 
 		inline Vector3 GetRight() {
-			return Vector3(mat[3][0], mat[3][1], mat[3][2]);
+			return Vector3(mat[0][0], mat[0][1], mat[0][2]).GetNormalized();
+		}
+
+		inline Vector3 GetLeft() {
+			return Vector3(-mat[0][0], mat[0][1], mat[0][2]).GetNormalized();
+		}
+
+		inline Vector3 GetUp() {
+			return Vector3(mat[1][0], mat[1][1], mat[1][2]).GetNormalized();
+		}
+
+		inline Vector3 GetDown() {
+			return Vector3(mat[1][0], -mat[1][1], mat[1][2]).GetNormalized();
+		}
+
+		inline Vector3 GetForward() {
+			return Vector3(mat[2][0], mat[2][1], -mat[2][2]).GetNormalized();
+		}
+
+		inline Vector3 GetBack() {
+			return Vector3(mat[2][0], mat[2][1], mat[2][2]).GetNormalized();
+		}
+
+		//回転行列 (引数は度数法)
+		static inline Matrix4 CreateRotationX(float angle) {
+			float tmp[4][4] = {
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, Math::Cos(angle), Math::Sin(angle), 0.0f},
+				{0.0f, -Math::Sin(angle), Math::Cos(angle), 0.0f },
+				{0.0f, 0.0f, 0.0f, 1.0f},
+			};
+			return Matrix4(tmp);
+		}
+
+		static inline Matrix4 CreateRotationY(float angle) {
+			float tmp[4][4] = {
+				{Math::Cos(angle), 0.0f, -Math::Sin(angle), 0.0f},
+				{0.0f, 1.0f, 0.0f, 0.0f},
+				{Math::Sin(angle), 0.0f, Math::Cos(angle), 0.0f },
+				{0.0f, 0.0f, 0.0f, 1.0f},
+			};
+			return Matrix4(tmp);
+		}
+
+		static inline Matrix4 CreateRotationZ(float angle) {
+			float tmp[4][4] = {
+				{Math::Cos(angle), Math::Sin(angle), 0.0f, 0.0f},
+				{-Math::Sin(angle), Math::Cos(angle), 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f },
+				{0.0f, 0.0f, 0.0f, 1.0f},
+			};
+			return Matrix4(tmp);
+		}
+
+		//平行移動行列
+		static inline Matrix4 CreateTranslation(Math::Vector3& ts) {
+			float tmp[4][4] = {
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, 1.0f, 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f},
+				{ts.x, ts.y, ts.z, 1.0f}
+			};
+			return Matrix4(tmp);
+		}
+
+		//拡大縮小行列
+		static inline Matrix4 CreateScale(float xSc, float ySc, float zSc) {
+			float tmp[4][4] = {
+				{xSc, 0.0f, 0.0f, 0.0f},
+				{0.0f, ySc, 0.0f, 0.0f},
+				{0.0f, 0.0f, zSc, 0.0f},
+				{0.0f, 0.0f, 0.0f, 1.0f},
+			};
+			return Matrix4(tmp);
+		}
+
+		static inline Matrix4 CreateScale(Math::Vector3& vSc) {
+			return CreateScale(vSc.x, vSc.y, vSc.z);
+		}
+
+		static inline Matrix4 CreateScale(float sc) {
+			return CreateScale(sc, sc, sc);
 		}
 	};
 }

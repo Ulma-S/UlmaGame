@@ -1,6 +1,5 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include "Vector.h"
+#include "MathExt.h"
 
 Math::Vector2::Vector2()
 	: x(0.0f)
@@ -54,8 +53,7 @@ void Math::Vector2::RotateRad(float rad) {
 
 
 void Math::Vector2::RotateDeg(float deg) {
-	float rad = deg * M_PI / 180.0f;
-	RotateRad(rad);
+	RotateRad(DegToRad(deg));
 }
 
 

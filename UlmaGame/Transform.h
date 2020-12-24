@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector.h"
+#include "Math.h"
 
 namespace Game {
 	namespace Core {
@@ -10,6 +10,8 @@ namespace Game {
 
 			void Rotate(float angle);
 			void Translate(Math::Vector2& dir);
+
+			void CalcWorldTransform();
 
 			inline Transform& GetParent() const { return *m_parent; }
 			inline void SetParent(Transform& parent) { m_parent = &parent; }
@@ -24,6 +26,10 @@ namespace Game {
 
 		private:
 			Transform* m_parent;
+			Math::Matrix4 m_worldTransform;
+			Math::Vector3 m_scale;
+			Math::Vector3 m_rotation;
+			Math::Vector3 m_position;
 		};
 	}
 }

@@ -154,6 +154,8 @@
     <ClInclude Include="IInputManager.h" />
     <ClInclude Include="InputManagerOpenGL.h" />
     <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="MathExt.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteType.h" />
