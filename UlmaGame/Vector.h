@@ -27,8 +27,8 @@ namespace Math {
 			return *this;
 		}
 
-		inline bool operator == (const Vector2& v) {
-			if (this->x == v.x && this->y == v.y) {
+		inline friend bool operator == (const Vector2& v1, const Vector2& v2) {
+			if (v1.x == v2.x && v1.y == v2.y) {
 				return true;
 			}
 			else {
@@ -36,8 +36,8 @@ namespace Math {
 			}
 		}
 
-		inline bool operator != (const Vector2& v) {
-			if (this->x == v.x && this->y == v.y) {
+		inline friend bool operator != (const Vector2& v1, const Vector2& v2) {
+			if (v1.x == v2.x && v1.y == v2.y) {
 				return false;
 			}
 			else {
@@ -45,24 +45,24 @@ namespace Math {
 			}
 		}
 
-		inline Vector2 operator + (const Vector2& v) const {
+		inline friend Vector2 operator + (const Vector2& v1, const Vector2& v2) {
 			Vector2 out;
-			out.x = this->x + v.x;
-			out.y = this->y + v.y;
+			out.x = v1.x + v2.x;
+			out.y = v1.y + v2.y;
 			return out;
 		}
 
-		inline Vector2 operator - (const Vector2& v) const {
+		inline friend Vector2 operator - (const Vector2& v1, const Vector2& v2) {
 			Vector2 out;
-			out.x = this->x - v.x;
-			out.y = this->y - v.y;
+			out.x = v1.x - v2.x;
+			out.y = v1.y - v2.y;
 			return out;
 		}
 
-		inline Vector2 operator * (const float f) const {
+		inline friend Vector2 operator * (const Vector2& v, const float f) {
 			Vector2 out;
-			out.x = this->x * f;
-			out.y = this->y * f;
+			out.x = v.x * f;
+			out.y = v.y * f;
 			return out;
 		}
 
@@ -74,26 +74,17 @@ namespace Math {
 		}
 
 		inline Vector2& operator += (const Vector2& v) {
-			this->x += v.x;
-			this->y += v.y;
+			*this = *this + v;
 			return *this;
 		}
 
 		inline Vector2& operator -= (const Vector2& v) {
-			this->x -= v.x;
-			this->y -= v.y;
+			*this = *this - v;
 			return *this;
 		}
 
 		inline Vector2& operator *= (const float f) {
-			this->x *= f;
-			this->y *= f;
-			return *this;
-		}
-
-		inline Vector2& operator *= (const Vector2& v) {
-			this->x *= v.x;
-			this->y *= v.y;
+			*this = *this * f;
 			return *this;
 		}
 
@@ -102,5 +93,19 @@ namespace Math {
 			this->y /= f;
 			return *this;
 		}
+	};
+
+	class Vector3 {
+	public:
+		float x, y, z;
+
+		Vector3();
+		Vector3(float x, float y, float z);
+		~Vector3();
+	
+		float Magnitude() const;	//大きさを返す
+
+		void Normalize();	//このベクトルを正規化
+		Vector3 GetNormalized() const;	//正規化されたベクトルを返す
 	};
 }

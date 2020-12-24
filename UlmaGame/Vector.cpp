@@ -63,3 +63,42 @@ float Math::Vector2::Dot(Vector2& vec) const {
 	float dot = this->x * vec.x + this->y * vec.y;
 	return dot;
 }
+
+
+//-----------Vector3-------------//
+
+Math::Vector3::Vector3() : x(0.0f), y(0.0f), z(0.0f)
+{}
+
+
+Math::Vector3::Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z)
+{}
+
+
+Math::Vector3::~Vector3() {
+}
+
+
+float Math::Vector3::Magnitude() const {
+	float mag = sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+	return mag;
+}
+
+
+void Math::Vector3::Normalize() {
+	float normalizedX = this->x / Magnitude();
+	float normalizedY = this->y / Magnitude();
+	float normalizedZ = this->z / Magnitude();
+	this->x = normalizedX;
+	this->y = normalizedY;
+	this->z = normalizedZ;
+}
+
+
+Math::Vector3 Math::Vector3::GetNormalized() const {
+	Vector3 vec;
+	vec.x = this->x / Magnitude();
+	vec.y = this->y / Magnitude();
+	vec.z = this->z / Magnitude();
+	return vec;
+}

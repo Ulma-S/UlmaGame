@@ -50,7 +50,7 @@ Vector2 Transform::GetWorldScale() const{
 	Transform* parent = m_parent;
 	while (true) {
 		if (parent == nullptr) break;
-		worldScale *= parent->localScale;
+		worldScale.Dot(parent->localScale);
 		parent = parent->m_parent;
 	}
 	delete parent;

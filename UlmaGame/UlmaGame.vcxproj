@@ -135,6 +135,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="IInputManager.h" />
     <ClInclude Include="InputManagerOpenGL.h" />
     <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteType.h" />
     <ClInclude Include="resource.h" />
