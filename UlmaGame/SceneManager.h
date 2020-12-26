@@ -5,11 +5,16 @@
 #include "SceneList.h"
 
 namespace System {
+	namespace Core {
+		class ShaderLoaderOpenGL;
+	}
+
 	namespace SceneManagement {
 		class SceneManager : public General::Singleton<SceneManager>, public ISceneManager {
 		public:
 			~SceneManager();
 			void UpdateScene(float deltaTime) override;
+			void GenerateOutput(System::Core::ShaderLoaderOpenGL& shader);
 			void LoadScene(Game::ESceneType sceneType) override;
 
 			void AddScene(Game::ESceneType type, class Scene& scene) override;

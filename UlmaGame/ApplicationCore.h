@@ -3,6 +3,8 @@
 
 namespace System {
 	namespace Core {
+		class ShaderLoaderOpenGL;
+
 		class ApplicationCore : public IApplicationCore {
 		public:
 			ApplicationCore();
@@ -17,6 +19,8 @@ namespace System {
 		private:
 			class IWindow* m_window;
 			float m_frameTime;
+
+			ShaderLoaderOpenGL* m_unlitShader;
 		};
 	}
 }

@@ -2,7 +2,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
-#include "Singleton.h"
 
 namespace Math {
 	class Vector2;
@@ -23,7 +22,7 @@ namespace System {
 			void Unload();	//プログラムオブジェクトのメモリ開放
 
 
-			//シェーダーのin変数をセット
+			//シェーダーの頂点情報をセット
 			void SetAttributeVerticies(const char* attrib, float verticies[]);
 
 			//シェーダーのuniform変数をセット
@@ -35,7 +34,6 @@ namespace System {
 			GLuint CreateProgram(const char* vert, const char* frag);	//シェーダーファイルのコンパイル
 			bool ReadShaderSource(const char* name, std::vector<GLchar>& buffer);	//シェーダーファイルの読み込み
 		
-			//IWindow* m_window;
 			GLuint m_programId;
 		};
 	}

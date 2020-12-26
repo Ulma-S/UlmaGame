@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "ISceneManager.h"
+#include "ShaderLoaderOpenGL.h"
+#include "SpriteComponent.h"
 #include "Actor.h"
 
 using namespace Game::Core;
@@ -18,6 +20,7 @@ System::SceneManagement::Scene::~Scene() {
 
 	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
 	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
+	std::vector<Game::Core::SpriteComponent*>().swap(m_sprites);
 }
 
 
@@ -39,6 +42,15 @@ void System::SceneManagement::Scene::Update(float deltaTime) {
 		m_sceneActors.emplace_back(actor);
 	}
 	m_pendingActors.clear();
+}
+
+
+void System::SceneManagement::Scene::GenerateOutput(System::Core::ShaderLoaderOpenGL& shader) {
+	auto it = m_sprites.begin();
+
+	for (; it != m_sprites.end(); ++it) {
+		(*it)->Draw(shader);
+	}
 }
 
 
@@ -67,4 +79,14 @@ void System::SceneManagement::Scene::RemoveActor(Actor& actor) {
 	if (it != m_sceneActors.end()) {
 		m_sceneActors.erase(it);
 	}
+}
+
+
+void System::SceneManagement::Scene::AddSprite(Game::Core::SpriteComponent& sprite) {
+	int drawOrder = sprite.GetDrawOrder();
+	auto it = m_sprites.begin();
+	for (; it != m_sprites.end(); ++it) {
+		if (drawOrder > (*it)->GetDrawOrder()) break;
+	}
+	m_sprites.insert(it, &sprite);
 }

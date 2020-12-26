@@ -15,12 +15,13 @@ namespace Game {
 			SpriteComponent(class Actor& owner, int drawOrder = 100);
 			~SpriteComponent();
 
-			void Update(float deltaTime) override;
+			void Draw(System::Core::ShaderLoaderOpenGL& shader);
+
+			inline int GetDrawOrder() { return m_drawOrder; }
 			
 		private:
-			void Draw(System::Core::ShaderLoaderOpenGL& shaderLoader);
-
 			ESpriteType m_spriteType;
+			int m_drawOrder;
 		};
 	}
 }

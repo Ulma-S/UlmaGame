@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "Vector.h"
 #include "MathExt.h"
 
@@ -125,30 +126,6 @@ namespace Math {
 			return *this;
 		}
 
-		inline Vector3 GetRight() {
-			return Vector3(mat[0][0], mat[0][1], mat[0][2]).GetNormalized();
-		}
-
-		inline Vector3 GetLeft() {
-			return Vector3(-mat[0][0], mat[0][1], mat[0][2]).GetNormalized();
-		}
-
-		inline Vector3 GetUp() {
-			return Vector3(mat[1][0], mat[1][1], mat[1][2]).GetNormalized();
-		}
-
-		inline Vector3 GetDown() {
-			return Vector3(mat[1][0], -mat[1][1], mat[1][2]).GetNormalized();
-		}
-
-		inline Vector3 GetForward() {
-			return Vector3(mat[2][0], mat[2][1], -mat[2][2]).GetNormalized();
-		}
-
-		inline Vector3 GetBack() {
-			return Vector3(mat[2][0], mat[2][1], mat[2][2]).GetNormalized();
-		}
-
 		//âÒì]çsóÒ (à¯êîÇÕìxêîñ@)
 		static inline Matrix4 CreateRotationX(float angle) {
 			float tmp[4][4] = {
@@ -174,7 +151,7 @@ namespace Math {
 			float tmp[4][4] = {
 				{Math::Cos(angle), Math::Sin(angle), 0.0f, 0.0f},
 				{-Math::Sin(angle), Math::Cos(angle), 0.0f, 0.0f},
-				{0.0f, 0.0f, 1.0f, 0.0f },
+				{0.0f, 0.0f, 1.0f, 0.0f},
 				{0.0f, 0.0f, 0.0f, 1.0f},
 			};
 			return Matrix4(tmp);
@@ -218,6 +195,15 @@ namespace Math {
 				{0.0f, 0.0f, 1.0f, 1.0f}
 			};
 			return Matrix4(tmp);
+		}
+
+		inline friend std::ostream& operator << (std::ostream& os, Matrix4& mat) {
+			os
+				<< mat.mat[0][0] << ", " << mat.mat[0][1] << ", " << mat.mat[0][2] << ", " << mat.mat[0][3] << "\n"
+				<< mat.mat[1][0] << ", " << mat.mat[1][1] << ", " << mat.mat[1][2] << ", " << mat.mat[1][3] << "\n"
+				<< mat.mat[2][0] << ", " << mat.mat[2][1] << ", " << mat.mat[2][2] << ", " << mat.mat[2][3] << "\n"
+				<< mat.mat[3][0] << ", " << mat.mat[3][1] << ", " << mat.mat[3][2] << ", " << mat.mat[3][3];
+			return os;
 		}
 	};
 }

@@ -15,6 +15,11 @@ void System::SceneManagement::SceneManager::UpdateScene(float deltaTime){
 }
 
 
+void System::SceneManagement::SceneManager::GenerateOutput(System::Core::ShaderLoaderOpenGL& shader) {
+	m_currentScene->GenerateOutput(shader);
+}
+
+
 void System::SceneManagement::SceneManager::LoadScene(Game::ESceneType sceneType){
 	//ƒV[ƒ“‚ª‘¶İ‚µ‚È‚¯‚ê‚Îreturn
 	auto it = m_sceneMap.find(sceneType);

@@ -17,6 +17,5 @@ namespace Game {
 		void UpdateActor(float deltaTime) override;
 
 	private:
-		System::Core::ShaderLoaderOpenGL* m_shader;
 	};
 };

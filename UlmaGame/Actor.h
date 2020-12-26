@@ -27,6 +27,7 @@ namespace Game {
 			void AddComponent(class Component& component);
 			void RemoveComponent(class Component& component);
 
+			inline System::SceneManagement::Scene& GetScene() const{ return *m_scene; }
 			inline Core::Transform& GetTransform() const { return *m_transform; }
 
 
