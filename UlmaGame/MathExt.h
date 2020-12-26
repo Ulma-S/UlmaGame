@@ -1,7 +1,6 @@
 #pragma once
 #define _USE_MATH_DEFINES
-#include <cmath>
-
+#include <math.h>
 
 namespace Math {
 	//度数法から弧度法へ変換

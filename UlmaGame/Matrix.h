@@ -209,5 +209,15 @@ namespace Math {
 		static inline Matrix4 CreateScale(float sc) {
 			return CreateScale(sc, sc, sc);
 		}
+
+		static inline Matrix4 CreateViewProj(float width, float height) {
+			float tmp[4][4] = {
+				{2.0f/width, 0.0f, 0.0f, 0.0f},
+				{0.0f, 2.0f/height, 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 1.0f}
+			};
+			return Matrix4(tmp);
+		}
 	};
 }

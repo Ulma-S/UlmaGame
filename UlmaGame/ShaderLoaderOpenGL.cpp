@@ -1,7 +1,7 @@
 #include <string>
 #include <fstream>
 #include "ShaderLoaderOpenGL.h"
-#include "Vector.h"
+#include "Math.h"
 #include "Debug.h"
 
 System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL(){}
@@ -40,7 +40,7 @@ void System::Core::ShaderLoaderOpenGL::Unload() {
 void System::Core::ShaderLoaderOpenGL::SetAttributeVerticies(const char* attribName, float verticies[]) {
 	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
 	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
-	glVertexAttribPointer(attLocation, 2, GL_FLOAT, false, 0, verticies);	//OpenGLからシェーダーに値をセット
+	glVertexAttribPointer(attLocation, 3, GL_FLOAT, false, 0, verticies);	//OpenGLからシェーダーに値をセット
 }
 
 
@@ -53,6 +53,13 @@ void System::Core::ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, 
 void System::Core::ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, const Math::Vector2& value) {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform2f(loc, value.x, value.y);
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformMat4(const char* uniformName, const Math::Matrix4& value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	auto ptr = reinterpret_cast<const float*>(&value.mat[0][0]);
+	glUniformMatrix4fv(loc, 1, GL_TRUE, ptr);
 }
 
 

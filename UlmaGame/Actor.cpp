@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include "IApplicationCore.h"
+#include "Transform.h"
 #include "Component.h"
 #include "Scene.h"
 
@@ -34,8 +35,10 @@ void Actor::Initialize(){}
 
 void Actor::Update(float deltaTime) {
 	if (m_state == Active) {
+		m_transform->ComputeWorldTransform();
 		UpdateComponents(deltaTime);
 		UpdateActor(deltaTime);
+		m_transform->ComputeWorldTransform();
 	}
 }
 

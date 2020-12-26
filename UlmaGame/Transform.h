@@ -11,18 +11,13 @@ namespace Game {
 			void Rotate(float angle);
 			void Translate(Math::Vector2& dir);
 
-			void CalcWorldTransform();
+			void ComputeWorldTransform();
 
 			inline Transform& GetParent() const { return *m_parent; }
 			inline void SetParent(Transform& parent) { m_parent = &parent; }
 
-			Math::Vector2 GetWorldPosition() const;
-			float GetWorldRotation() const;
-			Math::Vector2 GetWorldScale() const;
-
-			Math::Vector2 localPosition;
-			float localRotation;
-			Math::Vector2 localScale;
+			inline Math::Matrix4& GetWorldTransform() { return m_worldTransform; }
+			inline Math::Vector3& GetPosition() { return m_position; }
 
 		private:
 			Transform* m_parent;

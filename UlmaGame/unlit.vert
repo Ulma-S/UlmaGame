@@ -1,8 +1,9 @@
 #version 100
-uniform vec2 size;
-uniform float scale;
-in vec4 position;
+in vec3 inPosition;
+uniform mat4 uWorldTransform;
+uniform mat4 uViewProj;
 
 void main(){
-	gl_Position = vec4(2.0 * scale / size, 1.0, 1.0) * position;
+	vec4 pos = vec4(inPosition, 1.0);
+	gl_Position = pos * uWorldTransform * uViewProj;
 }
