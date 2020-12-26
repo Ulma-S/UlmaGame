@@ -28,12 +28,13 @@ void Game::Player::Initialize(){
 void Game::Player::UpdateActor(float deltaTime){
 	float posx = GetTransform().GetPosition().x;
 	float posy = GetTransform().GetPosition().y;
+	float posz = GetTransform().GetPosition().z;
 
 	// 頂点データ
 	float vertex_position[] = {
-	   posx, posy + 0.5f, 0.0f,
-	   posx + 0.4f, posy - 0.25f, 0.0f,
-	   posx - 0.4f, posy - 0.25f, 0.0f,
+	   posx, posy + 0.5f, posz,
+	   posx + 0.4f, posy - 0.25f, posz,
+	   posx - 0.4f, posy - 0.25f, posz,
 	};
 
 	//シェーダーに値をセット
