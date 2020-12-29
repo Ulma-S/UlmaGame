@@ -31,6 +31,8 @@ namespace System {
 			void SetUniformVec2(const char* uniform, const Math::Vector2& value);
 			void SetUniformMat4(const char* uniform, const Math::Matrix4& value);
 
+			GLuint GetProgramId() { return m_programId; }
+
 		private:
 			GLuint CreateProgram(const char* vert, const char* frag);	//シェーダーファイルのコンパイル
 			bool ReadShaderSource(const char* name, std::vector<GLchar>& buffer);	//シェーダーファイルの読み込み
