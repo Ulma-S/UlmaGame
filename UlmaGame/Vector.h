@@ -158,7 +158,15 @@ namespace Math {
 			return out;
 		}
 
-		inline friend Vector3 operator * (const Vector3& v, const float f) {
+		inline friend Vector3 operator * (float f, const Vector3& v) {
+			Vector3 out;
+			out.x = v.x * f;
+			out.y = v.y * f;
+			out.z = v.z * f;
+			return out;
+		}
+
+		inline friend Vector3 operator * (const Vector3& v, float f) {
 			Vector3 out;
 			out.x = v.x * f;
 			out.y = v.y * f;

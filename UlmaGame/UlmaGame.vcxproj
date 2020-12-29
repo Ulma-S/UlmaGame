@@ -133,6 +133,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ApplicationCore.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
@@ -148,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="FileLoader.h" />
     <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="ShaderLoaderOpenGL.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector.h" />
@@ -176,6 +180,8 @@
     <ResourceCompile Include="UlmaGame.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="sprite.frag" />
+    <None Include="sprite.vert" />
     <None Include="unlit.frag" />
     <None Include="unlit.vert" />
   </ItemGroup>

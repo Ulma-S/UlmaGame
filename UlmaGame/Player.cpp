@@ -24,5 +24,5 @@ void Game::Player::Initialize(){
 
 void Game::Player::UpdateActor(float deltaTime){
 	GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(Horizontal);
-	GetTransform().position += GetTransform().GetUp() * InputManagerOpenGL::GetInstance().GetAxis(Vertical);
+	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(Vertical) * GetTransform().GetUp();
 }

@@ -99,6 +99,12 @@
     <ClCompile Include="Matrix.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLoader.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -176,6 +182,12 @@
     <ClInclude Include="Math.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UlmaGame.rc">
@@ -187,6 +199,12 @@
       <Filter>ソース ファイル\Shader</Filter>
     </None>
     <None Include="unlit.vert">
+      <Filter>ソース ファイル\Shader</Filter>
+    </None>
+    <None Include="sprite.vert">
+      <Filter>ソース ファイル\Shader</Filter>
+    </None>
+    <None Include="sprite.frag">
       <Filter>ソース ファイル\Shader</Filter>
     </None>
   </ItemGroup>

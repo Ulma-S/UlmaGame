@@ -4,7 +4,9 @@
 #include "Math.h"
 #include "Debug.h"
 
-System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL(){}
+System::Core::ShaderLoaderOpenGL::ShaderLoaderOpenGL()
+	: m_programId(0)
+{}
 
 
 System::Core::ShaderLoaderOpenGL::~ShaderLoaderOpenGL(){}
@@ -41,6 +43,12 @@ void System::Core::ShaderLoaderOpenGL::SetAttributeVerticies(const char* attribN
 	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
 	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
 	glVertexAttribPointer(attLocation, 3, GL_FLOAT, GL_FALSE, 0, verticies);	//OpenGLからシェーダーに値をセット
+}
+
+
+void System::Core::ShaderLoaderOpenGL::SetUniformInt(const char* uniformName, GLint value) {
+	int loc = glGetUniformLocation(m_programId, uniformName);
+	glUniform1i(loc, value);
 }
 
 
