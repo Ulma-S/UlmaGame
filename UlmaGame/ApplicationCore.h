@@ -21,6 +21,7 @@ namespace System {
 			float m_frameTime;
 
 			ShaderLoaderOpenGL* m_unlitShader;
+			ShaderLoaderOpenGL* m_spriteShader;
 		};
 	}
 }

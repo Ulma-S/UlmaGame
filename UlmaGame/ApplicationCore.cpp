@@ -13,6 +13,7 @@ System::Core::ApplicationCore::ApplicationCore()
 	: m_window(nullptr)
 	, m_frameTime(0.0f)
 	, m_unlitShader(nullptr)
+	, m_spriteShader(nullptr)
 {}
 
 
@@ -20,6 +21,7 @@ System::Core::ApplicationCore::ApplicationCore(IWindow& window)
 	: m_window(&window)
 	, m_frameTime(0.0f)
 	, m_unlitShader(nullptr)
+	, m_spriteShader(nullptr)
 {}
 
 
@@ -41,14 +43,22 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	//シェーダー初期化
 	m_unlitShader = new ShaderLoaderOpenGL();
 	if (!m_unlitShader->LoadProgram("unlit.vert", "unlit.frag")) {
-		System::Debug::Log("シェーダーのロードに失敗しました");
+		System::Debug::Log("unlitシェーダーのロードに失敗しました");
 		return false;
 	}
 	m_unlitShader->Activate();
 
+	m_spriteShader = new ShaderLoaderOpenGL();
+	if (!m_spriteShader->LoadProgram("sprite.vert", "sprite.frag")) {
+		System::Debug::Log("spriteシェーダーのロードに失敗しました");
+		return false;
+	}
+	m_spriteShader->Activate();
+
 	//ビュー変換
 	Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj(640.0f, 480.0f);
 	m_unlitShader->SetUniformMat4("uViewProj", viewProj);
+	m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 	
 	//Scene作成
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);
@@ -74,7 +84,7 @@ void System::Core::ApplicationCore::Update() {
 		m_window->ClearDisplayBuffer();	//ディスプレイバッファのクリア
 
 		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);	//シーンの更新
-		SceneManagement::SceneManager::GetInstance().GenerateOutput(*m_unlitShader);
+		SceneManagement::SceneManager::GetInstance().GenerateOutput(*m_spriteShader);
 
 		m_window->SwapBuffer();	//ダブルバッファのスワップ
 

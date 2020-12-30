@@ -26,6 +26,7 @@ namespace System {
 			void SetAttributeVerticies(const char* attrib, float verticies[]);
 
 			//シェーダーのuniform変数をセット
+			void SetUniformInt(const char* uniform, GLint value);
 			void SetUniformFloat(const char* uniform, GLfloat value);
 			void SetUniformVec2(const char* uniform, const Math::Vector2& value);
 			void SetUniformMat4(const char* uniform, const Math::Matrix4& value);

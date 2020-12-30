@@ -5,6 +5,7 @@
 namespace System {
 	namespace Core {
 		class ShaderLoaderOpenGL;
+		class Texture;
 	}
 }
 
@@ -21,6 +22,7 @@ namespace Game {
 			
 		private:
 			ESpriteType m_spriteType;
+			System::Core::Texture* m_texture;
 			int m_drawOrder;
 		};
 	}
