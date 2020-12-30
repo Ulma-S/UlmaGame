@@ -8,6 +8,7 @@ namespace System {
 		class Texture {
 		public:
 			Texture();
+			Texture(int width, int height);
 			~Texture();
 
 			bool CreateTexture();
@@ -23,6 +24,7 @@ namespace System {
 			int m_texWidth;
 			int m_texHeight;
 			char* m_texBuffer;
+			bool m_isActive;
 		};
 	}
 }

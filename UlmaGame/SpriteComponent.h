@@ -14,6 +14,7 @@ namespace Game {
 		class SpriteComponent : public Component{
 		public:
 			SpriteComponent(class Actor& owner, int drawOrder = 100);
+			SpriteComponent(class Actor& owner, ESpriteType type, int drawOrder = 100);
 			~SpriteComponent();
 
 			void Draw(System::Core::ShaderLoaderOpenGL& shader);

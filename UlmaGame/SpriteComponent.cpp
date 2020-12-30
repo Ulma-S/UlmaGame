@@ -19,6 +19,16 @@ SpriteComponent::SpriteComponent(class Actor& owner, int drawOrder)
 }
 
 
+SpriteComponent::SpriteComponent(class Actor& owner, ESpriteType type, int drawOrder)
+	: Component(owner)
+	, m_spriteType(type)
+	, m_texture(new System::Core::Texture())
+	, m_drawOrder(drawOrder) {
+	m_owner->GetScene().AddSprite(*this);
+	m_texture->CreateTexture();
+}
+
+
 SpriteComponent::~SpriteComponent() {
 	delete m_texture;
 }
@@ -45,11 +55,20 @@ static float uv_rectangle[] = {
 	1.0f, 0.0f, 0.0f,
 };
 
+static float uv_triangle[] = {
+	0.0f, 0.0f, 0.0f,
+	1.0f, 0.0f, 0.0f,
+	0.5f,   sq, 0.0f,
+};
+
 void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 	switch (m_spriteType) {
 	case Triangle:
 		shader.SetAttributeVerticies("inPosition", triangle_verticies);
 		shader.SetAttributeVerticies("uv", uv_rectangle);
+		shader.SetUniformInt("uTexture", 0);
+		m_texture->Activate();
+		shader.Activate();
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		break;
 

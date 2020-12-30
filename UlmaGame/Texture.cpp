@@ -10,16 +10,29 @@ Texture::Texture()
 	, m_texWidth(256)
 	, m_texHeight(256)
 	, m_texBuffer(nullptr)
+	, m_isActive(false)
 {}
 
 
-Texture::~Texture(){
-	delete[] m_texBuffer;
+Texture::Texture(int width, int height) 
+	: m_texId(0)
+	, m_texWidth(width)
+	, m_texHeight(height)
+	, m_texBuffer(nullptr)
+	, m_isActive(false)
+{}
+
+
+Texture::~Texture() {
+	if (m_isActive) {
+		delete[] m_texBuffer;
+	}
 }
 
 
 bool Texture::CreateTexture() {
 	FileLoader::GetInstance().LoadFile("Resource/cat.raw", &m_texBuffer);
+
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {
@@ -48,6 +61,7 @@ bool Texture::CreateTexture() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	
+	m_isActive = true;
 	return true;
 }
 
@@ -58,5 +72,8 @@ void Texture::Activate() {
 
 
 void Texture::Inactivate() {
-	 
+	if (m_isActive) {
+		delete[] m_texBuffer;
+		m_isActive = false;
+	 }
 }
