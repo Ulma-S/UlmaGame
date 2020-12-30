@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Component.h"
 #include "SpriteType.h"
 
@@ -15,6 +16,7 @@ namespace Game {
 		public:
 			SpriteComponent(class Actor& owner, int drawOrder = 100);
 			SpriteComponent(class Actor& owner, ESpriteType type, int drawOrder = 100);
+			SpriteComponent(class Actor& owner, const char* assetName, ESpriteType type, int drawOrder = 100);
 			~SpriteComponent();
 
 			void Draw(System::Core::ShaderLoaderOpenGL& shader);
@@ -23,8 +25,8 @@ namespace Game {
 			
 		private:
 			ESpriteType m_spriteType;
-			System::Core::Texture* m_texture;
 			int m_drawOrder;
+			std::string m_assetName;
 		};
 	}
 }

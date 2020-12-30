@@ -4,33 +4,42 @@
 #include "Math.h"
 #include "Scene.h"
 #include "Texture.h"
+#include "TextureProvider.h"
 #include "Debug.h"
 
 using namespace Game::Core;
 
-SpriteComponent::SpriteComponent(class Actor& owner, int drawOrder)
+SpriteComponent::SpriteComponent(Actor& owner, int drawOrder)
 	: Component(owner)
 	, m_spriteType(Rectangle)
-	, m_texture(new System::Core::Texture())
-	, m_drawOrder(drawOrder)
+	, m_drawOrder(drawOrder) 
+	, m_assetName("noodle")
 {
 	m_owner->GetScene().AddSprite(*this);
-	m_texture->CreateTexture();
 }
 
 
-SpriteComponent::SpriteComponent(class Actor& owner, ESpriteType type, int drawOrder)
+SpriteComponent::SpriteComponent(Actor& owner, ESpriteType type, int drawOrder)
 	: Component(owner)
 	, m_spriteType(type)
-	, m_texture(new System::Core::Texture())
-	, m_drawOrder(drawOrder) {
+	, m_drawOrder(drawOrder) 
+	, m_assetName("noodle")
+{
 	m_owner->GetScene().AddSprite(*this);
-	m_texture->CreateTexture();
+}
+
+
+SpriteComponent::SpriteComponent(Actor& owner, const char* assetName, ESpriteType type, int drawOrder) 
+	: Component(owner)
+	, m_spriteType(Rectangle)
+	, m_drawOrder(drawOrder)
+	, m_assetName(assetName)
+{
+	m_owner->GetScene().AddSprite(*this);
 }
 
 
 SpriteComponent::~SpriteComponent() {
-	delete m_texture;
 }
 
 
@@ -62,31 +71,35 @@ static float uv_triangle[] = {
 };
 
 void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
-	switch (m_spriteType) {
-	case Triangle:
-		shader.SetAttributeVerticies("inPosition", triangle_verticies);
-		shader.SetAttributeVerticies("uv", uv_rectangle);
-		shader.SetUniformInt("uTexture", 0);
-		m_texture->Activate();
-		shader.Activate();
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		break;
+	auto texture = System::Core::TextureProvider::GetInstance().GetTexture(m_assetName);
 
-	case Rectangle:
-		shader.SetAttributeVerticies("inPosition", rectangle_verticies);
-		shader.SetAttributeVerticies("uv", uv_rectangle);
-		shader.SetUniformInt("uTexture", 0);
-		m_texture->Activate();
-		shader.Activate();
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		break;
+	if (texture != nullptr) {
+		switch (m_spriteType) {
+		case Triangle:
+			shader.SetAttributeVerticies("inPosition", triangle_verticies);
+			shader.SetAttributeVerticies("uv", uv_rectangle);
+			shader.SetUniformInt("uTexture", 0);
+			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			shader.Activate();
+			glDrawArrays(GL_TRIANGLES, 0, 3);
+			break;
 
-	default:
-		break;
+		case Rectangle:
+			shader.SetAttributeVerticies("inPosition", rectangle_verticies);
+			shader.SetAttributeVerticies("uv", uv_rectangle);
+			shader.SetUniformInt("uTexture", 0);
+			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			shader.Activate();
+			glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+			break;
+
+		default:
+			break;
+		}
+
+		Math::Matrix4 scale = Math::Matrix4::CreateScale((float)texture->GetWidth() / 2, (float)texture->GetHeight() / 2, 1.0f);
+		Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
+		shader.SetUniformMat4("uWorldTransform", world);
+		shader.Activate();
 	}
-
-	Math::Matrix4 scale = Math::Matrix4::CreateScale(m_texture->GetWidth(), m_texture->GetHeight(), 1.0f);
-	Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
-	shader.SetUniformMat4("uWorldTransform", world);
-	shader.Activate();
 }
