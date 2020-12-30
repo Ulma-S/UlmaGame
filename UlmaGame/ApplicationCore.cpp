@@ -2,6 +2,8 @@
 #include "Actor.h"
 #include "IWindow.h"
 #include "ShaderLoaderOpenGL.h"
+#include "Texture.h"
+#include "TextureProvider.h"
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Debug.h"
@@ -55,8 +57,12 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	}
 	m_spriteShader->Activate();
 
+	//テクスチャ作成
+	Texture* noodle = new Texture();
+	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
+
 	//ビュー変換
-	Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj(640.0f, 480.0f);
+	Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj((float) m_window->GetWindowWidth(), (float) m_window->GetWindowHeight());
 	m_unlitShader->SetUniformMat4("uViewProj", viewProj);
 	m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 	

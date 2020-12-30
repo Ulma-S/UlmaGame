@@ -6,18 +6,6 @@ Copyright © 2002-2006 Marcus Geelnard
 
 Copyright © 2006-2019 Camilla Löwy
 
-This software is provided ‘as-is’, without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
-
-Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
-
-The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
-
-Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
-
-This notice may not be removed or altered from any source distribution.
-
-You can find this license in the file LICENSE.md of the GLFW source tree and in the comment header of each source file.
-
 https://www.glfw.org/license.html
 
 ## GLEW
@@ -26,3 +14,14 @@ GLEW is originally derived from the EXTGL project by Lev Povalahev. The source c
 The automatic code generation scripts are released under the GNU GPL.
 
 https://github.com/nigels-com/glew#copyright-and-licensing
+
+## libpng
+COPYRIGHT NOTICE, DISCLAIMER, and LICENSE
+PNG Reference Library License version 2
+- Copyright (c) 1995-2019 The PNG Reference Library Authors.
+- Copyright (c) 2018-2019 Cosmin Truta.
+- Copyright (c) 2000-2002, 2004, 2006-2018 Glenn Randers-Pehrson.
+- Copyright (c) 1996-1997 Andreas Dilger.
+- Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+
+http://www.libpng.org/pub/png/src/libpng-LICENSE.txt

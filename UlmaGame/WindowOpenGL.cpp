@@ -1,7 +1,7 @@
 #include <iostream>
 #include "WindowOpenGL.h"
 
-System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(640), m_windowHeight(480), m_scale(100.0f) {}
+System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(1080), m_windowHeight(720), m_scale(100.0f) {}
 
 
 System::Core::WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight), m_scale(100.0f) {}
@@ -28,7 +28,7 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	m_window = glfwCreateWindow(m_windowWidth, m_windowHeight, "Ulma Game", nullptr, nullptr);
 	if (!m_window) {
 		glfwTerminate();
-		return -1;
+		return false;
 	}
 
 	// モニタとの同期
@@ -39,7 +39,7 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK) {
 		std::cout << "GLEWの初期化に失敗しました。" << std::endl;
-		return -1;
+		return false;
 	}
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);	//OpenGL ES 2.0プロファイルの設定
 	
@@ -52,6 +52,9 @@ void System::Core::WindowOpenGL::ClearDisplayBuffer() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearDepth(1.0f);
+
+	//マルチサンプリング
+	glEnable(GL_MULTISAMPLE);
 
 	//アルファブレンディング
 	glEnable(GL_BLEND);
@@ -80,5 +83,5 @@ bool System::Core::WindowOpenGL::CanLoop() {
 
 
 float System::Core::WindowOpenGL::GetCurrentTime() {
-	return glfwGetTime();
+	return (float) glfwGetTime();
 }

@@ -105,6 +105,9 @@
     <ClCompile Include="FileLoader.cpp">
       <Filter>ソース ファイル\System\Core</Filter>
     </ClCompile>
+    <ClCompile Include="TextureProvider.cpp">
+      <Filter>ソース ファイル\System\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -188,6 +191,12 @@
     <ClInclude Include="FileLoader.h">
       <Filter>ヘッダー ファイル\System\Core</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureProvider.h">
+      <Filter>ヘッダー ファイル\System\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UlmaGame.rc">
@@ -207,5 +216,6 @@
     <None Include="sprite.frag">
       <Filter>ソース ファイル\Shader</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
