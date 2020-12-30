@@ -1,4 +1,5 @@
 #version 100
+
 in mediump vec3 inPosition;
 uniform mat4 uWorldTransform;
 uniform mat4 uViewProj;

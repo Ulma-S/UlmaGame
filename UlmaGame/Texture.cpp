@@ -1,6 +1,7 @@
 #include "Texture.h"
 #include "FileLoader.h"
 #include "Debug.h"
+#include <fstream>
 
 using namespace System::Core;
 
@@ -18,7 +19,7 @@ Texture::~Texture(){
 
 
 bool Texture::CreateTexture() {
-	FileLoader::GetInstance().LoadFile("Resource/cat.raw", m_texBuffer);
+	FileLoader::GetInstance().LoadFile("Resource/cat.raw", &m_texBuffer);
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {

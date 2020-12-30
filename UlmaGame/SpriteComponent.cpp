@@ -39,10 +39,10 @@ static float rectangle_verticies[] = {
 };
 
 static float uv_rectangle[] = {
-	1.0f, 0.0f,
-	0.0f, 0.0f,
-	0.0f, 1.0f,
-	1.0f, 1.0f,
+	0.0f, 0.0f, 0.0f,
+	0.0f, 1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f,
+	1.0f, 0.0f, 0.0f,
 };
 
 void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
@@ -54,28 +54,20 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 		break;
 
 	case Rectangle:
-	{
 		shader.SetAttributeVerticies("inPosition", rectangle_verticies);
-		//shader.SetAttributeVerticies("uv", uv_rectangle);
-		int attLocation = glGetAttribLocation(shader.GetProgramId(), "uv");	//in変数の場所を検索
-		glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
-		glVertexAttribPointer(attLocation, 2, GL_FLOAT, GL_FALSE, 0, uv_rectangle);	//OpenGLからシェーダーに値をセット
-		shader.SetUniformInt("texture", 0);
+		shader.SetAttributeVerticies("uv", uv_rectangle);
+		shader.SetUniformInt("uTexture", 0);
 		m_texture->Activate();
 		shader.Activate();
 		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-		if (glGetError() != GL_NO_ERROR) {
-			//System::Debug::Log(glGetError() == GL_NO_ERROR);
-		}
-	}
 		break;
 
 	default:
 		break;
 	}
 
-	Math::Matrix4 scale = Math::Matrix4::CreateScale(100.0f, 100.0f, 1.0f);
+	Math::Matrix4 scale = Math::Matrix4::CreateScale(m_texture->GetWidth(), m_texture->GetHeight(), 1.0f);
 	Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
-	//shader.SetUniformMat4("uWorldTransform", world);
-	//shader.Activate();
+	shader.SetUniformMat4("uWorldTransform", world);
+	shader.Activate();
 }

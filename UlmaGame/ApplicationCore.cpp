@@ -58,6 +58,7 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	//ƒrƒ…[•ÏŠ·
 	Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj(640.0f, 480.0f);
 	m_unlitShader->SetUniformMat4("uViewProj", viewProj);
+	m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 	
 	//Sceneì¬
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);

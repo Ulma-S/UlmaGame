@@ -14,6 +14,9 @@ namespace System {
 
 			void Activate();
 			void Inactivate();
+			
+			inline int GetWidth() const { return m_texWidth; }
+			inline int GetHeight() const { return m_texHeight; }
 
 		private:
 			GLuint m_texId;

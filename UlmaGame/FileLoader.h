@@ -8,7 +8,7 @@ namespace System {
 		public:
 			~FileLoader();
 
-			bool LoadFile(const std::string& fileName, char* out) const;
+			bool LoadFile(const std::string& fileName, char** out) const;
 
 		protected:
 			friend General::Singleton<FileLoader>;
