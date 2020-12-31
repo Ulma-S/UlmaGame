@@ -13,6 +13,8 @@ namespace System {
 
 			bool Initialize(class IWindow& window) override;
 			void Update() override;
+
+		protected:
 			void Finalize() override;
 
 

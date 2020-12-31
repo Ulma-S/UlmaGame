@@ -31,6 +31,14 @@ package System{
         }
         IApplicationCore <|.. ApplicationCore
         IWindow <.. ApplicationCore
+
+        class FileLoader{}
+
+        class Texture{}
+
+        class TextureProvider{}
+
+        TextureProvider o-- Texture
     }
 
     package SceneManagement{
@@ -85,6 +93,14 @@ package Math{
     class Vector2{
 
     }
+
+    class Vector3{
+
+    }
+
+    class Matrix4{
+
+    }
 }
 
 package Game{
@@ -101,6 +117,11 @@ package Game{
 
         }
         Transform <.. Actor
+
+        class SpriteComponent{
+
+        }
+        Component <|-- SpriteComponent
     }
 }
 Scene <.. Actor
