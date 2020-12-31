@@ -39,7 +39,7 @@ void System::Core::ShaderLoaderOpenGL::Unload() {
 }
 
 
-void System::Core::ShaderLoaderOpenGL::SetAttributeVerticies(const char* attribName, float verticies[]) {
+void System::Core::ShaderLoaderOpenGL::SetAttributeVertices(const char* attribName, float verticies[]) {
 	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
 	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
 	glVertexAttribPointer(attLocation, 3, GL_FLOAT, GL_FALSE, 0, verticies);	//OpenGLからシェーダーに値をセット
