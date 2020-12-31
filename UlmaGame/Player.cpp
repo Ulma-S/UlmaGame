@@ -9,7 +9,7 @@ using namespace System::Core::InputSystem;
 Game::Player::Player(System::SceneManagement::Scene& scene) 
 	: Game::Core::Actor::Actor(scene)
 {
-	new Game::Core::SpriteComponent(*this, Game::Core::Rectangle);
+	new Game::Core::SpriteComponent(*this, Game::Core::Circle);
 }
 
 

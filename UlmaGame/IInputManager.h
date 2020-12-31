@@ -1,4 +1,5 @@
 #pragma once
+#include "Vector.h"
 
 namespace System {
 	namespace Core {
@@ -33,6 +34,8 @@ namespace System {
 				virtual const bool GetMouseButtonDown(EMouseButton mouse) = 0;
 
 				virtual const float GetAxis(EAxisType axis) = 0;
+
+				virtual const Math::Vector2 GetMousePos() = 0;
 			};
 		}
 	}
