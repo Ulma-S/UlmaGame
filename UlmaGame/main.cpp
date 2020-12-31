@@ -17,6 +17,5 @@ int main() {
 	if (success) {
 		appCore.Update();
 	}
-	appCore.Finalize();
 	return 0;
 }

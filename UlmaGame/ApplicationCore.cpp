@@ -30,6 +30,8 @@ System::Core::ApplicationCore::ApplicationCore(IWindow& window)
 System::Core::ApplicationCore::~ApplicationCore(){
 	m_unlitShader->Unload();
 	delete m_unlitShader;
+
+	Finalize();
 }
 
 

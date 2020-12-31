@@ -23,7 +23,7 @@ namespace System {
 
 
 			//シェーダーの頂点情報をセット
-			void SetAttributeVerticies(const char* attrib, float verticies[]);
+			void SetAttributeVertices(const char* attrib, float vertices[]);
 
 			//シェーダーのuniform変数をセット
 			void SetUniformInt(const char* uniform, GLint value);
