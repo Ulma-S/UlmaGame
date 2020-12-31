@@ -76,8 +76,8 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 	if (texture != nullptr) {
 		switch (m_spriteType) {
 		case Triangle:
-			shader.SetAttributeVerticies("inPosition", triangle_verticies);
-			shader.SetAttributeVerticies("uv", uv_rectangle);
+			shader.SetAttributeVertices("inPosition", triangle_verticies);
+			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
 			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
@@ -85,8 +85,8 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 			break;
 
 		case Rectangle:
-			shader.SetAttributeVerticies("inPosition", rectangle_verticies);
-			shader.SetAttributeVerticies("uv", uv_rectangle);
+			shader.SetAttributeVertices("inPosition", rectangle_verticies);
+			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
 			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
