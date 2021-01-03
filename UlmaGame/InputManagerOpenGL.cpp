@@ -1,5 +1,5 @@
-#include "GL/glew.h"
-#include "GLFW/glfw3.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "WindowOpenGL.h"
 #include "InputManagerOpenGL.h"
 
@@ -989,4 +989,25 @@ const float InputManagerOpenGL::GetAxis(EAxisType axis) {
 		break;
 	}
 	return value;
+}
+
+
+const Math::Vector2 InputManagerOpenGL::GetMousePos() {
+	double x, y;
+	glfwGetCursorPos(&(m_window->GetWindow()), &x, &y);
+	
+	//‰æ–ÊŠO‚ÌŽž‚Ì•â³
+	if (x >= m_window->GetWindowWidth()) {
+		x = m_window->GetWindowWidth() - 1;
+	}
+	if (x < 0) {
+		x = 0;
+	}
+	if (y >= m_window->GetWindowHeight()) {
+		y = m_window->GetWindowHeight() - 1;
+	}
+	if (y < 0) {
+		y = 0;
+	}
+	return Math::Vector2((float)x, (float)y);
 }

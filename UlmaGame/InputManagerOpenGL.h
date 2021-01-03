@@ -17,6 +17,8 @@ namespace System {
 
 				const float GetAxis(EAxisType axis) override;
 
+				const Math::Vector2 GetMousePos() override;
+
 				inline void SetWindow(class WindowOpenGL& window) { m_window = &window; }
 
 			protected:

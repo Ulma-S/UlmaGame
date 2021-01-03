@@ -2,6 +2,7 @@
 #include <vector>
 #include "Vector.h"
 #include "Transform.h"
+#include "Debug.h"
 
 namespace System {
 	namespace SceneManagement {
@@ -29,6 +30,18 @@ namespace Game {
 
 			inline System::SceneManagement::Scene& GetScene() const{ return *m_scene; }
 			inline Core::Transform& GetTransform() const { return *m_transform; }
+
+			template<class T>
+			inline T* GetComponent() const {
+				auto it = m_components.begin();
+				for (; it != m_components.end(); ++it) {
+					T* t = dynamic_cast<T*>(*it);
+					if (t != nullptr) {
+						return t;
+					}
+				}
+				return nullptr;
+			}
 
 
 		protected:
