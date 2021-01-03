@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include "Component.h"
 #include "Scene.h"
+#include "Debug.h"
 
 using namespace Game::Core;
 
@@ -56,7 +57,7 @@ void Actor::UpdateComponents(float deltaTime) {
 void Actor::AddComponent(Component& component) {
 	//Šù‚É’Ç‰Á‚³‚ê‚Ä‚¢‚½‚çreturn
 	auto it = std::find(m_components.begin(), m_components.end(), &component);
-	if (it == m_components.end()) return;
+	if (it != m_components.end()) return;
 	
 	for (; it != m_components.end(); ++it) {
 		if (component.GetUpdateOrder() < (*it)->GetUpdateOrder()) {
@@ -73,3 +74,4 @@ void Actor::RemoveComponent(Component& component) {
 	if (it == m_components.end()) return;
 	m_components.erase(it);
 }
+

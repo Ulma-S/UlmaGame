@@ -63,6 +63,8 @@ float Math::Vector2::Dot(Vector2& vec) const {
 }
 
 
+const Math::Vector2 Math::Vector2::zero(0.0f, 0.0f);
+
 //-----------Vector3-------------//
 
 Math::Vector3::Vector3() : x(0.0f), y(0.0f), z(0.0f)
@@ -100,3 +102,6 @@ Math::Vector3 Math::Vector3::GetNormalized() const {
 	vec.z = this->z / Magnitude();
 	return vec;
 }
+
+
+const Math::Vector3 Math::Vector3::zero(0.0f, 0.0f, 0.0f);

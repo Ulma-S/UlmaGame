@@ -22,7 +22,10 @@ void Game::Player::Initialize(){
 }
 
 
-void Game::Player::UpdateActor(float deltaTime){
+void Game::Player::UpdateActor(float deltaTime) {
 	GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(Horizontal);
 	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(Vertical) * GetTransform().GetUp();
+
+	auto sp = this->GetComponent<Game::Core::SpriteComponent>();
+	if(sp != nullptr) System::Debug::Log(sp->GetDrawOrder());
 }
