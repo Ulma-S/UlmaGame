@@ -15,6 +15,9 @@ namespace Math {
 		void Normalize();	//このベクトルを正規化
 		Vector3 GetNormalized() const;	//正規化されたベクトルを返す
 
+		Vector3 Cross(const Vector3& vec) const;	//外積
+		float Dot(const Vector3& vec) const;	//内積
+
 		inline static Vector3 GetRight() { return Vector3(1.0f, 0.0f, 0.0f); }
 		inline static Vector3 GetUp() { return Vector3(0.0f, 1.0f, 0.0f); }
 

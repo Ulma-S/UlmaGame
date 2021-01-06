@@ -179,7 +179,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureProvider.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
