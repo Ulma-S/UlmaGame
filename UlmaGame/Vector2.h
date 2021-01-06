@@ -15,12 +15,13 @@ namespace Math {
 		void Normalize();	//このベクトルを正規化
 		Vector2 GetNormalized() const;	//正規化されたベクトルを返す
 
-		float GetAngle(Vector2& vec) const;
+		float GetAngle(const Vector2& vec) const;
 
 		void RotateRad(float rad);	//弧度法で回転させる
 		void RotateDeg(float deg);	//度数法で回転させる
 
-		float Dot(Vector2& vec) const;	//内積
+		Vector2 Cross(const Vector2& vec) const;	//外積
+		float Dot(const Vector2& vec) const;	//内積
 
 		static const Vector2 zero;
 

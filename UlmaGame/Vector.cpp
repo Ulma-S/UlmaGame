@@ -17,8 +17,7 @@ Math::Vector2::~Vector2() {}
 
 
 float Math::Vector2::Magnitude() const {
-	float mag = sqrt(this->x * this->x + this->y * this->y);
-	return mag;
+	return sqrt(this->x * this->x + this->y * this->y);
 }
 
 
@@ -31,14 +30,14 @@ void Math::Vector2::Normalize() {
 
 
 Math::Vector2 Math::Vector2::GetNormalized() const {
-	Vector2 vec;
-	vec.x = this->x / Magnitude();
-	vec.y = this->y / Magnitude();
-	return vec;
+	return Vector2(
+		this->x / Magnitude(),
+		this->y / Magnitude()
+	);
 }
 
 
-float Math::Vector2::GetAngle(Vector2& vec) const {
+float Math::Vector2::GetAngle(const Vector2& vec) const {
 	float cos = Dot(vec) / (Magnitude() * vec.Magnitude());
 	return acos(cos);
 }
@@ -57,9 +56,16 @@ void Math::Vector2::RotateDeg(float deg) {
 }
 
 
-float Math::Vector2::Dot(Vector2& vec) const {
-	float dot = this->x * vec.x + this->y * vec.y;
-	return dot;
+Math::Vector2 Math::Vector2::Cross(const Math::Vector2& vec) const {
+	return Vector2(
+		this->x * vec.x,
+		this->y * vec.y
+	);
+}
+
+
+float Math::Vector2::Dot(const Vector2& vec) const {
+	return this->x * vec.x + this->y * vec.y;
 }
 
 
@@ -80,8 +86,7 @@ Math::Vector3::~Vector3() {
 
 
 float Math::Vector3::Magnitude() const {
-	float mag = sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
-	return mag;
+	return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
 }
 
 
@@ -96,11 +101,25 @@ void Math::Vector3::Normalize() {
 
 
 Math::Vector3 Math::Vector3::GetNormalized() const {
-	Vector3 vec;
-	vec.x = this->x / Magnitude();
-	vec.y = this->y / Magnitude();
-	vec.z = this->z / Magnitude();
-	return vec;
+	return Vector3(
+		this->x / Magnitude(),
+		this->y / Magnitude(),
+		this->z / Magnitude()
+	);
+}
+
+
+Math::Vector3 Math::Vector3::Cross(const Math::Vector3& vec) const {
+	return Vector3(
+		this->x * vec.x,
+		this->y * vec.y,
+		this->z * vec.z
+	);
+}
+
+
+float Math::Vector3::Dot(const Math::Vector3& vec) const{
+	return this->x * vec.x + this->y * vec.y + this->z * vec.z;
 }
 
 

@@ -1,12 +1,6 @@
 #pragma once
 #include "Actor.h"
 
-namespace System {
-	namespace Core {
-		class ShaderLoaderOpenGL;
-	}
-};
-
 namespace Game {
 	class Enemy : public Core::Actor {
 	public:

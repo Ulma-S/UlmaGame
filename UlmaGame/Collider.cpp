@@ -22,7 +22,7 @@ CircleCollider::CircleCollider(Actor& owner)
 {}
 
 
-CircleCollider::CircleCollider(Actor& owner, Math::Vector3& centerPos, float _radius)
+CircleCollider::CircleCollider(Actor& owner, Math::Vector3 centerPos, float _radius)
 	: Collider2D(owner)
 	, centerPosition(centerPos)
 	, radius(_radius)
@@ -41,7 +41,7 @@ BoxCollider2D::BoxCollider2D(Actor& owner)
 { }
 
 
-BoxCollider2D::BoxCollider2D(Actor& owner, Math::Vector3& centerPos, float _width, float _height, float _rotation)
+BoxCollider2D::BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width, float _height, float _rotation)
 	: Collider2D(owner)
 	, centerPosition(centerPos)
 	, width(_width)

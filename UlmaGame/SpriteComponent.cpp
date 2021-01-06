@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "SpriteComponent.h"
 #include "ShaderLoaderOpenGL.h"
 #include "Actor.h"
@@ -126,8 +127,17 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 			break;
 		}
 
-		Math::Matrix4 scale = Math::Matrix4::CreateScale((float)texture->GetWidth() / 2, (float)texture->GetHeight() / 2, 1.0f);
-		scale = Math::Matrix4::CreateScale(300.0, 300.0, 1.0);
+		//300px‚ðŠî€‚Æ‚µ‚ÄŒvŽZ
+		auto ts = m_owner->GetTransform();
+		auto tVec = Math::Vector3(texture->GetWidth(), texture->GetHeight(), 1.0f);
+		auto min = std::min(tVec.x, tVec.y);
+		auto tmp = m_owner->GetTransform().GetSize() / min;
+		tmp.z = 1.0f;
+		
+		Math::Vector3 sc = ts.scale.Cross(tmp);
+		sc = sc.Cross(tVec);
+		Math::Matrix4 scale = Math::Matrix4::CreateScale(sc.x, sc.y, sc.z);
+
 		Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
 		shader.SetUniformMat4("uWorldTransform", world);
 		shader.Activate();
