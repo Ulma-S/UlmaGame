@@ -27,5 +27,5 @@ void Game::Player::UpdateActor(float deltaTime) {
 	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(Vertical) * GetTransform().GetUp();
 
 	auto sp = this->GetComponent<Game::Core::SpriteComponent>();
-	if(sp != nullptr) System::Debug::Log(sp->GetDrawOrder());
+	System::Debug::Log(sp->GetDrawOrder());
 }

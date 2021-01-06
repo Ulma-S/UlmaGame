@@ -63,11 +63,6 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	Texture* noodle = new Texture();
 	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
 
-	//ビュー変換
-	Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj((float) m_window->GetWindowWidth(), (float) m_window->GetWindowHeight());
-	m_unlitShader->SetUniformMat4("uViewProj", viewProj);
-	m_spriteShader->SetUniformMat4("uViewProj", viewProj);
-	
 	//Scene作成
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);
 	SceneManager::GetInstance().AddScene(Game::Game, *gameScene);
@@ -90,6 +85,11 @@ void System::Core::ApplicationCore::Update() {
 		m_frameTime = m_window->GetCurrentTime();
 
 		m_window->ClearDisplayBuffer();	//ディスプレイバッファのクリア
+
+		//ビュー変換
+		Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj((float)m_window->GetWindowWidth(), (float)m_window->GetWindowHeight());
+		m_unlitShader->SetUniformMat4("uViewProj", viewProj);
+		m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 
 		SceneManagement::SceneManager::GetInstance().UpdateScene(deltaTime);	//シーンの更新
 		SceneManagement::SceneManager::GetInstance().GenerateOutput(*m_spriteShader);
