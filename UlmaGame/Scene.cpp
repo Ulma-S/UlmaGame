@@ -3,6 +3,8 @@
 #include "ShaderLoaderOpenGL.h"
 #include "SpriteComponent.h"
 #include "Actor.h"
+#include "Collision.h"
+#include "Collider.h"
 
 using namespace Game::Core;
 
@@ -36,6 +38,7 @@ void System::SceneManagement::Scene::Update(float deltaTime) {
 	for (auto actor : m_sceneActors) {
 		actor->Update(deltaTime);
 	}
+	DetectCollision();
 	m_isUpdating = false;
 
 	for (auto actor : m_pendingActors) {
@@ -57,6 +60,23 @@ void System::SceneManagement::Scene::GenerateOutput(System::Core::ShaderLoaderOp
 void System::SceneManagement::Scene::OnExit() {
 	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
 	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
+}
+
+
+void System::SceneManagement::Scene::DetectCollision() {
+	size_t length = m_sceneActors.size();
+
+	for (int i = 0; i < length; ++i) {
+		for (int j = i+1; j < length; ++j) {
+			if (i == j) continue;
+			auto leftCollider = m_sceneActors[i]->GetComponent<Collider2D>();
+			auto rightCollider = m_sceneActors[j]->GetComponent<Collider2D>();
+
+			if (Collision::Intersect(*m_sceneActors[i], *m_sceneActors[j])) {
+
+			}
+		}
+	}
 }
 
 

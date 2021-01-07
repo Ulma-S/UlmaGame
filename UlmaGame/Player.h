@@ -1,8 +1,8 @@
 #pragma once
 #include "Actor.h"
 
-namespace Game {
-	class Player : public Core::Actor {
+namespace SampleGame {
+	class Player : public Game::Core::Actor {
 	public:
 		Player(System::SceneManagement::Scene& scene);
 		~Player();

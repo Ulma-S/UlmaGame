@@ -32,6 +32,7 @@ namespace System {
 
 			void AddSprite(Game::Core::SpriteComponent& sprite);
 
+			inline std::vector<Game::Core::Actor*>& GetActors() { return m_sceneActors; }
 
 		protected:
 			class ISceneManager* m_sceneManager;
@@ -41,6 +42,9 @@ namespace System {
 			bool m_isUpdating;
 
 			std::vector<Game::Core::SpriteComponent*> m_sprites;
+
+		private:
+			void DetectCollision();
 		};
 	}
 }
