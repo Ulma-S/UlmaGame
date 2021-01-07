@@ -7,17 +7,11 @@
 
 using namespace Game::Core;
 
-Actor::Actor()
-	: m_scene(nullptr)
-	, m_transform(new Core::Transform())
-	, m_state(Active)
-{}
-
-
 Actor::Actor(System::SceneManagement::Scene& scene)
-	: m_scene(&scene) 
-	, m_transform(new Core::Transform())
+	: m_scene(&scene)
 	, m_state(Active)
+	, name("Actor")
+	, m_transform(new Core::Transform())
 {
 	m_scene->AddActor(*this);
 }

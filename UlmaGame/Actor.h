@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 #include "Vector.h"
 #include "Transform.h"
 #include "Debug.h"
@@ -19,7 +20,6 @@ namespace Game {
 				Inactive,
 			};
 
-			Actor();
 			Actor(System::SceneManagement::Scene& scene);
 			virtual ~Actor();
 
@@ -29,6 +29,7 @@ namespace Game {
 			void RemoveComponent(class Component& component);
 
 			inline System::SceneManagement::Scene& GetScene() const{ return *m_scene; }
+			inline std::string& GetName() { return name; }
 			inline Core::Transform& GetTransform() const { return *m_transform; }
 
 			template<class T>
@@ -51,6 +52,7 @@ namespace Game {
 			System::SceneManagement::Scene* m_scene;
 			EActorState m_state;
 			std::vector<class Component*> m_components;
+			std::string name;
 
 		private:
 			Core::Transform* m_transform;
