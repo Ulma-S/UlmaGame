@@ -113,14 +113,12 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 			break;
 
 		case Circle:
-		{
 			shader.SetAttributeVertices("inPosition", circle_vertices);
 			shader.SetAttributeVertices("uv", uv_rectangle);
 			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, circleDiv);
 			shader.SetUniformInt("uTexture", 0);
-		}
 			break;
 
 		default:
@@ -129,7 +127,10 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 
 		//300px‚ðŠî€‚Æ‚µ‚ÄŒvŽZ
 		auto ts = m_owner->GetTransform();
-		auto tVec = Math::Vector3(texture->GetWidth(), texture->GetHeight(), 1.0f);
+		auto tVec = Math::Vector3(
+			static_cast<float>(texture->GetWidth()), 
+			static_cast<float>(texture->GetHeight()), 
+			1.0f);
 		auto min = std::min(tVec.x, tVec.y);
 		auto tmp = m_owner->GetTransform().GetSize() / min;
 		tmp.z = 1.0f;

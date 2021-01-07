@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "Debug.h"
 #include "Player.h"
+#include "Enemy.h"
 
 using namespace System::SceneManagement;
 
@@ -68,7 +69,8 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	SceneManager::GetInstance().AddScene(Game::Game, *gameScene);
 
 	//ActorçÏê¨
-	Game::Player* player = new Game::Player(*gameScene);
+	SampleGame::Player* player = new SampleGame::Player(*gameScene);
+	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
 	SceneManager::GetInstance().LoadScene(Game::Game);
 	return true;

@@ -1,4 +1,5 @@
 #include "Collider.h"
+#include "Actor.h"
 
 using namespace Game::Core;
 
@@ -13,6 +14,18 @@ Collider2D::Collider2D(Actor& owner)
 Collider2D::~Collider2D() {
 
 }
+
+
+HitData2D::HitData2D(Actor& _actor)
+	: actor(&_actor)
+	, hitPosition(Math::Vector2(0.0f, 0.0f)) {
+}
+
+
+HitData2D::HitData2D(Actor& _actor, Math::Vector2 _hitPos) 
+	: actor(&_actor)
+	, hitPosition(_hitPos)
+{}
 
 
 CircleCollider::CircleCollider(Actor& owner)
@@ -30,6 +43,11 @@ CircleCollider::CircleCollider(Actor& owner, Math::Vector3 centerPos, float _rad
 
 
 CircleCollider::~CircleCollider(){}
+
+
+void CircleCollider::Update(float deltaTime) {
+	centerPosition = m_owner->GetTransform().position;
+}
 
 
 BoxCollider2D::BoxCollider2D(Actor& owner)
