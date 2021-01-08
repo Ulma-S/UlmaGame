@@ -6,7 +6,27 @@
 </style>
 
 # Ulma Game プログラム仕様
+
+## 概要
+
+```plantuml
+class ApplicationCore
+class SceneManager{}
+class Scene{}
+class Actor{
+
+}
+class Component{}
+SceneManager <.. ApplicationCore
+SceneManager o-- Scene
+Scene o-- Actor
+Actor o-- Component
+```
+
+---
+
 ## クラス一覧
+
 ### 1. ウィンドウ関連
 
 ```plantuml
@@ -222,4 +242,28 @@ Transform& GetParent();     //親を取得
 Matrix4& GetWorldTransform();   //ワールドのTransformを取得
 Vector3 GetRight();     //右向きのベクトル取得
 Vector3 GetUp();    //上向きのベクトル取得
+```
+
+---
+
+### 9. 衝突判定
+
+```plantuml
+namespace Game{
+    namespace Core{
+        class HitData2D <<struct>>
+        class Collider2D{}
+        class CircleCollider{}
+        class BoxCollider2D{}
+        class Collision{}
+        Collider2D <|-- CircleCollider
+        Collider2D <|-- BoxCollider2D
+        Collider2D .. Collision
+    }
+}
+```
+
+```c++
+//Collider2Dクラス
+
 ```
