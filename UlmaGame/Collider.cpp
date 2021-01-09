@@ -1,7 +1,7 @@
 #include "Collider.h"
 #include "Actor.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
 Collider2D::Collider2D(Actor& owner)
 	: Component(owner)

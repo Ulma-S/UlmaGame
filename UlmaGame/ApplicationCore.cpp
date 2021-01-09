@@ -10,9 +10,10 @@
 #include "Player.h"
 #include "Enemy.h"
 
-using namespace System::SceneManagement;
+using namespace UlmaEngine;
+using namespace UlmaEngine::SceneManagement;
 
-System::Core::ApplicationCore::ApplicationCore()
+Core::ApplicationCore::ApplicationCore()
 	: m_window(nullptr)
 	, m_frameTime(0.0f)
 	, m_unlitShader(nullptr)
@@ -20,7 +21,7 @@ System::Core::ApplicationCore::ApplicationCore()
 {}
 
 
-System::Core::ApplicationCore::ApplicationCore(IWindow& window)
+Core::ApplicationCore::ApplicationCore(IWindow& window)
 	: m_window(&window)
 	, m_frameTime(0.0f)
 	, m_unlitShader(nullptr)
@@ -28,7 +29,7 @@ System::Core::ApplicationCore::ApplicationCore(IWindow& window)
 {}
 
 
-System::Core::ApplicationCore::~ApplicationCore(){
+Core::ApplicationCore::~ApplicationCore(){
 	m_unlitShader->Unload();
 	delete m_unlitShader;
 
@@ -36,7 +37,7 @@ System::Core::ApplicationCore::~ApplicationCore(){
 }
 
 
-bool System::Core::ApplicationCore::Initialize(IWindow& window) {
+bool Core::ApplicationCore::Initialize(IWindow& window) {
 	m_window = &window;
 
 	//ウィンドウ作成
@@ -48,14 +49,14 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	//シェーダー初期化
 	m_unlitShader = new ShaderLoaderOpenGL();
 	if (!m_unlitShader->LoadProgram("unlit.vert", "unlit.frag")) {
-		System::Debug::Log("unlitシェーダーのロードに失敗しました");
+		Debug::Log("unlitシェーダーのロードに失敗しました");
 		return false;
 	}
 	m_unlitShader->Activate();
 
 	m_spriteShader = new ShaderLoaderOpenGL();
 	if (!m_spriteShader->LoadProgram("sprite.vert", "sprite.frag")) {
-		System::Debug::Log("spriteシェーダーのロードに失敗しました");
+		Debug::Log("spriteシェーダーのロードに失敗しました");
 		return false;
 	}
 	m_spriteShader->Activate();
@@ -65,19 +66,19 @@ bool System::Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
 
 	//Scene作成
-	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game::Game);
-	SceneManager::GetInstance().AddScene(Game::Game, *gameScene);
+	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game);
+	SceneManager::GetInstance().AddScene(Game, *gameScene);
 
 	//Actor作成
 	SampleGame::Player* player = new SampleGame::Player(*gameScene);
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
-	SceneManager::GetInstance().LoadScene(Game::Game);
+	SceneManager::GetInstance().LoadScene(Game);
 	return true;
 }
 
 
-void System::Core::ApplicationCore::Update() {
+void Core::ApplicationCore::Update() {
 	while (m_window->CanLoop()) {
 		//delta time計算
 		float deltaTime = m_window->GetCurrentTime() - m_frameTime;
@@ -104,6 +105,6 @@ void System::Core::ApplicationCore::Update() {
 }
 
 
-void System::Core::ApplicationCore::Finalize() {
+void Core::ApplicationCore::Finalize() {
 	m_window->Finalize();
 }

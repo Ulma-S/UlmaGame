@@ -1,17 +1,13 @@
 #pragma once
 #include "UlmaEngine.h"
 
-using namespace UlmaEngine;
-
 namespace SampleGame {
-	class Enemy : public Actor {
+	class Bullet : public UlmaEngine::Actor {
 	public:
-		Enemy(SceneManagement::Scene& scene);
-		~Enemy();
+		Bullet(UlmaEngine::SceneManagement::Scene& scene);
+		~Bullet();
 
 		void Initialize() override;
 		void UpdateActor(float deltaTime) override;
-
-	private:
 	};
-};
+}

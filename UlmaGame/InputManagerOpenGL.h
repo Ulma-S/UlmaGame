@@ -2,34 +2,37 @@
 #include "Singleton.h"
 #include "IInputManager.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
-		namespace InputSystem {
-			class InputManagerOpenGL : public General::Singleton<InputManagerOpenGL>, IInputManager {
-			public:
-				~InputManagerOpenGL();
+		class WindowOpenGL;
+	}
 
-				const bool GetKey(EKeyCode key) override;
-				const bool GetKeyDown(EKeyCode key) override;
+	namespace InputSystem {
+		class InputManagerOpenGL : public Singleton<InputManagerOpenGL>, IInputManager {
+		public:
+			~InputManagerOpenGL();
 
-				const bool GetMouseButton(EMouseButton mouse) override;
-				const bool GetMouseButtonDown(EMouseButton mouse) override;
+			const bool GetKey(EKeyCode key) override;
+			const bool GetKeyDown(EKeyCode key) override;
 
-				const float GetAxis(EAxisType axis) override;
+			const bool GetMouseButton(EMouseButton mouse) override;
+			const bool GetMouseButtonDown(EMouseButton mouse) override;
 
-				const Math::Vector2 GetMousePos() override;
+			const float GetAxis(EAxisType axis) override;
 
-				inline void SetWindow(class WindowOpenGL& window) { m_window = &window; }
+			const Math::Vector2 GetMousePos() override;
 
-			protected:
-				friend General::Singleton<InputManagerOpenGL>;
-				InputManagerOpenGL();
+			inline void SetWindow(Core::WindowOpenGL& window) { m_window = &window; }
 
-			private:
-				class WindowOpenGL* m_window;
+		protected:
+			friend Singleton<InputManagerOpenGL>;
+			InputManagerOpenGL();
 
-				bool m_isPressed;
-			};
-		}
+		private:
+			Core::WindowOpenGL* m_window;
+
+			bool m_isPressed;
+		};
+
 	}
 }

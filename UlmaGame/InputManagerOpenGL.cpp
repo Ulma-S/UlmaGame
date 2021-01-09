@@ -3,7 +3,8 @@
 #include "WindowOpenGL.h"
 #include "InputManagerOpenGL.h"
 
-using namespace System::Core::InputSystem;
+using namespace UlmaEngine::Core;
+using namespace UlmaEngine::InputSystem;
 
 InputManagerOpenGL::InputManagerOpenGL() : m_window(nullptr), m_isPressed(false) {}
 

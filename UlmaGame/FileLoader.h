@@ -2,16 +2,16 @@
 #include <string>
 #include "Singleton.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
-		class FileLoader : public General::Singleton<FileLoader> {
+		class FileLoader : public Singleton<FileLoader> {
 		public:
 			~FileLoader();
 
 			bool LoadFile(const std::string& fileName, char** out) const;
 
 		protected:
-			friend General::Singleton<FileLoader>;
+			friend Singleton<FileLoader>;
 			FileLoader();
 		};
 	}

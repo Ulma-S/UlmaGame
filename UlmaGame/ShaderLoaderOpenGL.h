@@ -8,7 +8,7 @@ namespace Math {
 	class Matrix4;
 }
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class IWindow;
 

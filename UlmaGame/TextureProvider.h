@@ -4,11 +4,11 @@
 #include "Singleton.h"
 #include "Debug.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class Texture;
 
-		class TextureProvider : public General::Singleton<TextureProvider> {
+		class TextureProvider : public Singleton<TextureProvider> {
 		public:
 			~TextureProvider();
 
@@ -18,14 +18,14 @@ namespace System {
 			inline Texture* GetTexture(const std::string& assetName) {
 				auto it = m_texMap.begin();
 				if (it == m_texMap.end()) {
-					System::Debug::Log(assetName + "がキーに設定されていません。");
+					Debug::Log(assetName + "がキーに設定されていません。");
 					return nullptr;
 				}
 				return m_texMap[assetName];
 			}
 
 		protected:
-			friend General::Singleton<TextureProvider>;
+			friend Singleton<TextureProvider>;
 			TextureProvider();
 		
 		private:

@@ -3,15 +3,14 @@
 #include "Component.h"
 #include "SpriteType.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class ShaderLoaderOpenGL;
 		class Texture;
 	}
 }
 
-namespace Game {
-	namespace Core {
+namespace UlmaEngine {
 		class SpriteComponent : public Component{
 		public:
 			SpriteComponent(class Actor& owner, int drawOrder = 100);
@@ -19,7 +18,7 @@ namespace Game {
 			SpriteComponent(class Actor& owner, const char* assetName, ESpriteType type, int drawOrder = 100);
 			~SpriteComponent();
 
-			void Draw(System::Core::ShaderLoaderOpenGL& shader);
+			void Draw(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
 
 			inline int GetDrawOrder() { return m_drawOrder; }
 			
@@ -28,5 +27,4 @@ namespace Game {
 			int m_drawOrder;
 			std::string m_assetName;
 		};
-	}
 }

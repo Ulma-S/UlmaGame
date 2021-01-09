@@ -4,28 +4,28 @@
 #include "Singleton.h"
 #include "SceneList.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class ShaderLoaderOpenGL;
 	}
 
 	namespace SceneManagement {
-		class SceneManager : public General::Singleton<SceneManager>, public ISceneManager {
+		class SceneManager : public Singleton<SceneManager>, public ISceneManager {
 		public:
 			~SceneManager();
 			void UpdateScene(float deltaTime) override;
-			void GenerateOutput(System::Core::ShaderLoaderOpenGL& shader);
-			void LoadScene(Game::ESceneType sceneType) override;
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
+			void LoadScene(ESceneType sceneType) override;
 
-			void AddScene(Game::ESceneType type, class Scene& scene) override;
-			void RemoveScene(Game::ESceneType type) override;
+			void AddScene(ESceneType type, class Scene& scene) override;
+			void RemoveScene(ESceneType type) override;
 
 		protected:
-			friend General::Singleton<SceneManager>;
+			friend Singleton<SceneManager>;
 			SceneManager();
 
 		private:
-			std::unordered_map<Game::ESceneType, class Scene*> m_sceneMap;
+			std::unordered_map<ESceneType, class Scene*> m_sceneMap;
 			class Scene* m_currentScene;
 		};
 	}

@@ -1,7 +1,7 @@
 #include "Component.h"
 #include "Actor.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
 Component::Component(Actor& owner, int updateOrder)
 	: m_owner(&owner)

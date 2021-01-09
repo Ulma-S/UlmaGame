@@ -56,14 +56,6 @@ void Math::Vector2::RotateDeg(float deg) {
 }
 
 
-Math::Vector2 Math::Vector2::Cross(const Math::Vector2& vec) const {
-	return Vector2(
-		this->x * vec.x,
-		this->y * vec.y
-	);
-}
-
-
 float Math::Vector2::Dot(const Vector2& vec) const {
 	return this->x * vec.x + this->y * vec.y;
 }
@@ -111,9 +103,9 @@ Math::Vector3 Math::Vector3::GetNormalized() const {
 
 Math::Vector3 Math::Vector3::Cross(const Math::Vector3& vec) const {
 	return Vector3(
-		this->x * vec.x,
-		this->y * vec.y,
-		this->z * vec.z
+		this->y * vec.z - this->z * vec.y,
+		this->z * vec.x - this->x * vec.z,
+		this->x * vec.y - this->y * vec.x
 	);
 }
 

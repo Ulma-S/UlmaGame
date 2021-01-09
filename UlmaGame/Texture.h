@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <string>
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class Texture {
 		public:

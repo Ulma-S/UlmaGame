@@ -1,6 +1,6 @@
 #pragma once
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		//ゲームループのコアを提供するインターフェース
 		class IApplicationCore {
