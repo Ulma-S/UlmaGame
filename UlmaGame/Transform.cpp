@@ -3,7 +3,7 @@
 #include "Transform.h"
 #include "Debug.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
 
 Transform::Transform()

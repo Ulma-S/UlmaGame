@@ -1,6 +1,6 @@
 #pragma once
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		//グラフィックスAPIに応じたウィンドウクラス
 		//結局Hogewindow型の参照ほしくなるし、このインターフェースの意味あるのか不明

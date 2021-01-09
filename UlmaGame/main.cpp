@@ -3,11 +3,11 @@
 #include "InputManagerOpenGL.h"
 #include "ShaderLoaderOpenGL.h"
 
-using namespace System::Core;
+using namespace UlmaEngine;
 
 int main() {
-	WindowOpenGL window;
-	ApplicationCore appCore;
+	Core::WindowOpenGL window;
+	Core::ApplicationCore appCore;
 
 	bool success = appCore.Initialize(window);
 

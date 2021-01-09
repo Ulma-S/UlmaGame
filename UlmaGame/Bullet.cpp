@@ -3,7 +3,7 @@
 
 using namespace SampleGame;
 
-Bullet::Bullet(System::SceneManagement::Scene& scene)
+Bullet::Bullet(UlmaEngine::SceneManagement::Scene& scene)
 	: Actor(scene)
 {
 

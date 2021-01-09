@@ -2,7 +2,7 @@
 #include <iostream>
 
 #ifdef _DEBUG
-namespace System {
+namespace UlmaEngine {
 	class Debug {
 	public:
 		template<class T>

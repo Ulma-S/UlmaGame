@@ -6,9 +6,9 @@
 #include "Collision.h"
 #include "Collider.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
-System::SceneManagement::Scene::Scene(ISceneManager& sceneManager, Game::ESceneType sceneType)
+SceneManagement::Scene::Scene(ISceneManager& sceneManager, ESceneType sceneType)
 	: m_sceneManager(&sceneManager)
 	, m_sceneType(sceneType)
 	, m_isUpdating(false)
@@ -17,23 +17,23 @@ System::SceneManagement::Scene::Scene(ISceneManager& sceneManager, Game::ESceneT
 }
 
 
-System::SceneManagement::Scene::~Scene() {
+SceneManagement::Scene::~Scene() {
 	m_sceneManager->RemoveScene(m_sceneType);
 
-	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
-	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
-	std::vector<Game::Core::SpriteComponent*>().swap(m_sprites);
+	std::vector<Actor*>().swap(m_sceneActors);
+	std::vector<Actor*>().swap(m_pendingActors);
+	std::vector<SpriteComponent*>().swap(m_sprites);
 }
 
 
-void System::SceneManagement::Scene::OnEnter(){
+void SceneManagement::Scene::OnEnter(){
 	for (auto actor : m_sceneActors) {
 		actor->Initialize();
 	}
 }
 
 
-void System::SceneManagement::Scene::Update(float deltaTime) {
+void SceneManagement::Scene::Update(float deltaTime) {
 	m_isUpdating = true;
 	for (auto actor : m_sceneActors) {
 		actor->Update(deltaTime);
@@ -48,7 +48,7 @@ void System::SceneManagement::Scene::Update(float deltaTime) {
 }
 
 
-void System::SceneManagement::Scene::GenerateOutput(System::Core::ShaderLoaderOpenGL& shader) {
+void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
 	auto it = m_sprites.begin();
 
 	for (; it != m_sprites.end(); ++it) {
@@ -57,13 +57,13 @@ void System::SceneManagement::Scene::GenerateOutput(System::Core::ShaderLoaderOp
 }
 
 
-void System::SceneManagement::Scene::OnExit() {
-	std::vector<Game::Core::Actor*>().swap(m_sceneActors);
-	std::vector<Game::Core::Actor*>().swap(m_pendingActors);
+void SceneManagement::Scene::OnExit() {
+	std::vector<Actor*>().swap(m_sceneActors);
+	std::vector<Actor*>().swap(m_pendingActors);
 }
 
 
-void System::SceneManagement::Scene::DetectCollision() {
+void SceneManagement::Scene::DetectCollision() {
 	size_t length = m_sceneActors.size();
 
 	for (int i = 0; i < length; ++i) {
@@ -80,7 +80,7 @@ void System::SceneManagement::Scene::DetectCollision() {
 }
 
 
-void System::SceneManagement::Scene::AddActor(Actor& actor) {
+void SceneManagement::Scene::AddActor(Actor& actor) {
 	//Šù‚É’Ç‰Á‚µ‚Ä‚¢‚½‚çreturn
 	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) return;
@@ -94,7 +94,7 @@ void System::SceneManagement::Scene::AddActor(Actor& actor) {
 }
 
 
-void System::SceneManagement::Scene::RemoveActor(Actor& actor) {
+void SceneManagement::Scene::RemoveActor(Actor& actor) {
 	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) {
 		m_sceneActors.erase(it);
@@ -102,7 +102,7 @@ void System::SceneManagement::Scene::RemoveActor(Actor& actor) {
 }
 
 
-void System::SceneManagement::Scene::AddSprite(Game::Core::SpriteComponent& sprite) {
+void SceneManagement::Scene::AddSprite(SpriteComponent& sprite) {
 	int drawOrder = sprite.GetDrawOrder();
 	auto it = m_sprites.begin();
 	for (; it != m_sprites.end(); ++it) {

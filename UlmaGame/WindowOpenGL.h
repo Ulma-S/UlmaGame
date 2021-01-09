@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "IWindow.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class WindowOpenGL : public IWindow {
 		public:

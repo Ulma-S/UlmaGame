@@ -6,7 +6,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-using namespace System::Core;
+using namespace UlmaEngine::Core;
 
 Texture::Texture()
 	: m_texId(0)
@@ -44,7 +44,7 @@ bool Texture::CreateTexture() {
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {
-		System::Debug::LogError("テクスチャのロードに失敗しました。");
+		Debug::LogError("テクスチャのロードに失敗しました。");
 		return false;
 	}
 
@@ -81,7 +81,7 @@ bool Texture::CreateTexture(const char* fileName) {
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {
-		System::Debug::LogError("テクスチャのロードに失敗しました。");
+		Debug::LogError("テクスチャのロードに失敗しました。");
 		return false;
 	}
 

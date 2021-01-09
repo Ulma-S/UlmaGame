@@ -3,7 +3,7 @@
 #include "FileLoader.h"
 #include "Debug.h"
 
-using namespace System::Core;
+using namespace UlmaEngine::Core;
 
 FileLoader::FileLoader(){}
 
@@ -16,7 +16,7 @@ FileLoader::~FileLoader() {
 bool FileLoader::LoadFile(const std::string& fileName, char** out) const {
 	std::ifstream fstr(fileName, std::ios::binary);
 	if (fstr.fail()) {
-		System::Debug::LogError(fileName + "ÇÃì«Ç›çûÇ›Ç…é∏îsÇµÇ‹ÇµÇΩÅB");
+		Debug::LogError(fileName + "ÇÃì«Ç›çûÇ›Ç…é∏îsÇµÇ‹ÇµÇΩÅB");
 		return false;
 	}
 

@@ -1,10 +1,12 @@
 #pragma once
-#include "Actor.h"
+#include "UlmaEngine.h"
+
+using namespace UlmaEngine;
 
 namespace SampleGame {
-	class Enemy : public Game::Core::Actor {
+	class Enemy : public Actor {
 	public:
-		Enemy(System::SceneManagement::Scene& scene);
+		Enemy(SceneManagement::Scene& scene);
 		~Enemy();
 
 		void Initialize() override;

@@ -2,7 +2,7 @@
 #include "Collider.h"
 #include "Actor.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
 void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, Math::Vector2 hitPos);
 void RemoveHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2);

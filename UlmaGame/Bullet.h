@@ -2,9 +2,9 @@
 #include "UlmaEngine.h"
 
 namespace SampleGame {
-	class Bullet : public Game::Core::Actor {
+	class Bullet : public UlmaEngine::Actor {
 	public:
-		Bullet(System::SceneManagement::Scene& scene);
+		Bullet(UlmaEngine::SceneManagement::Scene& scene);
 		~Bullet();
 
 		void Initialize() override;

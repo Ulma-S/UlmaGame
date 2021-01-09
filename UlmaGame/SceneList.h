@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Game {
+namespace UlmaEngine {
 	enum ESceneType {
 		Title,
 		Game,

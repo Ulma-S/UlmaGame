@@ -1,7 +1,7 @@
 #pragma once
 #include "IApplicationCore.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class ShaderLoaderOpenGL;
 

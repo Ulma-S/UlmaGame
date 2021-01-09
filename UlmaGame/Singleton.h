@@ -1,6 +1,6 @@
 #pragma once
 
-namespace General {
+namespace UlmaEngine {
 	template<class T>
 	class Singleton {
 	public:

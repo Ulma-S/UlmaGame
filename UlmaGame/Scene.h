@@ -2,46 +2,41 @@
 #include <vector>
 #include "SceneList.h"
 
-namespace System {
+namespace UlmaEngine {
 	namespace Core {
 		class ShaderLoaderOpenGL;
 	}
+	class Actor;
+	class SpriteComponent;
 }
 
-namespace Game {
-	namespace Core {
-		class Actor;
-		class SpriteComponent;
-	}
-}
-
-namespace System {
+namespace UlmaEngine {
 	namespace SceneManagement {
 		class Scene {
 		public:
-			Scene(class ISceneManager& sceneManager, Game::ESceneType sceneType);
+			Scene(class ISceneManager& sceneManager, ESceneType sceneType);
 			virtual ~Scene();
 
 			void OnEnter();
 			void Update(float deltaTime);
-			void GenerateOutput(System::Core::ShaderLoaderOpenGL& shader);
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
 			void OnExit();
 			
-			void AddActor(Game::Core::Actor& actor);
-			void RemoveActor(Game::Core::Actor& actor);
+			void AddActor(Actor& actor);
+			void RemoveActor(Actor& actor);
 
-			void AddSprite(Game::Core::SpriteComponent& sprite);
+			void AddSprite(SpriteComponent& sprite);
 
-			inline std::vector<Game::Core::Actor*>& GetActors() { return m_sceneActors; }
+			inline std::vector<Actor*>& GetActors() { return m_sceneActors; }
 
 		protected:
 			class ISceneManager* m_sceneManager;
-			Game::ESceneType m_sceneType;
-			std::vector<Game::Core::Actor*> m_sceneActors;
-			std::vector<Game::Core::Actor*> m_pendingActors;
+			ESceneType m_sceneType;
+			std::vector<Actor*> m_sceneActors;
+			std::vector<Actor*> m_pendingActors;
 			bool m_isUpdating;
 
-			std::vector<Game::Core::SpriteComponent*> m_sprites;
+			std::vector<SpriteComponent*> m_sprites;
 
 		private:
 			void DetectCollision();

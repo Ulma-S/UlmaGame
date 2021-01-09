@@ -3,53 +3,51 @@
 #include "Component.h"
 #include "Vector.h"
 
-namespace Game {
-	namespace Core {
-		class Actor;
+namespace UlmaEngine {
+	class Actor;
 
-		struct HitData2D {
-			Actor* actor;	//衝突したActor
-			Math::Vector2 hitPosition;
-			
-			HitData2D(Actor& actor);
-			HitData2D(Actor& actor, Math::Vector2 _hitPos);
-		};
+	struct HitData2D {
+		Actor* actor;	//衝突したActor
+		Math::Vector2 hitPosition;
 
-		class Collider2D : public Component{
-		public:
-			virtual ~Collider2D();
+		HitData2D(Actor& actor);
+		HitData2D(Actor& actor, Math::Vector2 _hitPos);
+	};
 
-			bool enable;	//衝突判定が有効か？
-			bool isTrigger;	//Triggerか？
-			bool isHit;
-			std::vector<HitData2D> hitData;
+	class Collider2D : public Component {
+	public:
+		virtual ~Collider2D();
 
-		protected:
-			Collider2D(Actor& owner);
-		};
+		bool enable;	//衝突判定が有効か？
+		bool isTrigger;	//Triggerか？
+		bool isHit;
+		std::vector<HitData2D> hitData;
 
-		class CircleCollider : public Collider2D {
-		public:
-			CircleCollider(Actor& owner);
-			CircleCollider(Actor& owner, Math::Vector3 centerPos, float _radius);
-			~CircleCollider();
+	protected:
+		Collider2D(Actor& owner);
+	};
 
-			virtual void Update(float deltaTime) override;
+	class CircleCollider : public Collider2D {
+	public:
+		CircleCollider(Actor& owner);
+		CircleCollider(Actor& owner, Math::Vector3 centerPos, float _radius);
+		~CircleCollider();
 
-			Math::Vector3 centerPosition;
-			float radius;
-		};
+		virtual void Update(float deltaTime) override;
 
-		class BoxCollider2D : public Collider2D {
-			BoxCollider2D(Actor& owner);
-			BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width, float _height, float _rotation);
+		Math::Vector3 centerPosition;
+		float radius;
+	};
 
-			~BoxCollider2D();
+	class BoxCollider2D : public Collider2D {
+		BoxCollider2D(Actor& owner);
+		BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width, float _height, float _rotation);
 
-			Math::Vector3 centerPosition;
-			float width;
-			float height;
-			float rotation;
-		};
-	}
+		~BoxCollider2D();
+
+		Math::Vector3 centerPosition;
+		float width;
+		float height;
+		float rotation;
+	};
 }

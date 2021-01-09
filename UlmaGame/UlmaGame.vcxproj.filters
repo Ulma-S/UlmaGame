@@ -11,12 +11,6 @@
     <Filter Include="UlmaEngine\Source">
       <UniqueIdentifier>{490e2caa-14f7-4b00-8921-48353f03fd3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UlmaEngine\Source\Game">
-      <UniqueIdentifier>{9650c5c3-8554-42d6-9874-de6beaca86b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Source\Game\Core">
-      <UniqueIdentifier>{95c9227e-9bc4-4d77-b06b-9d751cc75d3a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UlmaEngine\Source\Math">
       <UniqueIdentifier>{d8b02766-3db1-438c-9fc8-1addca995400}</UniqueIdentifier>
     </Filter>
@@ -26,35 +20,11 @@
     <Filter Include="UlmaEngine\Source\System">
       <UniqueIdentifier>{de8353a7-2d6d-4c4c-a569-5176de9b3c11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UlmaEngine\Source\System\Core">
-      <UniqueIdentifier>{659194c1-3d93-465f-8652-41009d1fc963}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Source\System\SceneManagement">
-      <UniqueIdentifier>{4b8dce04-5d27-4755-8d29-2c372c989a8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UlmaEngine\Header">
       <UniqueIdentifier>{8bc826da-89dd-4756-bc70-9f749ff995d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UlmaEngine\Header\Game">
-      <UniqueIdentifier>{22709b76-22a6-45b9-8e6f-79cf8377fe0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Header\Game\Core">
-      <UniqueIdentifier>{6ad808a8-f9ee-4175-8a24-777c8119817c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Header\General">
-      <UniqueIdentifier>{80b48af2-172c-4f79-94f6-baa3e704bdcf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UlmaEngine\Header\Math">
       <UniqueIdentifier>{bc0d0f2e-e005-427d-a6d0-d5e5e1855fa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Header\System">
-      <UniqueIdentifier>{be51d7d2-1b27-4adc-8935-5f05440c9245}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Header\System\Core">
-      <UniqueIdentifier>{3298f5e7-af29-446c-82c2-cb9e0e3c8a69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UlmaEngine\Header\System\SceneManagement">
-      <UniqueIdentifier>{9da47c53-688c-4133-b2f4-8645d2443117}</UniqueIdentifier>
     </Filter>
     <Filter Include="SampleGame">
       <UniqueIdentifier>{d736018f-027a-4cb2-b1e1-cacd0c1a8a3c}</UniqueIdentifier>
@@ -65,55 +35,49 @@
     <Filter Include="SampleGame\Header">
       <UniqueIdentifier>{c39aeefb-c7d4-48d4-9a33-14394c24bb6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UlmaEngine\Source\Core">
+      <UniqueIdentifier>{659194c1-3d93-465f-8652-41009d1fc963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\Source\SceneManagement">
+      <UniqueIdentifier>{4b8dce04-5d27-4755-8d29-2c372c989a8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\Header\Core">
+      <UniqueIdentifier>{3298f5e7-af29-446c-82c2-cb9e0e3c8a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\SceneManagement">
+      <UniqueIdentifier>{9da47c53-688c-4133-b2f4-8645d2443117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\Header\InputSystem">
+      <UniqueIdentifier>{be51d7d2-1b27-4adc-8935-5f05440c9245}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApplicationCore.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>UlmaEngine\Source\System\SceneManagement</Filter>
+      <Filter>UlmaEngine\Source\SceneManagement</Filter>
     </ClCompile>
     <ClCompile Include="WindowOpenGL.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>UlmaEngine\Source\System\SceneManagement</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManagerOpenGL.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
+      <Filter>UlmaEngine\Source\SceneManagement</Filter>
     </ClCompile>
     <ClCompile Include="ShaderLoaderOpenGL.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>UlmaEngine\Source\Math</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="FileLoader.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="TextureProvider.cpp">
-      <Filter>UlmaEngine\Source\System\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>UlmaEngine\Source\Game\Core</Filter>
+      <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>UlmaEngine\Source\Math</Filter>
@@ -130,61 +94,55 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
+    <ClCompile Include="InputManagerOpenGL.cpp">
+      <Filter>UlmaEngine\Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>UlmaEngine\Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>UlmaEngine\Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>UlmaEngine\Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>UlmaEngine\Source\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="IApplicationCore.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="ISceneManager.h">
-      <Filter>UlmaEngine\Header\System\SceneManagement</Filter>
+      <Filter>UlmaEngine\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>UlmaEngine\Header\System\SceneManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>UlmaEngine\Header\General</Filter>
+      <Filter>UlmaEngine\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="IWindow.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="WindowOpenGL.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>UlmaEngine\Header\System\SceneManagement</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>UlmaEngine\Header\System</Filter>
-    </ClInclude>
-    <ClInclude Include="IInputManager.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManagerOpenGL.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>UlmaEngine\Header\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteType.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderLoaderOpenGL.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>UlmaEngine\Header\Math</Filter>
@@ -196,28 +154,22 @@
       <Filter>UlmaEngine\Header\Math</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="FileLoader.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="TextureProvider.h">
-      <Filter>UlmaEngine\Header\System\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
+      <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>UlmaEngine\Header\Math</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>UlmaEngine\Header\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>UlmaEngine\Header\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>UlmaEngine\Header</Filter>
@@ -229,12 +181,45 @@
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="SceneList.h">
-      <Filter>UlmaEngine\Header\System\SceneManagement</Filter>
+      <Filter>UlmaEngine\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="UlmaEngine.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputManager.h">
+      <Filter>UlmaEngine\Header\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManagerOpenGL.h">
+      <Filter>UlmaEngine\Header\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteType.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>

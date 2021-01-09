@@ -5,13 +5,13 @@
 #include "Scene.h"
 #include "Debug.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
-Actor::Actor(System::SceneManagement::Scene& scene)
+Actor::Actor(SceneManagement::Scene& scene)
 	: m_scene(&scene)
 	, m_state(Active)
 	, name("Actor")
-	, m_transform(new Core::Transform())
+	, m_transform(new Transform())
 {
 	m_scene->AddActor(*this);
 }

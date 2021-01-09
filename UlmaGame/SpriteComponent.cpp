@@ -8,7 +8,7 @@
 #include "TextureProvider.h"
 #include "Debug.h"
 
-using namespace Game::Core;
+using namespace UlmaEngine;
 
 const int circleDiv = 64;	//â~ÇÃï™äÑêî
 void SetCircleVertices();
@@ -94,8 +94,8 @@ void SetCircleVertices() {
 	}
 }
 
-void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
-	auto texture = System::Core::TextureProvider::GetInstance().GetTexture(m_assetName);
+void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
+	auto texture = Core::TextureProvider::GetInstance().GetTexture(m_assetName);
 
 	if (texture != nullptr) {
 		switch (m_spriteType) {
@@ -103,7 +103,7 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 			shader.SetAttributeVertices("inPosition", triangle_verticies);
 			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
-			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			break;
@@ -112,7 +112,7 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 			shader.SetAttributeVertices("inPosition", rectangle_verticies);
 			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
-			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 			break;
@@ -120,7 +120,7 @@ void SpriteComponent::Draw(System::Core::ShaderLoaderOpenGL& shader) {
 		case Circle:
 			shader.SetAttributeVertices("inPosition", circle_vertices);
 			shader.SetAttributeVertices("uv", uv_circle);
-			System::Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, circleDiv);
 			shader.SetUniformInt("uTexture", 0);

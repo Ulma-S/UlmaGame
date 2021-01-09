@@ -1,16 +1,18 @@
 #include <iostream>
 #include "WindowOpenGL.h"
 
-System::Core::WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(1080), m_windowHeight(720), m_scale(100.0f) {}
+using namespace UlmaEngine::Core;
+
+WindowOpenGL::WindowOpenGL() : m_window(nullptr), m_windowWidth(1080), m_windowHeight(720), m_scale(100.0f) {}
 
 
-System::Core::WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight), m_scale(100.0f) {}
+WindowOpenGL::WindowOpenGL(int windowWidth, int windowHeight) : m_window(nullptr), m_windowWidth(windowWidth), m_windowHeight(windowHeight), m_scale(100.0f) {}
 
 
-System::Core:: WindowOpenGL::~WindowOpenGL() {}
+WindowOpenGL::~WindowOpenGL() {}
 
 
-bool System::Core::WindowOpenGL::CreateWindow() {
+bool WindowOpenGL::CreateWindow() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -49,7 +51,7 @@ bool System::Core::WindowOpenGL::CreateWindow() {
 }
 
 
-void System::Core::WindowOpenGL::ClearDisplayBuffer() {
+void WindowOpenGL::ClearDisplayBuffer() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearDepth(1.0f);
@@ -63,26 +65,26 @@ void System::Core::WindowOpenGL::ClearDisplayBuffer() {
 }
 
 
-void System::Core::WindowOpenGL::SwapBuffer() {
+void WindowOpenGL::SwapBuffer() {
 	glfwSwapBuffers(m_window);
 }
 
 
-void System::Core::WindowOpenGL::Finalize() {
+void WindowOpenGL::Finalize() {
 	glfwTerminate();
 }
 
 
-void System::Core::WindowOpenGL::PollEvent() {
+void WindowOpenGL::PollEvent() {
 	glfwPollEvents();
 }
 
 
-bool System::Core::WindowOpenGL::CanLoop() {
+bool WindowOpenGL::CanLoop() {
 	return !glfwWindowShouldClose(m_window);
 }
 
 
-float System::Core::WindowOpenGL::GetCurrentTime() {
+float WindowOpenGL::GetCurrentTime() {
 	return (float) glfwGetTime();
 }
