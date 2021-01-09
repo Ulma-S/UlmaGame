@@ -1,5 +1,4 @@
 #include "Bullet.h"
-#include "SpriteComponent.h"
 
 using namespace SampleGame;
 

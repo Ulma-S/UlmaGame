@@ -1,10 +1,4 @@
 #include "Player.h"
-#include "Debug.h"
-#include "InputManagerOpenGL.h"
-#include "Math.h"
-#include "SpriteComponent.h"
-#include "Collider.h"
-#include "Collision.h"
 
 using namespace UlmaEngine::InputSystem;
 

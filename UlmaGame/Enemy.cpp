@@ -1,8 +1,4 @@
 #include "Enemy.h"
-#include "SpriteComponent.h"
-#include "Collider.h"
-#include "Math.h"
-#include "Debug.h"
 
 SampleGame::Enemy::Enemy(SceneManagement::Scene& scene)
 	: Actor::Actor(scene) 

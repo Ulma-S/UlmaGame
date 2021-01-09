@@ -12,3 +12,4 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Debug.h"
+#include "InputManagerOpenGL.h"
