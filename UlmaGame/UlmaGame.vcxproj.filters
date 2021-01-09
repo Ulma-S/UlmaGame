@@ -127,6 +127,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -227,6 +230,12 @@
     </ClInclude>
     <ClInclude Include="SceneList.h">
       <Filter>UlmaEngine\Header\System\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="UlmaEngine.h">
+      <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

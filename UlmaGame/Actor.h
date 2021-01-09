@@ -46,7 +46,6 @@ namespace Game {
 
 
 		protected:
-			void UpdateComponents(float deltaTime);
 			virtual void UpdateActor(float deltaTime);
 
 			System::SceneManagement::Scene* m_scene;
@@ -55,6 +54,7 @@ namespace Game {
 			std::string name;
 
 		private:
+			void UpdateComponents(float deltaTime);
 			Core::Transform* m_transform;
 		};
 	}

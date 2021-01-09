@@ -10,7 +10,7 @@
 
 using namespace Game::Core;
 
-const int circleDiv = 32;	//‰~‚Ì•ªŠ„”
+const int circleDiv = 64;	//‰~‚Ì•ªŠ„”
 void SetCircleVertices();
 
 SpriteComponent::SpriteComponent(Actor& owner, int drawOrder)
