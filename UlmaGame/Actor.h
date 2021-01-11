@@ -18,16 +18,16 @@ namespace UlmaEngine {
 			Inactive,
 		};
 
-		Actor(UlmaEngine::SceneManagement::Scene& scene);
+		Actor(UlmaEngine::SceneManagement::Scene& _scene);
 		virtual ~Actor();
 
 		virtual void Initialize();
-		void Update(float deltaTime);
-		void AddComponent(class Component& component);
-		void RemoveComponent(class Component& component);
+		void Update(float _deltaTime);
+		void AddComponent(class Component& _component);
+		void RemoveComponent(class Component& _component);
 
 		inline UlmaEngine::SceneManagement::Scene& GetScene() const { return *m_scene; }
-		inline std::string& GetName() { return name; }
+		inline const std::string& GetName() { return name; }
 		inline UlmaEngine::Transform& GetTransform() const { return *m_transform; }
 
 		template<class T>
@@ -42,17 +42,18 @@ namespace UlmaEngine {
 			return nullptr;
 		}
 
+		int layer;
+		EActorState state;
 
 	protected:
-		virtual void UpdateActor(float deltaTime);
+		virtual void UpdateActor(float _deltaTime);
 
 		UlmaEngine::SceneManagement::Scene* m_scene;
-		EActorState m_state;
 		std::vector<class Component*> m_components;
 		std::string name;
 
 	private:
-		void UpdateComponents(float deltaTime);
+		void UpdateComponents(float _deltaTime);
 		UlmaEngine::Transform* m_transform;
 	};
 }

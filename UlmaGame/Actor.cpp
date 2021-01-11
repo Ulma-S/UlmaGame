@@ -8,8 +8,9 @@
 using namespace UlmaEngine;
 
 Actor::Actor(SceneManagement::Scene& scene)
-	: m_scene(&scene)
-	, m_state(Active)
+	: layer(0)
+	, state(Active)
+	, m_scene(&scene)
 	, name("Actor")
 	, m_transform(new Transform())
 {
@@ -29,11 +30,19 @@ void Actor::Initialize(){}
 
 
 void Actor::Update(float deltaTime) {
-	if (m_state == Active) {
-		m_transform->ComputeWorldTransform();
-		UpdateComponents(deltaTime);
+	m_transform->ComputeWorldTransform();
+	UpdateComponents(deltaTime);
+	if (state == Active) {
+		for (auto comp : m_components) {
+			comp->enable = true;
+		}
 		UpdateActor(deltaTime);
 		m_transform->ComputeWorldTransform();
+	}
+	else {
+		for (auto comp : m_components) {
+			comp->enable = false;
+		}
 	}
 }
 

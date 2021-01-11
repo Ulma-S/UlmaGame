@@ -25,6 +25,7 @@ bool Collision::Intersect(Actor& a1, Actor& a2) {
 
 
 bool Collision::Intersect(const CircleCollider& c1, const CircleCollider& c2) {
+	if (!c1.enable || !c2.enable) return false;
 	float distance = (c1.centerPosition - c2.centerPosition).Magnitude();
 	if (distance <= c1.radius + c2.radius) {
 		return true;
@@ -48,7 +49,7 @@ void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, Math::Ve
 	}
 
 	auto it2 = c2.hitData.begin();
-	for (; it2 != c2.hitData.end(); ++it) {
+	for (; it2 != c2.hitData.end(); ++it2) {
 		if ((*it2).actor == &a1) break;
 	}
 	if (it2 == c2.hitData.end()) {

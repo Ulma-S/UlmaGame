@@ -47,6 +47,8 @@ SpriteComponent::SpriteComponent(Actor& owner, const char* assetName, ESpriteTyp
 
 
 SpriteComponent::~SpriteComponent() {
+	UlmaEngine::Debug::Log("delete");
+	m_owner->GetScene().RemoveSprite(*this);
 }
 
 
@@ -95,6 +97,7 @@ void SetCircleVertices() {
 }
 
 void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
+	if (!enable) return;
 	auto texture = Core::TextureProvider::GetInstance().GetTexture(m_assetName);
 
 	if (texture != nullptr) {

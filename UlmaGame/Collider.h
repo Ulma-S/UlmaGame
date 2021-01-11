@@ -16,32 +16,35 @@ namespace UlmaEngine {
 
 	class Collider2D : public Component {
 	public:
+		Collider2D(Actor& _owner);
 		virtual ~Collider2D();
 
-		bool enable;	//è’ìÀîªíËÇ™óLå¯Ç©ÅH
 		bool isTrigger;	//TriggerÇ©ÅH
-		bool isHit;
 		std::vector<HitData2D> hitData;
 
+		void Update(float _deltaTime) override;
+
+		inline bool GetIsHit() const { return m_isHit; }
+
 	protected:
-		Collider2D(Actor& owner);
+		bool m_isHit;
 	};
 
 	class CircleCollider : public Collider2D {
 	public:
-		CircleCollider(Actor& owner);
-		CircleCollider(Actor& owner, Math::Vector3 centerPos, float _radius);
+		CircleCollider(Actor& _owner);
+		CircleCollider(Actor& _owner, const Math::Vector3& _centerPos, float _radius);
 		~CircleCollider();
 
-		virtual void Update(float deltaTime) override;
+		virtual void Update(float _deltaTime) override;
 
 		Math::Vector3 centerPosition;
 		float radius;
 	};
 
 	class BoxCollider2D : public Collider2D {
-		BoxCollider2D(Actor& owner);
-		BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width, float _height, float _rotation);
+		BoxCollider2D(Actor& _owner);
+		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos, float _width, float _height, float _rotation);
 
 		~BoxCollider2D();
 

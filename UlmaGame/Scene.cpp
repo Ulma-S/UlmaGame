@@ -5,6 +5,7 @@
 #include "Actor.h"
 #include "Collision.h"
 #include "Collider.h"
+#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -27,7 +28,11 @@ SceneManagement::Scene::~Scene() {
 
 
 void SceneManagement::Scene::OnEnter(){
+	m_isUpdating = true;
 	for (auto actor : m_sceneActors) {
+		actor->Initialize();
+	}
+	for (auto actor : m_pendingActors) {
 		actor->Initialize();
 	}
 }
@@ -53,7 +58,7 @@ void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
 
 	for (; it != m_sprites.end(); ++it) {
 		(*it)->Draw(shader);
-	}
+ 	}
 }
 
 
@@ -64,7 +69,7 @@ void SceneManagement::Scene::OnExit() {
 
 
 void SceneManagement::Scene::DetectCollision() {
-	size_t length = m_sceneActors.size();
+	auto length = m_sceneActors.size();
 
 	for (int i = 0; i < length; ++i) {
 		for (int j = i+1; j < length; ++j) {
@@ -80,33 +85,51 @@ void SceneManagement::Scene::DetectCollision() {
 }
 
 
-void SceneManagement::Scene::AddActor(Actor& actor) {
+void SceneManagement::Scene::AddActor(Actor& _actor) {
 	//Šù‚É’Ç‰Á‚µ‚Ä‚¢‚½‚çreturn
-	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
+	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &_actor);
 	if (it != m_sceneActors.end()) return;
 
 	if (m_isUpdating) {
-		m_pendingActors.emplace_back(&actor);
+		m_pendingActors.emplace_back(&_actor);
 	}
 	else {
-		m_sceneActors.emplace_back(&actor);
+		m_sceneActors.emplace_back(&_actor);
 	}
 }
 
 
-void SceneManagement::Scene::RemoveActor(Actor& actor) {
-	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
+void SceneManagement::Scene::RemoveActor(Actor& _actor) {
+	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &_actor);
 	if (it != m_sceneActors.end()) {
 		m_sceneActors.erase(it);
 	}
 }
 
 
-void SceneManagement::Scene::AddSprite(SpriteComponent& sprite) {
-	int drawOrder = sprite.GetDrawOrder();
+void SceneManagement::Scene::AddSprite(SpriteComponent& _sprite) {
+	int drawOrder = _sprite.GetDrawOrder();
 	auto it = m_sprites.begin();
 	for (; it != m_sprites.end(); ++it) {
 		if (drawOrder > (*it)->GetDrawOrder()) break;
 	}
-	m_sprites.insert(it, &sprite);
+	m_sprites.insert(it, &_sprite);
+}
+
+
+void SceneManagement::Scene::RemoveSprite(SpriteComponent& _sprite) {
+	UlmaEngine::Debug::Log("delete");
+	auto it = m_sprites.begin();
+	for (; it != m_sprites.end(); ++it) {
+		if ((*it) == &_sprite) break;
+	}
+	if (it == m_sprites.end()) return;
+	
+	m_sprites.erase(it);
+}
+
+
+template<class T>
+void SceneManagement::Scene::Instantiate(T _t) {
+
 }
