@@ -23,6 +23,10 @@ namespace UlmaEngine {
 		Math::Vector3 rotation;
 		Math::Vector3 position;
 
+		Math::Vector3 localScale;
+		Math::Vector3 localRotation;
+		Math::Vector3 localPosition;
+
 	private:
 		Transform* m_parent;
 		Math::Matrix4 m_worldTransform;

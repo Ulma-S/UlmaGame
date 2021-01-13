@@ -106,13 +106,13 @@
     <ClCompile Include="Component.cpp">
       <Filter>UlmaEngine\Source\Core</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
+    <ClCompile Include="Collision.cpp">
+      <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
+      <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="SpriteComponent.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
