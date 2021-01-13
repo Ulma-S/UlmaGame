@@ -4,7 +4,8 @@
 using namespace UlmaEngine;
 
 Component::Component(Actor& owner, int updateOrder)
-	: m_owner(&owner)
+	: enable(true)
+	, m_owner(&owner)
 	, m_updateOrder(updateOrder)
 {
 	m_owner->AddComponent(*this);

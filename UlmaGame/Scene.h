@@ -26,6 +26,10 @@ namespace UlmaEngine {
 			void RemoveActor(Actor& actor);
 
 			void AddSprite(SpriteComponent& sprite);
+			void RemoveSprite(SpriteComponent& sprite);
+
+			template<class T>
+			void Instantiate(T t);
 
 			inline std::vector<Actor*>& GetActors() { return m_sceneActors; }
 

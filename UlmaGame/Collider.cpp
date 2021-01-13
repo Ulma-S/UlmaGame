@@ -5,14 +5,24 @@ using namespace UlmaEngine;
 
 Collider2D::Collider2D(Actor& owner)
 	: Component(owner)
-	, enable(true)
 	, isTrigger(false)
-	, isHit(false)
+	, m_isHit(false)
 { }
 
 
 Collider2D::~Collider2D() {
 
+}
+
+
+void Collider2D::Update(float _deltaTime) {
+	if (!enable) return;
+	if (hitData.size() >= 1) {
+		m_isHit = true;
+	}
+	else {
+		m_isHit = false;
+	}
 }
 
 
@@ -35,9 +45,9 @@ CircleCollider::CircleCollider(Actor& owner)
 {}
 
 
-CircleCollider::CircleCollider(Actor& owner, Math::Vector3 centerPos, float _radius)
+CircleCollider::CircleCollider(Actor& owner, const Math::Vector3& _centerPos, float _radius)
 	: Collider2D(owner)
-	, centerPosition(centerPos)
+	, centerPosition(_centerPos)
 	, radius(_radius)
 {}
 
@@ -45,7 +55,8 @@ CircleCollider::CircleCollider(Actor& owner, Math::Vector3 centerPos, float _rad
 CircleCollider::~CircleCollider(){}
 
 
-void CircleCollider::Update(float deltaTime) {
+void CircleCollider::Update(float _deltaTime) {
+	Collider2D::Update(_deltaTime);
 	centerPosition = m_owner->GetTransform().position;
 }
 
