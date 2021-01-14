@@ -15,7 +15,7 @@ void SetCircleVertices();
 
 SpriteComponent::SpriteComponent(Actor& owner, int drawOrder)
 	: Component(owner)
-	, m_spriteType(Rectangle)
+	, m_spriteType(ESpriteType::Rectangle)
 	, m_drawOrder(drawOrder) 
 	, m_assetName("noodle")
 {
@@ -37,7 +37,7 @@ SpriteComponent::SpriteComponent(Actor& owner, ESpriteType type, int drawOrder)
 
 SpriteComponent::SpriteComponent(Actor& owner, const char* assetName, ESpriteType type, int drawOrder) 
 	: Component(owner)
-	, m_spriteType(Rectangle)
+	, m_spriteType(ESpriteType::Rectangle)
 	, m_drawOrder(drawOrder)
 	, m_assetName(assetName)
 {
@@ -47,7 +47,6 @@ SpriteComponent::SpriteComponent(Actor& owner, const char* assetName, ESpriteTyp
 
 
 SpriteComponent::~SpriteComponent() {
-	UlmaEngine::Debug::Log("delete");
 	m_owner->GetScene().RemoveSprite(*this);
 }
 
@@ -102,7 +101,7 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
 
 	if (texture != nullptr) {
 		switch (m_spriteType) {
-		case Triangle:
+		case ESpriteType::Triangle:
 			shader.SetAttributeVertices("inPosition", triangle_verticies);
 			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
@@ -111,7 +110,7 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			break;
 
-		case Rectangle:
+		case ESpriteType::Rectangle:
 			shader.SetAttributeVertices("inPosition", rectangle_verticies);
 			shader.SetAttributeVertices("uv", uv_rectangle);
 			shader.SetUniformInt("uTexture", 0);
@@ -120,7 +119,7 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
 			glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 			break;
 
-		case Circle:
+		case ESpriteType::Circle:
 			shader.SetAttributeVertices("inPosition", circle_vertices);
 			shader.SetAttributeVertices("uv", uv_circle);
 			Core::TextureProvider::GetInstance().UseTexture(m_assetName);

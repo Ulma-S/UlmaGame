@@ -66,14 +66,14 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
 
 	//SceneçÏê¨
-	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game);
-	SceneManager::GetInstance().AddScene(Game, *gameScene);
+	Scene* gameScene = new Scene(SceneManager::GetInstance(), "Game");
+	SceneManager::GetInstance().AddScene("Game", *gameScene);
 
 	//ActorçÏê¨
 	SampleGame::Player* player = new SampleGame::Player(*gameScene);
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
-	SceneManager::GetInstance().LoadScene(Game);
+	SceneManager::GetInstance().LoadScene("Game");
 	return true;
 }
 

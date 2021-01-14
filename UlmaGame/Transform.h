@@ -19,10 +19,12 @@ namespace UlmaEngine {
 
 		inline Math::Vector3 GetSize() { return m_size; }
 
+		//ワールド座標
 		Math::Vector3 scale;
 		Math::Vector3 rotation;
 		Math::Vector3 position;
 
+		//ローカル座標
 		Math::Vector3 localScale;
 		Math::Vector3 localRotation;
 		Math::Vector3 localPosition;

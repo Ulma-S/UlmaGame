@@ -9,17 +9,17 @@
 
 using namespace UlmaEngine;
 
-SceneManagement::Scene::Scene(ISceneManager& sceneManager, ESceneType sceneType)
-	: m_sceneManager(&sceneManager)
-	, m_sceneType(sceneType)
+SceneManagement::Scene::Scene(ISceneManager& _sceneManager, const std::string& _sceneName)
+	: m_sceneManager(&_sceneManager)
+	, m_sceneName(_sceneName)
 	, m_isUpdating(false)
 {
-	m_sceneManager->AddScene(sceneType, *this);
+	m_sceneManager->AddScene(_sceneName, *this);
 }
 
 
 SceneManagement::Scene::~Scene() {
-	m_sceneManager->RemoveScene(m_sceneType);
+	m_sceneManager->RemoveScene(m_sceneName);
 
 	std::vector<Actor*>().swap(m_sceneActors);
 	std::vector<Actor*>().swap(m_pendingActors);
@@ -38,10 +38,10 @@ void SceneManagement::Scene::OnEnter(){
 }
 
 
-void SceneManagement::Scene::Update(float deltaTime) {
+void SceneManagement::Scene::Update(float _deltaTime) {
 	m_isUpdating = true;
 	for (auto actor : m_sceneActors) {
-		actor->Update(deltaTime);
+		actor->Update(_deltaTime);
 	}
 	DetectCollision();
 	m_isUpdating = false;
@@ -53,11 +53,11 @@ void SceneManagement::Scene::Update(float deltaTime) {
 }
 
 
-void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
+void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& _shader) {
 	auto it = m_sprites.begin();
 
 	for (; it != m_sprites.end(); ++it) {
-		(*it)->Draw(shader);
+		(*it)->Draw(_shader);
  	}
 }
 

@@ -103,9 +103,6 @@
     <ClCompile Include="Collider.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
@@ -113,6 +110,9 @@
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
