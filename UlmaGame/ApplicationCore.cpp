@@ -67,13 +67,14 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 
 	//SceneçÏê¨
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), "Game");
-	SceneManager::GetInstance().AddScene("Game", *gameScene);
 
 	//ActorçÏê¨
 	SampleGame::Player* player = new SampleGame::Player(*gameScene);
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
-	SceneManager::GetInstance().LoadScene("Game");
+	if (!SceneManager::GetInstance().LoadScene("Game")) {
+		return false;
+	}
 	return true;
 }
 

@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "Scene.h"
+#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -22,10 +23,13 @@ void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& sha
 }
 
 
-void SceneManagement::SceneManager::LoadScene(const std::string& _sceneName) {
+bool SceneManagement::SceneManager::LoadScene(const std::string& _sceneName) {
 	//シーンが存在しなければreturn
 	auto it = m_sceneMap.find(_sceneName);
-	if (it == m_sceneMap.end()) return;
+	if (it == m_sceneMap.end()) {
+		UlmaEngine::Debug::LogError(_sceneName + "シーンが存在しません。");
+		return false;
+	}
 
 	//シーンの終了処理
 	if (m_currentScene != nullptr) {
@@ -35,6 +39,7 @@ void SceneManagement::SceneManager::LoadScene(const std::string& _sceneName) {
 	//シーンの読み込み時の処理
 	m_currentScene = it->second;
 	m_currentScene->OnEnter();
+	return true;
 }
 
 

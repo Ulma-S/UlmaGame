@@ -95,37 +95,37 @@ void SetCircleVertices() {
 	}
 }
 
-void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
+void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& _shader) {
 	if (!enable) return;
 	auto texture = Core::TextureProvider::GetInstance().GetTexture(m_assetName);
 
 	if (texture != nullptr) {
 		switch (m_spriteType) {
 		case ESpriteType::Triangle:
-			shader.SetAttributeVertices("inPosition", triangle_verticies);
-			shader.SetAttributeVertices("uv", uv_rectangle);
-			shader.SetUniformInt("uTexture", 0);
+			_shader.SetAttributeVertices("inPosition", triangle_verticies);
+			_shader.SetAttributeVertices("uv", uv_rectangle);
+			_shader.SetUniformInt("uTexture", 0);
 			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
-			shader.Activate();
+			_shader.Activate();
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			break;
 
 		case ESpriteType::Rectangle:
-			shader.SetAttributeVertices("inPosition", rectangle_verticies);
-			shader.SetAttributeVertices("uv", uv_rectangle);
-			shader.SetUniformInt("uTexture", 0);
+			_shader.SetAttributeVertices("inPosition", rectangle_verticies);
+			_shader.SetAttributeVertices("uv", uv_rectangle);
+			_shader.SetUniformInt("uTexture", 0);
 			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
-			shader.Activate();
+			_shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 			break;
 
 		case ESpriteType::Circle:
-			shader.SetAttributeVertices("inPosition", circle_vertices);
-			shader.SetAttributeVertices("uv", uv_circle);
+			_shader.SetAttributeVertices("inPosition", circle_vertices);
+			_shader.SetAttributeVertices("uv", uv_circle);
 			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
-			shader.Activate();
+			_shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, circleDiv);
-			shader.SetUniformInt("uTexture", 0);
+			_shader.SetUniformInt("uTexture", 0);
 			break;
 
 		default:
@@ -147,7 +147,7 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) {
 		Math::Matrix4 scale = Math::Matrix4::CreateScale(sc.x, sc.y, sc.z);
 
 		Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
-		shader.SetUniformMat4("uWorldTransform", world);
-		shader.Activate();
+		_shader.SetUniformMat4("uWorldTransform", world);
+		_shader.Activate();
 	}
 }

@@ -51,10 +51,10 @@ void Bullet::Initialize(const Math::Vector3& _position, const Math::Vector3& _mo
 
 
 void Bullet::Activate() {
-	state = Active;
+	state = EActorState::Active;
 }
 
 
 void Bullet::Inactivate() {
-	state = Inactive;
+	state =EActorState::Inactive;
 }

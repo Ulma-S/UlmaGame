@@ -14,7 +14,7 @@ namespace UlmaEngine {
 			~SceneManager();
 			void UpdateScene(float _deltaTime) override;
 			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader);
-			void LoadScene(const std::string& _scenename) override;
+			bool LoadScene(const std::string& _scenename) override;
 
 			void AddScene(const std::string& _sceneName, class Scene& scene) override;
 			void RemoveScene(const std::string& _sceneName) override;

@@ -48,8 +48,10 @@ void SampleGame::Player::UpdateActor(float _deltaTime) {
 				auto name = m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->GetName();
 				if (name != "Bullet" && name != "Player") {
 					Debug::Log(name);
-					m_bullets[i]->state =  EActorState::Inactive;
+					
+					m_bullets[i]->GetComponent<SpriteComponent>()->enable = false;
 					m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->state = EActorState::Inactive;
+					//m_bullets[i]->state = EActorState::Inactive;
 				}
 			}
 		}

@@ -118,7 +118,6 @@ void SceneManagement::Scene::AddSprite(SpriteComponent& _sprite) {
 
 
 void SceneManagement::Scene::RemoveSprite(SpriteComponent& _sprite) {
-	UlmaEngine::Debug::Log("delete");
 	auto it = m_sprites.begin();
 	for (; it != m_sprites.end(); ++it) {
 		if ((*it) == &_sprite) break;
