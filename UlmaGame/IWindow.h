@@ -9,13 +9,13 @@ namespace UlmaEngine {
 			virtual ~IWindow() = default;
 
 			virtual bool CreateWindow() = 0;
-			virtual void ClearDisplayBuffer() = 0;
-			virtual void SwapBuffer() = 0;
-			virtual void Finalize() = 0;
+			virtual void ClearDisplayBuffer() const = 0;
+			virtual void SwapBuffer() const = 0;
+			virtual void Finalize() const = 0;
 
-			virtual void PollEvent() = 0;
-			virtual bool CanLoop() = 0;
-			virtual float GetCurrentTime() = 0;
+			virtual void PollEvent() const = 0;
+			virtual bool CanLoop() const = 0;
+			virtual float GetCurrentTime() const = 0;
 
 			virtual int GetWindowWidth() const = 0;
 			virtual int GetWindowHeight() const = 0;

@@ -41,7 +41,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	m_window = &window;
 
 	//ウィンドウ作成
-	bool success = m_window->CreateWindow();
+	auto success = m_window->CreateWindow();
 	if (!success) {
 		return false;
 	}
