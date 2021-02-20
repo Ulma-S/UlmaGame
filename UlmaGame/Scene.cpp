@@ -27,7 +27,7 @@ SceneManagement::Scene::~Scene() {
 }
 
 
-void SceneManagement::Scene::OnEnter(){
+void SceneManagement::Scene::OnEnter() {
 	m_isUpdating = true;
 	for (auto actor : m_sceneActors) {
 		actor->Initialize();
@@ -73,13 +73,7 @@ void SceneManagement::Scene::DetectCollision() {
 
 	for (int i = 0; i < length; ++i) {
 		for (int j = i+1; j < length; ++j) {
-			if (i == j) continue;
-			auto leftCollider = m_sceneActors[i]->GetComponent<Collider2D>();
-			auto rightCollider = m_sceneActors[j]->GetComponent<Collider2D>();
-
-			if (Collision::Intersect(*m_sceneActors[i], *m_sceneActors[j])) {
-
-			}
+			Collision::ComputeIntersection(*m_sceneActors[i], *m_sceneActors[j]);
 		}
 	}
 }

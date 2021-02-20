@@ -129,6 +129,12 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& _shader) {
 			break;
 
 		default:
+			_shader.SetAttributeVertices("inPosition", circle_vertices);
+			_shader.SetAttributeVertices("uv", uv_circle);
+			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
+			_shader.Activate();
+			glDrawArrays(GL_TRIANGLE_FAN, 0, circleDiv);
+			_shader.SetUniformInt("uTexture", 0);
 			break;
 		}
 

@@ -73,6 +73,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
 	if (!SceneManager::GetInstance().LoadScene("Game")) {
+		Debug::LogError("シーンのロードに失敗しました。");
 		return false;
 	}
 	return true;

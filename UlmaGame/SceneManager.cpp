@@ -18,8 +18,8 @@ void SceneManagement::SceneManager::UpdateScene(float _deltaTime){
 }
 
 
-void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
-	m_currentScene->GenerateOutput(shader);
+void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& _shader) {
+	m_currentScene->GenerateOutput(_shader);
 }
 
 

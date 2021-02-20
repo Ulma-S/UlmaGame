@@ -29,12 +29,12 @@ void Actor::Initialize(){}
 
 
 void Actor::Update(float _deltaTime) {
-	m_transform->ComputeWorldTransform();
-	UpdateComponents(_deltaTime);
 	if (state == EActorState::Active) {
 		for (auto comp : m_components) {
 			comp->enable = true;
 		}
+		m_transform->ComputeWorldTransform();
+		UpdateComponents(_deltaTime);
 		UpdateActor(_deltaTime);
 		m_transform->ComputeWorldTransform();
 	}

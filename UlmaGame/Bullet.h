@@ -12,8 +12,6 @@ namespace SampleGame {
 		void UpdateActor(float _deltaTime) override;
 
 		void Initialize(const Math::Vector3& _position, const Math::Vector3& _moveDir);
-		void Activate();
-		void Inactivate();
 
 		inline void SetMoveDir(const Math::Vector3& _moveDir) { m_moveDir = _moveDir; }
 		inline void SetMoveSpeed(float _value) { m_moveSpeed = _value; }
