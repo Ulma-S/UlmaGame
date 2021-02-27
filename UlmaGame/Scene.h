@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "SceneList.h"
+#include <string>
 
 namespace UlmaEngine {
 	namespace Core {
@@ -14,28 +14,28 @@ namespace UlmaEngine {
 	namespace SceneManagement {
 		class Scene {
 		public:
-			Scene(class ISceneManager& sceneManager, ESceneType sceneType);
+			Scene(class ISceneManager& sceneManager, const std::string& _sceneName);
 			virtual ~Scene();
 
 			void OnEnter();
-			void Update(float deltaTime);
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
+			void Update(float _deltaTime);
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader);
 			void OnExit();
 			
-			void AddActor(Actor& actor);
-			void RemoveActor(Actor& actor);
+			void AddActor(Actor& _actor);
+			void RemoveActor(Actor& _actor);
 
-			void AddSprite(SpriteComponent& sprite);
-			void RemoveSprite(SpriteComponent& sprite);
+			void AddSprite(SpriteComponent& _sprite);
+			void RemoveSprite(SpriteComponent& _sprite);
 
 			template<class T>
-			void Instantiate(T t);
+			void Instantiate(T _t);
 
 			inline std::vector<Actor*>& GetActors() { return m_sceneActors; }
 
 		protected:
 			class ISceneManager* m_sceneManager;
-			ESceneType m_sceneType;
+			std::string m_sceneName;
 			std::vector<Actor*> m_sceneActors;
 			std::vector<Actor*> m_pendingActors;
 			bool m_isUpdating;

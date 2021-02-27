@@ -29,12 +29,12 @@ void SampleGame::Player::Initialize() {
 
 
 void SampleGame::Player::UpdateActor(float _deltaTime) {
-	GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(Horizontal) * m_moveSpeed * _deltaTime;
-	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(Vertical) * GetTransform().GetUpVec() * m_moveSpeed * _deltaTime;
+	GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * m_moveSpeed * _deltaTime;
+	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUpVec() * m_moveSpeed * _deltaTime;
 
-	if (InputManagerOpenGL::GetInstance().GetKeyDown(Space)) {
+	if (InputManagerOpenGL::GetInstance().GetKeyDown(EKeyCode::Space)) {
 		m_bullets[m_bulletCount]->Initialize(this->GetTransform().position, this->GetTransform().GetUpVec());
-		m_bullets[m_bulletCount]->Activate();
+		m_bullets[m_bulletCount]->state = EActorState::Active;
 		m_bulletCount++;
 		if (m_bulletCount >= m_bullets.size()) {
 			m_bulletCount = 0;
@@ -48,8 +48,11 @@ void SampleGame::Player::UpdateActor(float _deltaTime) {
 				auto name = m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->GetName();
 				if (name != "Bullet" && name != "Player") {
 					Debug::Log(name);
-					m_bullets[i]->state = Inactive;
-					m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->state = Inactive;
+					
+					m_bullets[i]->GetComponent<SpriteComponent>()->enable = false;
+					m_bullets[i]->GetComponent<Collider2D>()->enable = false;
+					m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->state = EActorState::Inactive;
+					m_bullets[i]->state = EActorState::Inactive;
 				}
 			}
 		}

@@ -12,16 +12,16 @@ namespace UlmaEngine {
 		public:
 			~TextureProvider();
 
-			void UseTexture(const std::string& assetName);
-			void AddTexture(const std::string& assetName, Texture& texture);
+			void UseTexture(const std::string& _assetName);
+			void AddTexture(const std::string& _assetName, Texture& _texture);
 
-			inline Texture* GetTexture(const std::string& assetName) {
+			inline const Texture* GetTexture(const std::string& _assetName) {
 				auto it = m_texMap.begin();
 				if (it == m_texMap.end()) {
-					Debug::Log(assetName + "がキーに設定されていません。");
+					Debug::Log(_assetName + "がキーに設定されていません。");
 					return nullptr;
 				}
-				return m_texMap[assetName];
+				return m_texMap[_assetName];
 			}
 
 		protected:

@@ -2,7 +2,6 @@
 #include <unordered_map>
 #include "ISceneManager.h"
 #include "Singleton.h"
-#include "SceneList.h"
 
 namespace UlmaEngine {
 	namespace Core {
@@ -13,19 +12,19 @@ namespace UlmaEngine {
 		class SceneManager : public Singleton<SceneManager>, public ISceneManager {
 		public:
 			~SceneManager();
-			void UpdateScene(float deltaTime) override;
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
-			void LoadScene(ESceneType sceneType) override;
+			void UpdateScene(float _deltaTime) override;
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader);
+			bool LoadScene(const std::string& _scenename) override;
 
-			void AddScene(ESceneType type, class Scene& scene) override;
-			void RemoveScene(ESceneType type) override;
+			void AddScene(const std::string& _sceneName, class Scene& scene) override;
+			void RemoveScene(const std::string& _sceneName) override;
 
 		protected:
 			friend Singleton<SceneManager>;
 			SceneManager();
 
 		private:
-			std::unordered_map<ESceneType, class Scene*> m_sceneMap;
+			std::unordered_map<std::string, class Scene*> m_sceneMap;
 			class Scene* m_currentScene;
 		};
 	}

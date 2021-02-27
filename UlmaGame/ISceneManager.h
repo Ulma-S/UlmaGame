@@ -1,5 +1,5 @@
 #pragma once
-#include "SceneList.h"
+#include <string>
 
 namespace UlmaEngine {
 	namespace Core {
@@ -11,12 +11,12 @@ namespace UlmaEngine {
 		public:
 			virtual ~ISceneManager() = default;
 
-			virtual void UpdateScene(float deltaTime) = 0;
-			virtual void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader) = 0;
-			virtual void LoadScene(ESceneType sceneType) = 0;
+			virtual void UpdateScene(float _deltaTime) = 0;
+			virtual void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader) = 0;
+			virtual bool LoadScene(const std::string& _sceneName) = 0;
 
-			virtual void AddScene(ESceneType type, class Scene& scene) = 0;
-			virtual void RemoveScene(ESceneType type) = 0;
+			virtual void AddScene(const std::string& _sceneName, class Scene& _scene) = 0;
+			virtual void RemoveScene(const std::string& _sceneName) = 0;
 		};
 	}
 }

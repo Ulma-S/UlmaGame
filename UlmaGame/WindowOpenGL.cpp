@@ -51,7 +51,7 @@ bool WindowOpenGL::CreateWindow() {
 }
 
 
-void WindowOpenGL::ClearDisplayBuffer() {
+void WindowOpenGL::ClearDisplayBuffer() const {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearDepth(1.0f);
@@ -65,26 +65,26 @@ void WindowOpenGL::ClearDisplayBuffer() {
 }
 
 
-void WindowOpenGL::SwapBuffer() {
+void WindowOpenGL::SwapBuffer() const {
 	glfwSwapBuffers(m_window);
 }
 
 
-void WindowOpenGL::Finalize() {
+void WindowOpenGL::Finalize() const {
 	glfwTerminate();
 }
 
 
-void WindowOpenGL::PollEvent() {
+void WindowOpenGL::PollEvent() const {
 	glfwPollEvents();
 }
 
 
-bool WindowOpenGL::CanLoop() {
+bool WindowOpenGL::CanLoop() const {
 	return !glfwWindowShouldClose(m_window);
 }
 
 
-float WindowOpenGL::GetCurrentTime() {
+float WindowOpenGL::GetCurrentTime() const {
 	return (float) glfwGetTime();
 }

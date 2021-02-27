@@ -41,7 +41,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	m_window = &window;
 
 	//ウィンドウ作成
-	bool success = m_window->CreateWindow();
+	auto success = m_window->CreateWindow();
 	if (!success) {
 		return false;
 	}
@@ -66,14 +66,16 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
 
 	//Scene作成
-	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game);
-	SceneManager::GetInstance().AddScene(Game, *gameScene);
+	Scene* gameScene = new Scene(SceneManager::GetInstance(), "Game");
 
 	//Actor作成
 	SampleGame::Player* player = new SampleGame::Player(*gameScene);
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
 
-	SceneManager::GetInstance().LoadScene(Game);
+	if (!SceneManager::GetInstance().LoadScene("Game")) {
+		Debug::LogError("シーンのロードに失敗しました。");
+		return false;
+	}
 	return true;
 }
 
