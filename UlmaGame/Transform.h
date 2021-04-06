@@ -15,7 +15,7 @@ namespace UlmaEngine {
 		inline Math::Matrix4& GetWorldTransform() { return m_worldTransform; }
 
 		inline Math::Vector3 GetRight() { return Math::Vector3(Math::Cos(rotation.z), Math::Sin(rotation.z), 0.0f); }
-		inline Math::Vector3 GetUpVec() { return Math::Vector3(-Math::Sin(rotation.z), Math::Cos(rotation.z), 0.0f); }
+		inline Math::Vector3 GetUp() { return Math::Vector3(-Math::Sin(rotation.z), Math::Cos(rotation.z), 0.0f); }
 
 		inline Math::Vector3 GetSize() { return m_size; }
 

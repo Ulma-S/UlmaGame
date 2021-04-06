@@ -49,10 +49,12 @@ namespace UlmaEngine {
 
 	// 矩形のコライダー
 	class BoxCollider2D : public Collider2D {
+	public:
 		BoxCollider2D(Actor& _owner);
-		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos, float _width, float _height, float _rotation);
-
+		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos = Math::Vector3::zero, float _width = 100.0, float _height = 100.0, float _rotation = 0.0);
 		~BoxCollider2D();
+
+		virtual void Update(float _deltaTime) override;
 
 		Math::Vector3 centerPosition;
 		float width;

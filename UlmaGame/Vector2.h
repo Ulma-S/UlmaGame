@@ -20,6 +20,7 @@ namespace Math {
 		void RotateRad(float rad);	//弧度法で回転させる
 		void RotateDeg(float deg);	//度数法で回転させる
 
+		float Cross(const Vector2& vec) const;	//外積
 		float Dot(const Vector2& vec) const;	//内積
 
 		static const Vector2 zero;
