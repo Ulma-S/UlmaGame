@@ -7,11 +7,10 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	: Actor::Actor(scene)
 	, m_moveSpeed(150.0f)
 	, m_bulletCount(0) {
-	new SpriteComponent(*this, ESpriteType::Rectangle, 90);
-	//new CircleCollider(*this, Math::Vector3(), 150.0f);
+	new SpriteComponent(*this, "blue", ESpriteType::Rectangle, 90);
 	new BoxCollider2D(*this, Math::Vector3::zero, 300.0, 300.0, 0.0);
 	GetTransform().position = Math::Vector3(300.0, 100.0, 0.0);
-	GetTransform().scale = Math::Vector3(1.0f, 0.75f, 1.0f);
+	GetTransform().scale = Math::Vector3(1.0f, 1.0f, 1.0f);
 	GetTransform().rotation.z = 0.0f;
 	this->name = "Player";
 }
@@ -22,11 +21,6 @@ SampleGame::Player::~Player() {
 
 
 void SampleGame::Player::Initialize() {
-	auto ts = this->GetTransform();
-	for (int i = 0; i < 10; ++i) {
-		//m_bullets.emplace_back(new Bullet(this->GetScene(), ts.position, ts.GetUp()));
-		//m_bullets[i]->SetMoveSpeed(500.0f);
-	}
 }
 
 

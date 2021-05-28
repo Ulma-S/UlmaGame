@@ -115,6 +115,9 @@
     <ClCompile Include="Component.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -221,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>SampleGame\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

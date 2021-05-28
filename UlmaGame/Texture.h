@@ -17,6 +17,7 @@ namespace UlmaEngine {
 			inline unsigned int GetWidth() const { return m_texWidth; }
 			inline unsigned int GetHeight() const { return m_texHeight; }
 
+
 		private:
 			bool CreateTexture();
 			bool CreateTexture(const char* fileName);

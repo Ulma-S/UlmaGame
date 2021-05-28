@@ -11,7 +11,7 @@ using namespace UlmaEngine::Core;
 Texture::Texture()
 	: m_texId(0)
 	, m_texWidth(600)
-	, m_texHeight(800)
+	, m_texHeight(600)
 	, m_texBuffer(nullptr)
 	, m_isActive(false)
 {
@@ -39,12 +39,12 @@ Texture::~Texture() {
 
 bool Texture::CreateTexture() {
 	int bpp = 0;
-	m_texBuffer = stbi_load("Resource/noodle.png", &m_texWidth, &m_texHeight, nullptr, STBI_rgb_alpha);
+	m_texBuffer = stbi_load("Resource/brown.png", &m_texWidth, &m_texHeight, nullptr, STBI_rgb_alpha);
 
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {
-		Debug::LogError("テクスチャのロードに失敗しました。");
+		Debug::LogError("テクスチャのロードに失敗しました.");
 		return false;
 	}
 
@@ -68,6 +68,8 @@ bool Texture::CreateTexture() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	delete[] m_texBuffer;
 	
 	m_isActive = true;
 	return true;
@@ -81,7 +83,7 @@ bool Texture::CreateTexture(const char* fileName) {
 	glGenTextures(1, &m_texId);
 
 	if (m_texId <= 0) {
-		Debug::LogError("テクスチャのロードに失敗しました。");
+		Debug::LogError("テクスチャのロードに失敗しました.");
 		return false;
 	}
 
@@ -119,6 +121,7 @@ void Texture::Activate() {
 void Texture::Inactivate() {
 	if (m_isActive) {
 		delete[] m_texBuffer;
+		glBindTexture(GL_TEXTURE_2D, 0);
 		m_isActive = false;
 	}
 }

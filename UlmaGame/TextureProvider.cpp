@@ -16,23 +16,23 @@ TextureProvider::~TextureProvider() {
 void TextureProvider::UseTexture(const std::string& assetName) {
 	auto it = m_texMap.find(assetName);
 	if (it == m_texMap.end()) {
-		Debug::LogError(assetName + "がキーに設定されていません。");
+		Debug::LogError(assetName + "がキーに設定されていません.");
 		return;
 	}
 
 	if (m_texMap[assetName] == nullptr) {
-		Debug::LogError(assetName + "がnullです。");
+		Debug::LogError(assetName + "が存在しません.");
 		return;
 	}
 	m_texMap[assetName]->Activate();
 }
 
 
-void TextureProvider::AddTexture(const std::string& assetName, Texture& texture) {
+void TextureProvider::RegisterTexture(const std::string& assetName, Texture& texture) {
 	//キーが存在していたらreturn
 	auto it = m_texMap.find(assetName);
 	if (it != m_texMap.end()) {
-		Debug::LogError(assetName + "は既に存在しています。");
+		Debug::LogError(assetName + "は既に存在しています.");
 		return;
 	}
 	m_texMap[assetName] = &texture;

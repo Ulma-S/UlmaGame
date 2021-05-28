@@ -7,8 +7,10 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Debug.h"
+
 #include "Player.h"
 #include "Enemy.h"
+#include "Ground.h"
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
@@ -31,7 +33,9 @@ Core::ApplicationCore::ApplicationCore(IWindow& window)
 
 Core::ApplicationCore::~ApplicationCore(){
 	m_unlitShader->Unload();
+	m_spriteShader->Unload();
 	delete m_unlitShader;
+	delete m_spriteShader;
 
 	Finalize();
 }
@@ -56,14 +60,15 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 
 	m_spriteShader = new ShaderLoaderOpenGL();
 	if (!m_spriteShader->LoadProgram("sprite.vert", "sprite.frag")) {
-		Debug::Log("spriteシェーダーのロードに失敗しました");
+		Debug::Log("spriteシェーダーのロードに失敗しました.");
 		return false;
 	}
 	m_spriteShader->Activate();
 
 	//テクスチャ作成
-	Texture* noodle = new Texture();
-	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
+	TextureProvider::GetInstance().RegisterTexture("noodle", *(new Texture("noodle.png")));
+	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
+	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
 	//Scene作成
 	Scene* gameScene = new Scene(SceneManager::GetInstance(), "Game");
@@ -71,9 +76,10 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	//Actor作成
 	SampleGame::Player* player = new SampleGame::Player(*gameScene);
 	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
+	SampleGame::Ground* ground = new SampleGame::Ground(*gameScene);
 
 	if (!SceneManager::GetInstance().LoadScene("Game")) {
-		Debug::LogError("シーンのロードに失敗しました。");
+		Debug::LogError("シーンのロードに失敗しました.");
 		return false;
 	}
 	return true;

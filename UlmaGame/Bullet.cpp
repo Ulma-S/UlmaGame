@@ -35,7 +35,6 @@ Bullet::~Bullet() {
 
 
 void Bullet::Initialize() {
-	Debug::Log("start");
 	state = EActorState::Inactive;
 }
 

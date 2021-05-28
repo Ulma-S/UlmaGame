@@ -113,10 +113,10 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& _shader) {
 		case ESpriteType::Rectangle:
 			_shader.SetAttributeVertices("inPosition", rectangle_verticies);
 			_shader.SetAttributeVertices("uv", uv_rectangle);
-			_shader.SetUniformInt("uTexture", 0);
 			Core::TextureProvider::GetInstance().UseTexture(m_assetName);
 			_shader.Activate();
 			glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+			_shader.SetUniformInt("uTexture", 0);
 			break;
 
 		case ESpriteType::Circle:
@@ -154,6 +154,5 @@ void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& _shader) {
 
 		Math::Matrix4 world = scale * m_owner->GetTransform().GetWorldTransform();
 		_shader.SetUniformMat4("uWorldTransform", world);
-		_shader.Activate();
 	}
 }

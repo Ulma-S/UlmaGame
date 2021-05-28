@@ -13,7 +13,7 @@ namespace UlmaEngine {
 			~TextureProvider();
 
 			void UseTexture(const std::string& _assetName);
-			void AddTexture(const std::string& _assetName, Texture& _texture);
+			void RegisterTexture(const std::string& _assetName, Texture& _texture);
 
 			inline const Texture* GetTexture(const std::string& _assetName) {
 				auto it = m_texMap.begin();
