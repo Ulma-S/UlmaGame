@@ -56,6 +56,11 @@ void Math::Vector2::RotateDeg(float deg) {
 }
 
 
+float Math::Vector2::Cross(const Vector2& vec) const {
+	return this->x * vec.y - this->y * vec.x;
+}
+
+
 float Math::Vector2::Dot(const Vector2& vec) const {
 	return this->x * vec.x + this->y * vec.y;
 }

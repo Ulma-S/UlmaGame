@@ -1,5 +1,6 @@
 #include "Collider.h"
 #include "Actor.h"
+#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -80,3 +81,11 @@ BoxCollider2D::BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width
 
 
 BoxCollider2D::~BoxCollider2D(){}
+
+
+void BoxCollider2D::Update(float _deltaTime) {
+	Collider2D::Update(_deltaTime);
+	centerPosition = m_owner->GetTransform().position;
+	this->rotation = m_owner->GetTransform().rotation.z;
+	//if(m_owner->GetName() == "Player") Debug::Log(centerPosition);
+}

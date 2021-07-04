@@ -35,7 +35,7 @@ Bullet::~Bullet() {
 
 
 void Bullet::Initialize() {
-	state = Inactive;
+	state = EActorState::Inactive;
 }
 
 
@@ -47,14 +47,4 @@ void Bullet::UpdateActor(float _deltaTime) {
 void Bullet::Initialize(const Math::Vector3& _position, const Math::Vector3& _moveDir) {
 	this->GetTransform().position = _position;
 	this->m_moveDir = _moveDir;
-}
-
-
-void Bullet::Activate() {
-	state = Active;
-}
-
-
-void Bullet::Inactivate() {
-	state = Inactive;
 }

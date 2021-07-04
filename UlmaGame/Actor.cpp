@@ -1,5 +1,4 @@
 #include "Actor.h"
-#include "IApplicationCore.h"
 #include "Transform.h"
 #include "Component.h"
 #include "Scene.h"
@@ -7,10 +6,10 @@
 
 using namespace UlmaEngine;
 
-Actor::Actor(SceneManagement::Scene& scene)
+Actor::Actor(SceneManagement::Scene& _scene)
 	: layer(0)
 	, state(Active)
-	, m_scene(&scene)
+	, m_scene(&_scene)
 	, name("Actor")
 	, m_transform(new Transform())
 {
@@ -29,14 +28,14 @@ Actor::~Actor(){
 void Actor::Initialize(){}
 
 
-void Actor::Update(float deltaTime) {
-	m_transform->ComputeWorldTransform();
-	UpdateComponents(deltaTime);
-	if (state == Active) {
+void Actor::Update(float _deltaTime) {
+	if (state == EActorState::Active) {
 		for (auto comp : m_components) {
 			comp->enable = true;
 		}
-		UpdateActor(deltaTime);
+		m_transform->ComputeWorldTransform();
+		UpdateComponents(_deltaTime);
+		UpdateActor(_deltaTime);
 		m_transform->ComputeWorldTransform();
 	}
 	else {
@@ -47,33 +46,33 @@ void Actor::Update(float deltaTime) {
 }
 
 
-void Actor::UpdateActor(float deltaTime) {}
+void Actor::UpdateActor(float _deltaTime) {}
 
 
-void Actor::UpdateComponents(float deltaTime) {
+void Actor::UpdateComponents(float _deltaTime) {
 	for (auto component : m_components) {
-		component->Update(deltaTime);
+		component->Update(_deltaTime);
 	}
 }
 
 
-void Actor::AddComponent(Component& component) {
+void Actor::AddComponent(Component& _component) {
 	//既に追加されていたらreturn
-	auto it = std::find(m_components.begin(), m_components.end(), &component);
+	auto it = std::find(m_components.begin(), m_components.end(), &_component);
 	if (it != m_components.end()) return;
 	
 	for (; it != m_components.end(); ++it) {
-		if (component.GetUpdateOrder() < (*it)->GetUpdateOrder()) {
+		if (_component.GetUpdateOrder() < (*it)->GetUpdateOrder()) {
 			break;
 		}
 	}
-	m_components.insert(it, &component);
+	m_components.insert(it, &_component);
 }
 
 
-void Actor::RemoveComponent(Component& component) {
+void Actor::RemoveComponent(Component& _component) {
 	//コンポーネントが存在しなければreturn
-	auto it = std::find(m_components.begin(), m_components.end(), &component);
+	auto it = std::find(m_components.begin(), m_components.end(), &_component);
 	if (it == m_components.end()) return;
 	m_components.erase(it);
 }

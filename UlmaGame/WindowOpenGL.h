@@ -12,15 +12,15 @@ namespace UlmaEngine {
 			~WindowOpenGL();
 
 			bool CreateWindow() override;
-			void ClearDisplayBuffer() override;
-			void SwapBuffer() override;
-			void Finalize() override;
+			void ClearDisplayBuffer() const override;
+			void SwapBuffer() const override;
+			void Finalize() const override;
 
-			void PollEvent() override;
-			bool CanLoop() override;
-			float GetCurrentTime() override;
+			void PollEvent() const override;
+			bool CanLoop() const override;
+			float GetCurrentTime() const override;
 
-			inline GLFWwindow& GetWindow() { return *m_window; }
+			inline GLFWwindow& GetWindow() const { return *m_window; }
 			inline int GetWindowWidth() const { return m_windowWidth; }
 			inline int GetWindowHeight() const { return m_windowHeight; }
 			inline float GetScale() const { return m_scale; }

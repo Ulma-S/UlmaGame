@@ -6,6 +6,9 @@
 namespace UlmaEngine {
 	class Actor;
 
+	/*------------------------------*/
+	// 2Dの衝突情報を格納する構造体 //
+	/*------------------------------*/
 	struct HitData2D {
 		Actor* actor;	//衝突したActor
 		Math::Vector2 hitPosition;
@@ -14,6 +17,7 @@ namespace UlmaEngine {
 		HitData2D(Actor& actor, Math::Vector2 _hitPos);
 	};
 
+	// 2Dコライダーの基底クラス
 	class Collider2D : public Component {
 	public:
 		Collider2D(Actor& _owner);
@@ -30,6 +34,7 @@ namespace UlmaEngine {
 		bool m_isHit;
 	};
 
+	// 円形のコライダー
 	class CircleCollider : public Collider2D {
 	public:
 		CircleCollider(Actor& _owner);
@@ -42,11 +47,14 @@ namespace UlmaEngine {
 		float radius;
 	};
 
+	// 矩形のコライダー
 	class BoxCollider2D : public Collider2D {
+	public:
 		BoxCollider2D(Actor& _owner);
-		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos, float _width, float _height, float _rotation);
-
+		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos = Math::Vector3::zero, float _width = 100.0, float _height = 100.0, float _rotation = 0.0);
 		~BoxCollider2D();
+
+		virtual void Update(float _deltaTime) override;
 
 		Math::Vector3 centerPosition;
 		float width;

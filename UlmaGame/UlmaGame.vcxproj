@@ -138,10 +138,12 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FileLoader.cpp" />
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
@@ -160,6 +162,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileLoader.h" />
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
@@ -170,6 +173,7 @@
     <ClInclude Include="MathExt.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="SpriteType.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />

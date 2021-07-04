@@ -18,9 +18,9 @@ namespace UlmaEngine {
 			SpriteComponent(class Actor& owner, const char* assetName, ESpriteType type, int drawOrder = 100);
 			~SpriteComponent();
 
-			void Draw(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
+			void Draw(UlmaEngine::Core::ShaderLoaderOpenGL& shader) const;
 
-			inline int GetDrawOrder() { return m_drawOrder; }
+			inline int GetDrawOrder() const { return m_drawOrder; }
 			
 		private:
 			ESpriteType m_spriteType;

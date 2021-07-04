@@ -7,8 +7,10 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Debug.h"
+
 #include "Player.h"
 #include "Enemy.h"
+#include "Ground.h"
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
@@ -31,9 +33,11 @@ Core::ApplicationCore::ApplicationCore(IWindow& window)
 
 Core::ApplicationCore::~ApplicationCore(){
 	m_unlitShader->Unload();
+	m_spriteShader->Unload();
 	delete m_unlitShader;
+	delete m_spriteShader;
 
-	Finalize();
+	ApplicationCore::Finalize();
 }
 
 
@@ -41,7 +45,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	m_window = &window;
 
 	//ウィンドウ作成
-	bool success = m_window->CreateWindow();
+	auto success = m_window->CreateWindow();
 	if (!success) {
 		return false;
 	}
@@ -56,24 +60,29 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 
 	m_spriteShader = new ShaderLoaderOpenGL();
 	if (!m_spriteShader->LoadProgram("sprite.vert", "sprite.frag")) {
-		Debug::Log("spriteシェーダーのロードに失敗しました");
+		Debug::Log("spriteシェーダーのロードに失敗しました.");
 		return false;
 	}
 	m_spriteShader->Activate();
 
 	//テクスチャ作成
-	Texture* noodle = new Texture();
-	TextureProvider::GetInstance().AddTexture("noodle", *(new Texture("noodle.png")));
+	TextureProvider::GetInstance().RegisterTexture("noodle", *(new Texture("noodle.png")));
+	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
+	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
 	//Scene作成
-	Scene* gameScene = new Scene(SceneManager::GetInstance(), Game);
-	SceneManager::GetInstance().AddScene(Game, *gameScene);
+	auto gameScene = new Scene(SceneManager::GetInstance(), "Game");
 
 	//Actor作成
-	SampleGame::Player* player = new SampleGame::Player(*gameScene);
-	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
+	auto player = new SampleGame::Player(*gameScene);
+	//auto enemy = new SampleGame::Enemy(*gameScene);
+	auto ground = new SampleGame::Ground(*gameScene);
 
-	SceneManager::GetInstance().LoadScene(Game);
+	if (!SceneManager::GetInstance().LoadScene("Game")) {
+		Debug::LogError("シーンのロードに失敗しました.");
+		return false;
+	}
+
 	return true;
 }
 
@@ -90,7 +99,8 @@ void Core::ApplicationCore::Update() {
 		m_window->ClearDisplayBuffer();	//ディスプレイバッファのクリア
 
 		//ビュー変換
-		Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj((float)m_window->GetWindowWidth(), (float)m_window->GetWindowHeight());
+		Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj(static_cast<float>(m_window->GetWindowWidth()),
+			static_cast<float>(m_window->GetWindowHeight()));
 		m_unlitShader->SetUniformMat4("uViewProj", viewProj);
 		m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 

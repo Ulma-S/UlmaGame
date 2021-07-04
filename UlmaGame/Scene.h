@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "SceneList.h"
+#include <string>
 
 namespace UlmaEngine {
 	namespace Core {
@@ -14,7 +14,7 @@ namespace UlmaEngine {
 	namespace SceneManagement {
 		class Scene {
 		public:
-			Scene(class ISceneManager& sceneManager, ESceneType sceneType);
+			Scene(class ISceneManager& sceneManager, const std::string& sceneName);
 			virtual ~Scene();
 
 			void OnEnter();
@@ -29,13 +29,13 @@ namespace UlmaEngine {
 			void RemoveSprite(SpriteComponent& sprite);
 
 			template<class T>
-			void Instantiate(T t);
+			static T Instantiate(T _t);
 
 			inline std::vector<Actor*>& GetActors() { return m_sceneActors; }
 
 		protected:
 			class ISceneManager* m_sceneManager;
-			ESceneType m_sceneType;
+			std::string m_sceneName;
 			std::vector<Actor*> m_sceneActors;
 			std::vector<Actor*> m_pendingActors;
 			bool m_isUpdating;

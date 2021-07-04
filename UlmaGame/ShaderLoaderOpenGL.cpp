@@ -31,42 +31,43 @@ bool ShaderLoaderOpenGL::LoadProgram(const char*vert, const char* frag) {
 }
 
 
-void ShaderLoaderOpenGL::Activate() {
+void ShaderLoaderOpenGL::Activate() const {
 	glUseProgram(m_programId);
 }
 
 
-void ShaderLoaderOpenGL::Unload() {
+void ShaderLoaderOpenGL::Unload() const {
 	glDeleteProgram(m_programId);
 }
 
 
-void ShaderLoaderOpenGL::SetAttributeVertices(const char* attribName, float verticies[]) {
+void ShaderLoaderOpenGL::SetAttributeVertices(const char* attribName, float vertices[]) const
+{
 	int attLocation = glGetAttribLocation(m_programId, attribName);	//in変数の場所を検索
 	glEnableVertexAttribArray(attLocation);	//attribute変数を有効化する
-	glVertexAttribPointer(attLocation, 3, GL_FLOAT, GL_FALSE, 0, verticies);	//OpenGLからシェーダーに値をセット
+	glVertexAttribPointer(attLocation, 3, GL_FLOAT, GL_FALSE, 0, vertices);	//OpenGLからシェーダーに値をセット
 }
 
 
-void ShaderLoaderOpenGL::SetUniformInt(const char* uniformName, GLint value) {
+void ShaderLoaderOpenGL::SetUniformInt(const char* uniformName, GLint value) const {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform1i(loc, value);
 }
 
 
-void ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, GLfloat value) {
+void ShaderLoaderOpenGL::SetUniformFloat(const char* uniformName, GLfloat value) const {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform1f(loc, value);
 }
 
 
-void ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, const Math::Vector2& value) {
+void ShaderLoaderOpenGL::SetUniformVec2(const char* uniformName, const Math::Vector2& value) const {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	glUniform2f(loc, value.x, value.y);
 }
 
 
-void ShaderLoaderOpenGL::SetUniformMat4(const char* uniformName, const Math::Matrix4& value) {
+void ShaderLoaderOpenGL::SetUniformMat4(const char* uniformName, const Math::Matrix4& value) const {
 	int loc = glGetUniformLocation(m_programId, uniformName);
 	auto ptr = reinterpret_cast<const float*>(&value.mat[0][0]);
 	glUniformMatrix4fv(loc, 1, GL_TRUE, ptr);
@@ -108,7 +109,7 @@ bool ShaderLoaderOpenGL::ReadShaderSource(const char* name, std::vector<GLchar>&
 	//シェーダーファイルを開く
 	std::ifstream file(name, std::ios::binary);
 	if(file.fail()){
-		Debug::LogError((std::string)name + "ファイルの読み込みに失敗しました。");
+		Debug::LogError(static_cast<std::string>(name) + "ファイルの読み込みに失敗しました。");
 		return false;
 	}
 	file.seekg(0L, std::ios::end);
@@ -121,7 +122,7 @@ bool ShaderLoaderOpenGL::ReadShaderSource(const char* name, std::vector<GLchar>&
 	buffer[length] = '\0';
 
 	if (file.fail()) {
-		Debug::LogError((std::string)name + "ファイルの読み込みに失敗しました。");
+		Debug::LogError(static_cast<std::string>(name) + "ファイルの読み込みに失敗しました。");
 		file.close();
 		return false;
 	}

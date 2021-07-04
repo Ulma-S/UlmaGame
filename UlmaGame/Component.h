@@ -10,6 +10,8 @@ namespace UlmaEngine {
 
 		inline int GetUpdateOrder() const { return m_updateOrder; }
 
+		inline Actor& GetOwner() const { return *m_owner; }
+
 		bool enable;
 
 	protected:

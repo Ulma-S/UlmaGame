@@ -17,9 +17,6 @@
     <Filter Include="UlmaEngine\Source\Shader">
       <UniqueIdentifier>{66e26412-9d83-424d-9540-3939f7fdffb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UlmaEngine\Source\System">
-      <UniqueIdentifier>{de8353a7-2d6d-4c4c-a569-5176de9b3c11}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UlmaEngine\Header">
       <UniqueIdentifier>{8bc826da-89dd-4756-bc70-9f749ff995d1}</UniqueIdentifier>
     </Filter>
@@ -49,6 +46,9 @@
     </Filter>
     <Filter Include="UlmaEngine\Header\InputSystem">
       <UniqueIdentifier>{be51d7d2-1b27-4adc-8935-5f05440c9245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\Source\InputSystem">
+      <UniqueIdentifier>{de8353a7-2d6d-4c4c-a569-5176de9b3c11}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +95,7 @@
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
     <ClCompile Include="InputManagerOpenGL.cpp">
-      <Filter>UlmaEngine\Source\System</Filter>
+      <Filter>UlmaEngine\Source\InputSystem</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>UlmaEngine\Source</Filter>
@@ -103,16 +103,22 @@
     <ClCompile Include="Collider.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
+    <ClCompile Include="Collision.cpp">
+      <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>UlmaEngine\Source\Core</Filter>
+      <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -220,6 +226,12 @@
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>
