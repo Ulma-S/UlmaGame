@@ -9,12 +9,12 @@
 
 using namespace UlmaEngine;
 
-SceneManagement::Scene::Scene(ISceneManager& _sceneManager, const std::string& _sceneName)
-	: m_sceneManager(&_sceneManager)
-	, m_sceneName(_sceneName)
+SceneManagement::Scene::Scene(ISceneManager& sceneManager, const std::string& sceneName)
+	: m_sceneManager(&sceneManager)
+	, m_sceneName(sceneName)
 	, m_isUpdating(false)
 {
-	m_sceneManager->AddScene(_sceneName, *this);
+	m_sceneManager->AddScene(sceneName, *this);
 }
 
 
@@ -38,10 +38,10 @@ void SceneManagement::Scene::OnEnter() {
 }
 
 
-void SceneManagement::Scene::Update(float _deltaTime) {
+void SceneManagement::Scene::Update(float deltaTime) {
 	m_isUpdating = true;
 	for (auto actor : m_sceneActors) {
-		actor->Update(_deltaTime);
+		actor->Update(deltaTime);
 	}
 	DetectCollision();
 	m_isUpdating = false;
@@ -53,11 +53,11 @@ void SceneManagement::Scene::Update(float _deltaTime) {
 }
 
 
-void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& _shader) {
+void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
 	auto it = m_sprites.begin();
 
 	for (; it != m_sprites.end(); ++it) {
-		(*it)->Draw(_shader);
+		(*it)->Draw(shader);
  	}
 }
 
@@ -79,42 +79,42 @@ void SceneManagement::Scene::DetectCollision() {
 }
 
 
-void SceneManagement::Scene::AddActor(Actor& _actor) {
+void SceneManagement::Scene::AddActor(Actor& actor) {
 	//Šù‚É’Ç‰Á‚µ‚Ä‚¢‚½‚çreturn
-	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &_actor);
+	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) return;
 
 	if (m_isUpdating) {
-		m_pendingActors.emplace_back(&_actor);
+		m_pendingActors.emplace_back(&actor);
 	}
 	else {
-		m_sceneActors.emplace_back(&_actor);
+		m_sceneActors.emplace_back(&actor);
 	}
 }
 
 
-void SceneManagement::Scene::RemoveActor(Actor& _actor) {
-	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &_actor);
+void SceneManagement::Scene::RemoveActor(Actor& actor) {
+	auto it = std::find(m_sceneActors.begin(), m_sceneActors.end(), &actor);
 	if (it != m_sceneActors.end()) {
 		m_sceneActors.erase(it);
 	}
 }
 
 
-void SceneManagement::Scene::AddSprite(SpriteComponent& _sprite) {
-	int drawOrder = _sprite.GetDrawOrder();
+void SceneManagement::Scene::AddSprite(SpriteComponent& sprite) {
+	int drawOrder = sprite.GetDrawOrder();
 	auto it = m_sprites.begin();
 	for (; it != m_sprites.end(); ++it) {
 		if (drawOrder > (*it)->GetDrawOrder()) break;
 	}
-	m_sprites.insert(it, &_sprite);
+	m_sprites.insert(it, &sprite);
 }
 
 
-void SceneManagement::Scene::RemoveSprite(SpriteComponent& _sprite) {
+void SceneManagement::Scene::RemoveSprite(SpriteComponent& sprite) {
 	auto it = m_sprites.begin();
 	for (; it != m_sprites.end(); ++it) {
-		if ((*it) == &_sprite) break;
+		if ((*it) == &sprite) break;
 	}
 	if (it == m_sprites.end()) return;
 	
@@ -123,6 +123,6 @@ void SceneManagement::Scene::RemoveSprite(SpriteComponent& _sprite) {
 
 
 template<class T>
-void SceneManagement::Scene::Instantiate(T _t) {
-
+T SceneManagement::Scene::Instantiate(T _t) {
+	return nullptr;
 }

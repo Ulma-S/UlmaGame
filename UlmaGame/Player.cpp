@@ -8,9 +8,9 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	, m_moveSpeed(150.0f)
 	, m_bulletCount(0) {
 	new SpriteComponent(*this, "blue", ESpriteType::Rectangle, 90);
-	new BoxCollider2D(*this, Math::Vector3::zero, 300.0, 300.0, 0.0);
-	GetTransform().position = Math::Vector3(300.0, 100.0, 0.0);
-	GetTransform().scale = Math::Vector3(1.0f, 1.0f, 1.0f);
+	new BoxCollider2D(*this, Math::Vector3::zero, 100.0, 100.0, 0.0);
+	GetTransform().position = Math::Vector3(-300.0, -100.0, 0.0);
+	GetTransform().scale = Math::Vector3(1.0f/3.0f, 1.0f/3.0f, 1.0f/3.0f);
 	GetTransform().rotation.z = 0.0f;
 	this->name = "Player";
 }
@@ -25,10 +25,10 @@ void SampleGame::Player::Initialize() {
 
 
 void SampleGame::Player::UpdateActor(float _deltaTime) {
-	GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * m_moveSpeed * _deltaTime;
-	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * m_moveSpeed * _deltaTime;
-	//GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp()
-	//	+ InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * GetTransform().GetRight();
+	//GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * m_moveSpeed * _deltaTime;
+	//GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * m_moveSpeed * _deltaTime;
+	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp()
+		+ InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * GetTransform().GetRight();
 
 	//if (InputManagerOpenGL::GetInstance().GetKeyDown(EKeyCode::Space)) {
 	//	m_bullets[m_bulletCount]->Initialize(this->GetTransform().position, this->GetTransform().GetUp());

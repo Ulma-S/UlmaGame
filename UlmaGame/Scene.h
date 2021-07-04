@@ -14,22 +14,22 @@ namespace UlmaEngine {
 	namespace SceneManagement {
 		class Scene {
 		public:
-			Scene(class ISceneManager& sceneManager, const std::string& _sceneName);
+			Scene(class ISceneManager& sceneManager, const std::string& sceneName);
 			virtual ~Scene();
 
 			void OnEnter();
-			void Update(float _deltaTime);
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader);
+			void Update(float deltaTime);
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
 			void OnExit();
 			
-			void AddActor(Actor& _actor);
-			void RemoveActor(Actor& _actor);
+			void AddActor(Actor& actor);
+			void RemoveActor(Actor& actor);
 
-			void AddSprite(SpriteComponent& _sprite);
-			void RemoveSprite(SpriteComponent& _sprite);
+			void AddSprite(SpriteComponent& sprite);
+			void RemoveSprite(SpriteComponent& sprite);
 
 			template<class T>
-			void Instantiate(T _t);
+			static T Instantiate(T _t);
 
 			inline std::vector<Actor*>& GetActors() { return m_sceneActors; }
 

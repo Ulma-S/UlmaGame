@@ -1,6 +1,5 @@
 #include <string>
 #include "Texture.h"
-#include "FileLoader.h"
 #include "Debug.h"
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -9,9 +8,10 @@
 using namespace UlmaEngine::Core;
 
 Texture::Texture()
-	: m_texId(0)
-	, m_texWidth(600)
-	, m_texHeight(600)
+	: m_fileName("none")
+	,m_texId(0)
+	, m_texWidth(0)
+	, m_texHeight(0)
 	, m_texBuffer(nullptr)
 	, m_isActive(false)
 {
@@ -20,7 +20,8 @@ Texture::Texture()
 
 
 Texture::Texture(const char* fileName)
-	: m_texId(0)
+	: m_fileName(fileName)
+	, m_texId(0)
 	, m_texWidth(0)
 	, m_texHeight(0)
 	, m_texBuffer(nullptr)
@@ -82,6 +83,7 @@ bool Texture::CreateTexture(const char* fileName) {
 	
 	glGenTextures(1, &m_texId);
 
+
 	if (m_texId <= 0) {
 		Debug::LogError("テクスチャのロードに失敗しました.");
 		return false;
@@ -113,7 +115,7 @@ bool Texture::CreateTexture(const char* fileName) {
 }
 
 
-void Texture::Activate() {
+void Texture::Activate() const {
 	glBindTexture(GL_TEXTURE_2D, m_texId);
 }
 

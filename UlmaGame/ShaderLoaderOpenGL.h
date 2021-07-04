@@ -18,18 +18,18 @@ namespace UlmaEngine {
 			~ShaderLoaderOpenGL();
 
 			bool LoadProgram(const char* vert, const char* frag);
-			void Activate();	//シェーダーの使用を宣言
-			void Unload();	//プログラムオブジェクトのメモリ開放
+			void Activate() const;	//シェーダーの使用を宣言
+			void Unload() const;	//プログラムオブジェクトのメモリ開放
 
 
 			//シェーダーの頂点情報をセット
-			void SetAttributeVertices(const char* attrib, float vertices[]);
+			void SetAttributeVertices(const char* attrib, float vertices[]) const;
 
 			//シェーダーのuniform変数をセット
-			void SetUniformInt(const char* uniform, GLint value);
-			void SetUniformFloat(const char* uniform, GLfloat value);
-			void SetUniformVec2(const char* uniform, const Math::Vector2& value);
-			void SetUniformMat4(const char* uniform, const Math::Matrix4& value);
+			void SetUniformInt(const char* uniform, GLint value) const;
+			void SetUniformFloat(const char* uniform, GLfloat value) const;
+			void SetUniformVec2(const char* uniform, const Math::Vector2& value) const;
+			void SetUniformMat4(const char* uniform, const Math::Matrix4& value) const;
 
 		private:
 			GLuint CreateProgram(const char* vert, const char* frag);	//シェーダーファイルのコンパイル

@@ -37,7 +37,7 @@ Core::ApplicationCore::~ApplicationCore(){
 	delete m_unlitShader;
 	delete m_spriteShader;
 
-	Finalize();
+	ApplicationCore::Finalize();
 }
 
 
@@ -71,17 +71,18 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
 	//Scene作成
-	Scene* gameScene = new Scene(SceneManager::GetInstance(), "Game");
+	auto gameScene = new Scene(SceneManager::GetInstance(), "Game");
 
 	//Actor作成
-	SampleGame::Player* player = new SampleGame::Player(*gameScene);
-	SampleGame::Enemy* enemy = new SampleGame::Enemy(*gameScene);
-	SampleGame::Ground* ground = new SampleGame::Ground(*gameScene);
+	auto player = new SampleGame::Player(*gameScene);
+	//auto enemy = new SampleGame::Enemy(*gameScene);
+	auto ground = new SampleGame::Ground(*gameScene);
 
 	if (!SceneManager::GetInstance().LoadScene("Game")) {
 		Debug::LogError("シーンのロードに失敗しました.");
 		return false;
 	}
+
 	return true;
 }
 
@@ -98,7 +99,8 @@ void Core::ApplicationCore::Update() {
 		m_window->ClearDisplayBuffer();	//ディスプレイバッファのクリア
 
 		//ビュー変換
-		Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj((float)m_window->GetWindowWidth(), (float)m_window->GetWindowHeight());
+		Math::Matrix4 viewProj = Math::Matrix4::CreateViewProj(static_cast<float>(m_window->GetWindowWidth()),
+			static_cast<float>(m_window->GetWindowHeight()));
 		m_unlitShader->SetUniformMat4("uViewProj", viewProj);
 		m_spriteShader->SetUniformMat4("uViewProj", viewProj);
 
