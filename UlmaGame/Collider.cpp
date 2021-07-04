@@ -16,9 +16,9 @@ Collider2D::~Collider2D() {
 }
 
 
-void Collider2D::Update(float _deltaTime) {
+void Collider2D::Update(float deltaTime) {
 	if (!enable) return;
-	if (hitData.size() >= 1) {
+	if (!hitData.empty()) {
 		m_isHit = true;
 	}
 	else {
@@ -27,15 +27,15 @@ void Collider2D::Update(float _deltaTime) {
 }
 
 
-HitData2D::HitData2D(Actor& _actor)
-	: actor(&_actor)
+HitData2D::HitData2D(Actor& actor)
+	: actor(&actor)
 	, hitPosition(Math::Vector2(0.0f, 0.0f)) {
 }
 
 
-HitData2D::HitData2D(Actor& _actor, Math::Vector2 _hitPos) 
-	: actor(&_actor)
-	, hitPosition(_hitPos)
+HitData2D::HitData2D(Actor& actor, Math::Vector2 hitPos) 
+	: actor(&actor)
+	, hitPosition(hitPos)
 {}
 
 
@@ -46,18 +46,18 @@ CircleCollider::CircleCollider(Actor& owner)
 {}
 
 
-CircleCollider::CircleCollider(Actor& owner, const Math::Vector3& _centerPos, float _radius)
+CircleCollider::CircleCollider(Actor& owner, const Math::Vector3& centerPos, float radius)
 	: Collider2D(owner)
-	, centerPosition(_centerPos)
-	, radius(_radius)
+	, centerPosition(centerPos)
+	, radius(radius)
 {}
 
 
 CircleCollider::~CircleCollider(){}
 
 
-void CircleCollider::Update(float _deltaTime) {
-	Collider2D::Update(_deltaTime);
+void CircleCollider::Update(float deltaTime) {
+	Collider2D::Update(deltaTime);
 	centerPosition = m_owner->GetTransform().position;
 }
 
@@ -71,21 +71,20 @@ BoxCollider2D::BoxCollider2D(Actor& owner)
 { }
 
 
-BoxCollider2D::BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float _width, float _height, float _rotation)
+BoxCollider2D::BoxCollider2D(Actor& owner, Math::Vector3 centerPos, float width, float height, float rotation)
 	: Collider2D(owner)
 	, centerPosition(centerPos)
-	, width(_width)
-	, height(_height)
-	, rotation(_rotation)
+	, width(width)
+	, height(height)
+	, rotation(rotation)
 { }
 
 
 BoxCollider2D::~BoxCollider2D(){}
 
 
-void BoxCollider2D::Update(float _deltaTime) {
-	Collider2D::Update(_deltaTime);
+void BoxCollider2D::Update(float deltaTime) {
+	Collider2D::Update(deltaTime);
 	centerPosition = m_owner->GetTransform().position;
 	this->rotation = m_owner->GetTransform().rotation.z;
-	//if(m_owner->GetName() == "Player") Debug::Log(centerPosition);
 }

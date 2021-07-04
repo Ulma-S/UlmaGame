@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "Collider.h"
 #include "Collision.h"
+#include "Rigidbody2D.h"
 #include "SpriteComponent.h"
 #include "SpriteType.h"
 #include "Transform.h"

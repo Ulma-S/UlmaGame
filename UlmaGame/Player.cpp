@@ -9,7 +9,9 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	, m_bulletCount(0) {
 	new SpriteComponent(*this, "blue", ESpriteType::Rectangle, 90);
 	new BoxCollider2D(*this, Math::Vector3::zero, 100.0, 100.0, 0.0);
-	GetTransform().position = Math::Vector3(-300.0, -100.0, 0.0);
+	new Rigidbody2D(*this);
+	
+	GetTransform().position = Math::Vector3(-300.0f, -100.0f, 0.0f);
 	GetTransform().scale = Math::Vector3(1.0f/3.0f, 1.0f/3.0f, 1.0f/3.0f);
 	GetTransform().rotation.z = 0.0f;
 	this->name = "Player";
@@ -21,6 +23,7 @@ SampleGame::Player::~Player() {
 
 
 void SampleGame::Player::Initialize() {
+	this->GetComponent<Rigidbody2D>()->SetVelocity(Math::Vector2(1.0f, 0.0f));
 }
 
 
@@ -57,10 +60,18 @@ void SampleGame::Player::UpdateActor(float _deltaTime) {
 	auto col = this->GetComponent<Collider2D>();
 	if(col != nullptr){
 		if (col->GetIsHit()) {
-			Debug::Log(col->hitData[0].actor->GetName());
+			for (auto element : col->hitData) {
+				//Debug::Log(element.actor->GetName());
+			}
 		}
 		else {
-			Debug::Log("NotHit");
+			//Debug::Log("NotHit");
 		}
 	}
+
+	if(InputManagerOpenGL::GetInstance().GetKeyDown(EKeyCode::Space)) {
+		this->GetComponent<Rigidbody2D>()->SetAcceleration(Math::Vector2(0.0f, 1.0f));
+	}
+
+	//Debug::Log(this->GetComponent<Rigidbody2D>()->GetVelocity());
 }

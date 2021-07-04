@@ -2,12 +2,15 @@
 #include <iostream>
 
 namespace Math {
+	class Vector3;
+	
 	class Vector2 {
 	public:
 		float x, y;
 
 		Vector2();
-		Vector2(float _x, float _y);
+		Vector2(float x, float y);
+		Vector2(Vector3& vec);
 		~Vector2();
 
 		float Magnitude() const;	//‘å‚«‚³‚ð•Ô‚·

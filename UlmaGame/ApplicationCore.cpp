@@ -75,7 +75,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 
 	//ActorçÏê¨
 	auto player = new SampleGame::Player(*gameScene);
-	//auto enemy = new SampleGame::Enemy(*gameScene);
+	auto enemy = new SampleGame::Enemy(*gameScene);
 	auto ground = new SampleGame::Ground(*gameScene);
 
 	if (!SceneManager::GetInstance().LoadScene("Game")) {

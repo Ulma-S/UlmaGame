@@ -9,7 +9,7 @@ namespace SampleGame {
 	class Player : public Actor {
 	public:
 		Player(SceneManagement::Scene& scene);
-		~Player();
+		~Player() override;
 
 		void Initialize() override;
 		void UpdateActor(float deltaTime) override;
