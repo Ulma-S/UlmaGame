@@ -72,6 +72,11 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
+	for (int i = 1; i <= 5; ++i) {
+		auto name = "Idle/idle_00" + std::to_string(i) + ".png";
+		TextureProvider::GetInstance().RegisterTexture("idle" + std::to_string(i), *(new Texture(name.c_str())));
+	}
+	
 	for (int i = 1; i <= 10; i++) {
 		if (i <= 9) {
 			auto name = "Run/run_00" + std::to_string(i) + ".png";

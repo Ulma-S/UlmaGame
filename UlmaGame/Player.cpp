@@ -9,17 +9,31 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
  {
 	new BoxCollider2D(*this, Math::Vector3::zero, 120.0, 120.0, 0.0);
 	//new Rigidbody2D(*this);
-	
+
+	//Animationèâä˙âª
 	auto animator = new Animator(*this);
-	auto animation = new Animation(*this, "run", 0.1f);
-	SpriteComponent* sprites[10];
+	
+	auto idleAnimation = new Animation(*this, *animator, "idle", 0.1f);
+	std::vector<SpriteComponent*> idleSprites;
+	for(int i=1; i <= 5; ++i) {
+		auto name = "idle" + std::to_string(i);
+		idleSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
+	}
+	idleAnimation->RegisterSprite(idleSprites);
+	animator->RegisterAnimation(*idleAnimation);
+
+	
+	auto runAnimation = new Animation(*this, *animator, "run", 0.1f);
+	std::vector<SpriteComponent*> runSprites;
 	for(int i=1; i <= 10; ++i) {
 		auto name = "run" + std::to_string(i);
-		sprites[i-1] = new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90);
+		runSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
 	}
-	animation->RegisterSprite(sprites);
-	animator->RegisterAnimation(*animation);
-	animator->SetAnimation("run");
+	runAnimation->RegisterSprite(runSprites);
+	animator->RegisterAnimation(*runAnimation);
+	
+	animator->SetAnimation("idle");
+	
 	
 	GetTransform().position = Math::Vector3(-300.0f, 100.0f, 0.0f);
 	GetTransform().scale = Math::Vector3(1.0f/3.0f, 1.0f/3.0f, 1.0f/3.0f);
@@ -47,5 +61,9 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 		if(col->GetIsHit()) {
 			this->GetTransform().position.y = currPos.y;
 		}
+	}
+
+	if(m_inputManager->GetKeyDown(EKeyCode::Space)) {
+		this->GetComponent<Animator>()->SetAnimation("run");
 	}
 }

@@ -17,6 +17,8 @@ namespace UlmaEngine {
 
 		void SetAnimation(const std::string& animationName);
 
+		inline Animation& GetCurrentAnimation() const { return *m_currentAnimation; }
+
 	private:
 		Animation* m_currentAnimation;
 		std::unordered_map<std::string, Animation*> m_animations;

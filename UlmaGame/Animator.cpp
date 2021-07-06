@@ -1,5 +1,6 @@
 #include "Animator.h"
 #include "Animation.h"
+#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -32,11 +33,13 @@ void Animator::SetAnimation(const std::string& animationName) {
 	auto it = m_animations.find(animationName);
 
 	if(it != m_animations.end()) {
-		if (m_currentAnimation != nullptr) {
-			m_currentAnimation->enable = false;
+		for (auto& animation : m_animations) {
+			animation.second->enable = false;
+			animation.second->Inactivate();
 		}
+
 		m_currentAnimation = m_animations[animationName];
 		m_currentAnimation->enable = true;
-		m_currentAnimation->Initialize();
+		m_currentAnimation->Activate();
 	}
 }
