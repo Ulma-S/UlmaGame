@@ -27,7 +27,7 @@ namespace UlmaEngine {
 		virtual void Initialize();
 
 		//Actor全体を更新するメソッド.
-		void Update(float _deltaTime);
+		void Update(float deltaTime);
 
 		//Componentを追加するメソッド.
 		void AddComponent(class Component& _component);
@@ -52,6 +52,23 @@ namespace UlmaEngine {
 			return nullptr;
 		}
 
+		//ジェネリクス型に対応するComponentが存在するか確認するメソッド.
+		//存在していればtrue, しなければfalse.
+		//存在している場合、引数のoutにはその参照が入る.
+		template<class T>
+		inline bool TryGetComponent(T* out) const {
+			auto it = m_components.begin();
+			for(; it != m_components.end(); ++it) {
+				T* t = dynamic_cast<T*>(*it);
+				if(t != nullptr) {
+					out = t;
+					return true;
+				}
+			}
+			return false;
+		}
+		
+
 		int layer;
 
 		//Actorの状態.
@@ -59,7 +76,7 @@ namespace UlmaEngine {
 
 	protected:
 		//Actor自身を更新するメソッド(オーバライド可能).
-		virtual void UpdateActor(float _deltaTime);
+		virtual void UpdateActor(float deltaTime);
 
 		UlmaEngine::SceneManagement::Scene* m_scene;
 		std::vector<class Component*> m_components;
@@ -67,7 +84,7 @@ namespace UlmaEngine {
 
 	private:
 		//ActorにアタッチされたComponentを更新するメソッド.
-		void UpdateComponents(float _deltaTime);
+		void UpdateComponents(float deltaTime);
 		UlmaEngine::Transform* m_transform;
 	};
 }

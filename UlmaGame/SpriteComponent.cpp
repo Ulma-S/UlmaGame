@@ -97,7 +97,9 @@ void SetCircleVertices() {
 }
 
 void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) const {
-	if (!enable) return;
+	if (!enable) {
+		return;
+	}
 	auto texture = Core::TextureProvider::GetInstance().GetTexture(m_assetName);
 
 	if (texture != nullptr) {

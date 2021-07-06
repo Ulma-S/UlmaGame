@@ -118,7 +118,16 @@
     <ClCompile Include="Ground.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
+    <ClCompile Include="Rigidbody2D.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -231,7 +240,16 @@
     <ClInclude Include="Ground.h">
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Rigidbody.h">
+    <ClInclude Include="Rigidbody2D.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,7 +5,7 @@
 
 using namespace UlmaEngine;
 
-void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, Math::Vector2 hitPos);
+void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, const Math::Vector2& hitPos);
 void RemoveHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2);
 
 bool Collision::ComputeIntersection(Actor& a1, Actor& a2) {
@@ -173,7 +173,7 @@ bool Collision::Intersect(const Math::Vector2& _a1, const Math::Vector2& _a2, co
 }
 
 
-void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, Math::Vector2 hitPos) {
+void AddHitData2D(Actor& a1, Actor& a2, Collider2D& c1, Collider2D& c2, const Math::Vector2& hitPos) {
 	//Šù‚É’Ç‰Á‚³‚ê‚Ä‚¢‚é‚©Šm”F
 	auto it = c1.hitData.begin();
 	for (; it != c1.hitData.end(); ++it) {

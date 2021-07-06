@@ -5,11 +5,37 @@ using namespace UlmaEngine::InputSystem;
 
 SampleGame::Player::Player(SceneManagement::Scene& scene)
 	: Actor::Actor(scene)
-	, m_moveSpeed(150.0f)
-	, m_bulletCount(0) {
-	new SpriteComponent(*this, "blue", ESpriteType::Rectangle, 90);
-	new BoxCollider2D(*this, Math::Vector3::zero, 100.0, 100.0, 0.0);
-	GetTransform().position = Math::Vector3(-300.0, -100.0, 0.0);
+	, m_inputManager(ServiceLocator::Resolve<InputSystem::IInputManager>())
+ {
+	new BoxCollider2D(*this, Math::Vector3::zero, 120.0, 120.0, 0.0);
+	//new Rigidbody2D(*this);
+
+	//Animationèâä˙âª
+	auto animator = new Animator(*this);
+	
+	auto idleAnimation = new Animation(*this, *animator, "idle", 0.1f);
+	std::vector<SpriteComponent*> idleSprites;
+	for(int i=1; i <= 5; ++i) {
+		auto name = "idle" + std::to_string(i);
+		idleSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
+	}
+	idleAnimation->RegisterSprite(idleSprites);
+	animator->RegisterAnimation(*idleAnimation);
+
+	
+	auto runAnimation = new Animation(*this, *animator, "run", 0.1f);
+	std::vector<SpriteComponent*> runSprites;
+	for(int i=1; i <= 10; ++i) {
+		auto name = "run" + std::to_string(i);
+		runSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
+	}
+	runAnimation->RegisterSprite(runSprites);
+	animator->RegisterAnimation(*runAnimation);
+	
+	animator->SetAnimation("idle");
+	
+	
+	GetTransform().position = Math::Vector3(-300.0f, 100.0f, 0.0f);
 	GetTransform().scale = Math::Vector3(1.0f/3.0f, 1.0f/3.0f, 1.0f/3.0f);
 	GetTransform().rotation.z = 0.0f;
 	this->name = "Player";
@@ -24,43 +50,20 @@ void SampleGame::Player::Initialize() {
 }
 
 
-void SampleGame::Player::UpdateActor(float _deltaTime) {
-	//GetTransform().rotation.z -= InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * m_moveSpeed * _deltaTime;
-	//GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * m_moveSpeed * _deltaTime;
-	GetTransform().position += InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Vertical) * GetTransform().GetUp()
-		+ InputManagerOpenGL::GetInstance().GetAxis(EAxisType::Horizontal) * GetTransform().GetRight();
-
-	//if (InputManagerOpenGL::GetInstance().GetKeyDown(EKeyCode::Space)) {
-	//	m_bullets[m_bulletCount]->Initialize(this->GetTransform().position, this->GetTransform().GetUp());
-	//	m_bullets[m_bulletCount]->state = EActorState::Active;
-	//	m_bulletCount++;
-	//	if (m_bulletCount >= m_bullets.size()) {
-	//		m_bulletCount = 0;
-	//	}
-	//}
-
-	//for (int i = 0; i < m_bullets.size(); ++i) {
-	//	auto col = m_bullets[i]->GetComponent<Collider2D>();
-	//	if (col->hitData.size() >= 1) {
-	//		for (int j = 0; j < col->hitData.size(); ++j) {
-	//			auto name = m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->GetName();
-	//			if (name != "Bullet" && name != "Player") {
-	//				Debug::Log(name);
-	//				
-	//				m_bullets[i]->GetComponent<Collider2D>()->hitData[j].actor->state = EActorState::Inactive;	//EnemyÇîÒactiveÇ…
-	//				m_bullets[i]->state = EActorState::Inactive;
-	//			}
-	//		}
-	//	}
-	//}
+void SampleGame::Player::UpdateActor(float deltaTime) {
+	GetTransform().position += m_inputManager->GetAxis(EAxisType::Vertical) * GetTransform().GetUp()
+		+ m_inputManager->GetAxis(EAxisType::Horizontal) * GetTransform().GetRight();
 	
 	auto col = this->GetComponent<Collider2D>();
-	if(col != nullptr){
-		if (col->GetIsHit()) {
-			Debug::Log(col->hitData[0].actor->GetName());
+	auto currPos = this->GetTransform().position;
+	this->GetTransform().position.y -= 800.0f * deltaTime;
+	if(col != nullptr) {
+		if(col->GetIsHit()) {
+			this->GetTransform().position.y = currPos.y;
 		}
-		else {
-			Debug::Log("NotHit");
-		}
+	}
+
+	if(m_inputManager->GetKeyDown(EKeyCode::Space)) {
+		this->GetComponent<Animator>()->SetAnimation("run");
 	}
 }

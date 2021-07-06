@@ -14,7 +14,7 @@ namespace UlmaEngine {
 		Math::Vector2 hitPosition;
 
 		HitData2D(Actor& actor);
-		HitData2D(Actor& actor, Math::Vector2 _hitPos);
+		HitData2D(Actor& actor, Math::Vector2 hitPos);
 	};
 
 	// 2Dコライダーの基底クラス
@@ -26,7 +26,7 @@ namespace UlmaEngine {
 		bool isTrigger;	//Triggerか？
 		std::vector<HitData2D> hitData;
 
-		void Update(float _deltaTime) override;
+		void Update(float deltaTime) override;
 
 		inline bool GetIsHit() const { return m_isHit; }
 
@@ -38,10 +38,10 @@ namespace UlmaEngine {
 	class CircleCollider : public Collider2D {
 	public:
 		CircleCollider(Actor& _owner);
-		CircleCollider(Actor& _owner, const Math::Vector3& _centerPos, float _radius);
+		CircleCollider(Actor& _owner, const Math::Vector3& centerPos, float radius);
 		~CircleCollider();
 
-		virtual void Update(float _deltaTime) override;
+		virtual void Update(float deltaTime) override;
 
 		Math::Vector3 centerPosition;
 		float radius;
@@ -51,10 +51,10 @@ namespace UlmaEngine {
 	class BoxCollider2D : public Collider2D {
 	public:
 		BoxCollider2D(Actor& _owner);
-		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos = Math::Vector3::zero, float _width = 100.0, float _height = 100.0, float _rotation = 0.0);
+		BoxCollider2D(Actor& _owner, Math::Vector3 _centerPos = Math::Vector3::zero, float width = 100.0, float height = 100.0, float rotation = 0.0);
 		~BoxCollider2D();
 
-		virtual void Update(float _deltaTime) override;
+		virtual void Update(float deltaTime) override;
 
 		Math::Vector3 centerPosition;
 		float width;

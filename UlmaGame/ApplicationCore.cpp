@@ -12,6 +12,8 @@
 #include "Enemy.h"
 #include "Ground.h"
 
+
+
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
 
@@ -70,12 +72,28 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
+	for (int i = 1; i <= 5; ++i) {
+		auto name = "Idle/idle_00" + std::to_string(i) + ".png";
+		TextureProvider::GetInstance().RegisterTexture("idle" + std::to_string(i), *(new Texture(name.c_str())));
+	}
+	
+	for (int i = 1; i <= 10; i++) {
+		if (i <= 9) {
+			auto name = "Run/run_00" + std::to_string(i) + ".png";
+			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
+		}else {
+			auto name = "Run/run_0" + std::to_string(i) + ".png";
+			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
+		}
+	}
+
+	
 	//Sceneì¬
 	auto gameScene = new Scene(SceneManager::GetInstance(), "Game");
 
 	//Actorì¬
 	auto player = new SampleGame::Player(*gameScene);
-	//auto enemy = new SampleGame::Enemy(*gameScene);
+	auto enemy = new SampleGame::Enemy(*gameScene);
 	auto ground = new SampleGame::Ground(*gameScene);
 
 	if (!SceneManager::GetInstance().LoadScene("Game")) {

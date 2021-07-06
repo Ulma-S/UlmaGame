@@ -26,13 +26,13 @@ namespace UlmaEngine {
 		public:
 			virtual ~IInputManager() = default;
 
-			virtual const bool GetKey(EKeyCode key) = 0;
-			virtual const bool GetKeyDown(EKeyCode key) = 0;
+			virtual bool GetKey(EKeyCode key) = 0;
+			virtual bool GetKeyDown(EKeyCode key) = 0;
 
-			virtual const bool GetMouseButton(EMouseButton mouse) = 0;
-			virtual const bool GetMouseButtonDown(EMouseButton mouse) = 0;
+			virtual bool GetMouseButton(EMouseButton mouse) = 0;
+			virtual bool GetMouseButtonDown(EMouseButton mouse) = 0;
 
-			virtual const float GetAxis(EAxisType axis) = 0;
+			virtual float GetAxis(EAxisType axis) = 0;
 
 			virtual const Math::Vector2 GetMousePos() = 0;
 		};
