@@ -52,6 +52,23 @@ namespace UlmaEngine {
 			return nullptr;
 		}
 
+		//ジェネリクス型に対応するComponentが存在するか確認するメソッド.
+		//存在していればtrue, しなければfalse.
+		//存在している場合、引数のoutにはその参照が入る.
+		template<class T>
+		inline bool TryGetComponent(T* out) const {
+			auto it = m_components.begin();
+			for(; it != m_components.end(); ++it) {
+				T* t = dynamic_cast<T*>(*it);
+				if(t != nullptr) {
+					out = t;
+					return true;
+				}
+			}
+			return false;
+		}
+		
+
 		int layer;
 
 		//Actorの状態.

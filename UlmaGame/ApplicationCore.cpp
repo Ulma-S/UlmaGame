@@ -6,11 +6,16 @@
 #include "TextureProvider.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "ServiceLocator.h"
+#include "IInputManager.h"
+#include "InputManagerOpenGL.h"
 #include "Debug.h"
 
 #include "Player.h"
 #include "Enemy.h"
 #include "Ground.h"
+
+#include <any>
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
@@ -70,6 +75,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 
+	
 	//SceneçÏê¨
 	auto gameScene = new Scene(SceneManager::GetInstance(), "Game");
 

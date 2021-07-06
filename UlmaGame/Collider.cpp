@@ -24,6 +24,8 @@ void Collider2D::Update(float deltaTime) {
 	else {
 		m_isHit = false;
 	}
+	if(m_owner->GetName() == "Player") {
+	}
 }
 
 

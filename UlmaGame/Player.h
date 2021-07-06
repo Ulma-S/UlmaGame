@@ -1,5 +1,6 @@
 #pragma once
 #include "UlmaEngine.h"
+#include "IInputManager.h"
 
 using namespace UlmaEngine;
 
@@ -15,8 +16,7 @@ namespace SampleGame {
 		void UpdateActor(float deltaTime) override;
 
 	private:
+		InputSystem::IInputManager* m_inputManager;
 		std::vector<Bullet*> m_bullets;
-		float m_moveSpeed;
-		int m_bulletCount;
 	};
 };

@@ -121,6 +121,9 @@
     <ClCompile Include="Rigidbody2D.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -232,6 +235,9 @@
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody2D.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>

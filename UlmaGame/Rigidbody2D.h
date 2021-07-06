@@ -14,9 +14,21 @@ namespace UlmaEngine {
 
 		void Update(float deltaTime) override;
 
+		inline void AddVelocity(const Math::Vector2& value) { m_velocity += value; }
+		inline void AddVelocityX(float value) { m_velocity.x += value; }
+		inline void AddVelocityY(float value) { m_velocity.y += value; }
+
+		inline void AddAcceleration(const Math::Vector2& value) { m_acceleration += value; }
+		inline void AddAccelerationX(float value) { m_acceleration.x += value; }
+		inline void AddAccelerationY(float value) { m_acceleration.y += value; }
+		
+		inline void SetVelocityX(float value) { m_velocity.x = value; }
+		inline void SetVelocityY(float value) { m_velocity.y = value; }
 		inline Math::Vector2 GetVelocity() const { return m_velocity; }
 		inline void SetVelocity(const Math::Vector2& velocity) { m_velocity = velocity; }
 
+		inline void SetAccelerationX(float value) { m_acceleration.x = value; }
+		inline void SetAccelerationY(float value) { m_acceleration.y = value; }
 		inline Math::Vector2 GetAcceleration() const { return m_acceleration; }
 		inline void SetAcceleration(const Math::Vector2& acceleration) { m_acceleration = acceleration; }
 		

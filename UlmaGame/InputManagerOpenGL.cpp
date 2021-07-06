@@ -12,7 +12,7 @@ InputManagerOpenGL::InputManagerOpenGL() : m_window(nullptr), m_isPressed(false)
 InputManagerOpenGL::~InputManagerOpenGL(){}
 
 
-const bool InputManagerOpenGL::GetKey(EKeyCode key) {
+bool InputManagerOpenGL::GetKey(EKeyCode key) {
 	bool keyState = false;
 
 	switch (key) {
@@ -203,7 +203,7 @@ const bool InputManagerOpenGL::GetKey(EKeyCode key) {
 }
 
 
-const bool InputManagerOpenGL::GetKeyDown(EKeyCode key) {
+bool InputManagerOpenGL::GetKeyDown(EKeyCode key) {
 	bool keyState = false;
 	switch (key) {
 	case Q:
@@ -874,7 +874,7 @@ const bool InputManagerOpenGL::GetKeyDown(EKeyCode key) {
 }
 
 
-const bool InputManagerOpenGL::GetMouseButton(EMouseButton mouse) {
+bool InputManagerOpenGL::GetMouseButton(EMouseButton mouse) {
 	bool mouseState = false;
 
 	switch (mouse) {
@@ -899,7 +899,7 @@ const bool InputManagerOpenGL::GetMouseButton(EMouseButton mouse) {
 }
 
 
-const bool InputManagerOpenGL::GetMouseButtonDown(EMouseButton mouse) {
+bool InputManagerOpenGL::GetMouseButtonDown(EMouseButton mouse) {
 	bool mouseState = false;
 
 	switch (mouse) {
@@ -957,7 +957,7 @@ const bool InputManagerOpenGL::GetMouseButtonDown(EMouseButton mouse) {
 }
 
 
-const float InputManagerOpenGL::GetAxis(EAxisType axis) {
+float InputManagerOpenGL::GetAxis(EAxisType axis) {
 	float value = 0.0f;
 
 	switch (axis) {
@@ -1010,5 +1010,5 @@ const Math::Vector2 InputManagerOpenGL::GetMousePos() {
 	if (y < 0) {
 		y = 0;
 	}
-	return Math::Vector2((float)x, (float)y);
+	return Math::Vector2(static_cast<float>(x), static_cast<float>(y));
 }

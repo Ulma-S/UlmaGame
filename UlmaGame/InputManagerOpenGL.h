@@ -8,25 +8,23 @@ namespace UlmaEngine {
 	}
 
 	namespace InputSystem {
-		class InputManagerOpenGL : public Singleton<InputManagerOpenGL>, IInputManager {
+		class InputManagerOpenGL : public IInputManager {
 		public:
-			~InputManagerOpenGL();
+			InputManagerOpenGL();
+			~InputManagerOpenGL() override;
 
-			const bool GetKey(EKeyCode key) override;
-			const bool GetKeyDown(EKeyCode key) override;
+			bool GetKey(EKeyCode key) override;
+			bool GetKeyDown(EKeyCode key) override;
 
-			const bool GetMouseButton(EMouseButton mouse) override;
-			const bool GetMouseButtonDown(EMouseButton mouse) override;
+			bool GetMouseButton(EMouseButton mouse) override;
+			bool GetMouseButtonDown(EMouseButton mouse) override;
 
-			const float GetAxis(EAxisType axis) override;
+			float GetAxis(EAxisType axis) override;
 
 			const Math::Vector2 GetMousePos() override;
 
 			inline void SetWindow(Core::WindowOpenGL& window) { m_window = &window; }
 
-		protected:
-			friend Singleton<InputManagerOpenGL>;
-			InputManagerOpenGL();
 
 		private:
 			Core::WindowOpenGL* m_window;

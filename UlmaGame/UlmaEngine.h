@@ -14,3 +14,4 @@
 #include "Scene.h"
 #include "Debug.h"
 #include "InputManagerOpenGL.h"
+#include "ServiceLocator.h"
