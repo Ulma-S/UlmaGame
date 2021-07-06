@@ -15,3 +15,5 @@
 #include "Debug.h"
 #include "InputManagerOpenGL.h"
 #include "ServiceLocator.h"
+#include "Animation.h"
+#include "Animator.h"

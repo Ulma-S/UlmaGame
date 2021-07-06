@@ -22,6 +22,6 @@ void SampleGame::Ground::Initialize() {
 }
 
 
-void SampleGame::Ground::UpdateActor(float _deltaTime) {
+void SampleGame::Ground::UpdateActor(float deltaTime) {
 
 }

@@ -86,5 +86,5 @@ bool WindowOpenGL::CanLoop() const {
 
 
 float WindowOpenGL::GetCurrentTime() const {
-	return (float) glfwGetTime();
+	return static_cast<float>(glfwGetTime());
 }

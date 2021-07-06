@@ -1,7 +1,6 @@
 #include "Rigidbody2D.h"
 #include "Actor.h"
 #include "Collider.h"
-#include "Collision.h"
 #include "Debug.h"
 
 using namespace UlmaEngine;

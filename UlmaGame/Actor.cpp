@@ -28,14 +28,14 @@ Actor::~Actor(){
 void Actor::Initialize(){}
 
 
-void Actor::Update(float _deltaTime) {
+void Actor::Update(float deltaTime) {
 	if (state == EActorState::Active) {
 		for (auto comp : m_components) {
 			comp->enable = true;
 		}
 		m_transform->ComputeWorldTransform();
-		UpdateComponents(_deltaTime);
-		UpdateActor(_deltaTime);
+		UpdateComponents(deltaTime);
+		UpdateActor(deltaTime);
 		m_transform->ComputeWorldTransform();
 	}
 	else {
@@ -46,12 +46,12 @@ void Actor::Update(float _deltaTime) {
 }
 
 
-void Actor::UpdateActor(float _deltaTime) {}
+void Actor::UpdateActor(float deltaTime) {}
 
 
-void Actor::UpdateComponents(float _deltaTime) {
+void Actor::UpdateComponents(float deltaTime) {
 	for (auto component : m_components) {
-		component->Update(_deltaTime);
+		if(component->enable) component->Update(deltaTime);
 	}
 }
 

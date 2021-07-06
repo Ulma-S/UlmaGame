@@ -27,7 +27,7 @@ namespace UlmaEngine {
 		virtual void Initialize();
 
 		//Actor全体を更新するメソッド.
-		void Update(float _deltaTime);
+		void Update(float deltaTime);
 
 		//Componentを追加するメソッド.
 		void AddComponent(class Component& _component);
@@ -76,7 +76,7 @@ namespace UlmaEngine {
 
 	protected:
 		//Actor自身を更新するメソッド(オーバライド可能).
-		virtual void UpdateActor(float _deltaTime);
+		virtual void UpdateActor(float deltaTime);
 
 		UlmaEngine::SceneManagement::Scene* m_scene;
 		std::vector<class Component*> m_components;
@@ -84,7 +84,7 @@ namespace UlmaEngine {
 
 	private:
 		//ActorにアタッチされたComponentを更新するメソッド.
-		void UpdateComponents(float _deltaTime);
+		void UpdateComponents(float deltaTime);
 		UlmaEngine::Transform* m_transform;
 	};
 }

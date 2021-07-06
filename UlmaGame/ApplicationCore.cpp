@@ -6,16 +6,13 @@
 #include "TextureProvider.h"
 #include "SceneManager.h"
 #include "Scene.h"
-#include "ServiceLocator.h"
-#include "IInputManager.h"
-#include "InputManagerOpenGL.h"
 #include "Debug.h"
 
 #include "Player.h"
 #include "Enemy.h"
 #include "Ground.h"
 
-#include <any>
+
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
@@ -74,6 +71,16 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("noodle", *(new Texture("noodle.png")));
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
+
+	for (int i = 1; i <= 10; i++) {
+		if (i <= 9) {
+			auto name = "Run/run_00" + std::to_string(i) + ".png";
+			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
+		}else {
+			auto name = "Run/run_0" + std::to_string(i) + ".png";
+			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
+		}
+	}
 
 	
 	//Sceneì¬

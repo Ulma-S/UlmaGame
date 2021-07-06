@@ -124,6 +124,12 @@
     <ClCompile Include="ServiceLocator.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -238,6 +244,12 @@
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
     <ClInclude Include="ServiceLocator.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>
