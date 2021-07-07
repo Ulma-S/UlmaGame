@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Player.h"
 #include "Bullet.h"
 
@@ -51,8 +52,8 @@ void SampleGame::Player::Initialize() {
 
 
 void SampleGame::Player::UpdateActor(float deltaTime) {
-	GetTransform().position += m_inputManager->GetAxis(EAxisType::Vertical) * GetTransform().GetUp()
-		+ m_inputManager->GetAxis(EAxisType::Horizontal) * GetTransform().GetRight();
+	GetTransform().position += m_inputManager->GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * deltaTime
+		+ m_inputManager->GetAxis(EAxisType::Horizontal) * GetTransform().GetRight() * deltaTime * 120.0f;
 	
 	auto col = this->GetComponent<Collider2D>();
 	auto currPos = this->GetTransform().position;
@@ -63,7 +64,20 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 		}
 	}
 
-	if(m_inputManager->GetKeyDown(EKeyCode::Space)) {
+	if(GetTransform().scale.x > 0) {
+		if(m_inputManager->GetKey(EKeyCode::A)) {
+			GetTransform().scale.x = -std::abs(GetTransform().scale.x);
+		}
+	}else if(GetTransform().scale.x < 0) {
+		if(m_inputManager->GetKey(EKeyCode::D)) {
+			GetTransform().scale.x = std::abs(GetTransform().scale.x);
+		}
+	}
+	
+	if(m_inputManager->GetKey(EKeyCode::A) || m_inputManager->GetKey(EKeyCode::D)) {
 		this->GetComponent<Animator>()->SetAnimation("run");
+
+	}else {
+		this->GetComponent<Animator>()->SetAnimation("idle");
 	}
 }

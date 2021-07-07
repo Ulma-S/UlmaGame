@@ -12,22 +12,22 @@ SceneManagement::SceneManager::~SceneManager() {
 }
 
 
-void SceneManagement::SceneManager::UpdateScene(float _deltaTime){
+void SceneManagement::SceneManager::UpdateScene(float deltaTime){
 	if (m_currentScene == nullptr) return;
-	m_currentScene->Update(_deltaTime);
+	m_currentScene->Update(deltaTime);
 }
 
 
-void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& _shader) {
-	m_currentScene->GenerateOutput(_shader);
+void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
+	m_currentScene->GenerateOutput(shader);
 }
 
 
-bool SceneManagement::SceneManager::LoadScene(const std::string& _sceneName) {
+bool SceneManagement::SceneManager::LoadScene(const std::string& sceneName) {
 	//シーンが存在しなければreturn
-	auto it = m_sceneMap.find(_sceneName);
+	auto it = m_sceneMap.find(sceneName);
 	if (it == m_sceneMap.end()) {
-		UlmaEngine::Debug::LogError(_sceneName + "シーンが存在しません。");
+		UlmaEngine::Debug::LogError(sceneName + "シーンが存在しません.");
 		return false;
 	}
 
@@ -43,16 +43,16 @@ bool SceneManagement::SceneManager::LoadScene(const std::string& _sceneName) {
 }
 
 
-void SceneManagement::SceneManager::AddScene(const std::string& _sceneName, Scene& _scene) {
+void SceneManagement::SceneManager::AddScene(const std::string& sceneName, Scene& scene) {
 	//既に追加していたらreturn
-	if (m_sceneMap.count(_sceneName) != 0) return;
-	m_sceneMap[_sceneName] = &_scene;
+	if (m_sceneMap.count(sceneName) != 0) return;
+	m_sceneMap[sceneName] = &scene;
 }
 
 
-void SceneManagement::SceneManager::RemoveScene(const std::string& _sceneName) {
+void SceneManagement::SceneManager::RemoveScene(const std::string& sceneName) {
 	//キーが存在しなければreturn
-	auto it = m_sceneMap.find(_sceneName);
+	auto it = m_sceneMap.find(sceneName);
 	if (it == m_sceneMap.end()) return;
 	m_sceneMap.erase(it);
 }

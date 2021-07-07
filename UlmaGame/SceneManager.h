@@ -12,12 +12,12 @@ namespace UlmaEngine {
 		class SceneManager : public Singleton<SceneManager>, public ISceneManager {
 		public:
 			~SceneManager();
-			void UpdateScene(float _deltaTime) override;
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& _shader);
+			void UpdateScene(float deltaTime) override;
+			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
 			bool LoadScene(const std::string& _scenename) override;
 
-			void AddScene(const std::string& _sceneName, class Scene& scene) override;
-			void RemoveScene(const std::string& _sceneName) override;
+			void AddScene(const std::string& sceneName, class Scene& scene) override;
+			void RemoveScene(const std::string& sceneName) override;
 
 		protected:
 			friend Singleton<SceneManager>;

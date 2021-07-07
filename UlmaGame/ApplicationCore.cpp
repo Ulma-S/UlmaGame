@@ -11,7 +11,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Ground.h"
-
+#include "TitleManager.h"
 
 
 using namespace UlmaEngine;
@@ -89,14 +89,18 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 
 	
 	//Scene作成
-	auto gameScene = new Scene(SceneManager::GetInstance(), "Game");
+	auto title = new Scene(SceneManager::GetInstance(), "title");
+	auto stage01 = new Scene(SceneManager::GetInstance(), "stage01");
+	auto gameClear = new Scene(SceneManager::GetInstance(), "gameClear");
+	auto gamOver = new Scene(SceneManager::GetInstance(), "gameOver");
 
 	//Actor作成
-	auto player = new SampleGame::Player(*gameScene);
-	auto enemy = new SampleGame::Enemy(*gameScene);
-	auto ground = new SampleGame::Ground(*gameScene);
+	auto titleManager = new SampleGame::TitleManager(*title);
+	auto player = new SampleGame::Player(*stage01);
+	auto enemy = new SampleGame::Enemy(*stage01);
+	auto ground = new SampleGame::Ground(*stage01);
 
-	if (!SceneManager::GetInstance().LoadScene("Game")) {
+	if (!SceneManager::GetInstance().LoadScene("title")) {
 		Debug::LogError("シーンのロードに失敗しました.");
 		return false;
 	}

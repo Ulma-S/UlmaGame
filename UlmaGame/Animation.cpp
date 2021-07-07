@@ -5,23 +5,25 @@
 
 using namespace UlmaEngine;
 
-Animation::Animation(Actor& owner, Animator& animator, float duration = 0.1f, const char* animationName = "animation")
+Animation::Animation(Actor& owner, Animator& animator, float duration, const char* animationName, bool loop)
 	: Component(owner)
 	, m_animator(&animator)
 	, m_duration(duration)
 	, m_currentTime(0.0f)
 	, m_spriteIdx(0)
 	, m_animationName(animationName)
+	, m_loop(loop)
 {}
 
 
-Animation::Animation(Actor& owner, Animator& animator, const char* animationName = "animation", float duration = 0.1f)
+Animation::Animation(Actor& owner, Animator& animator, const char* animationName, float duration, bool loop)
 	: Component(owner)
 	, m_animator(&animator)
 	, m_duration(duration)
 	, m_currentTime(0.0f)
 	, m_spriteIdx(0)
 	, m_animationName(animationName)
+	, m_loop(loop)
 {}
 
 
@@ -31,6 +33,7 @@ Animation::~Animation() {
 
 
 void Animation::Update(float deltaTime) {
+	//Ä¶’†‚Å‚È‚¯‚ê‚Î”ñ•\¦‚É‚·‚é.
 	if(&(m_animator->GetCurrentAnimation()) != this) {
 		Inactivate();
 		return;
@@ -49,7 +52,10 @@ void Animation::Update(float deltaTime) {
 		m_currentTime = 0.0f;
 
 		if(m_spriteIdx == m_sprites.size() - 1) {
-			m_spriteIdx = 0;
+			//ƒ‹[ƒvˆ—.
+			if (m_loop) {
+				m_spriteIdx = 0;
+			}
 		}else {
 			m_spriteIdx++;
 		}

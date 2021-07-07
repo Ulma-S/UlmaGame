@@ -130,6 +130,9 @@
     <ClCompile Include="Animator.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="TitleManager.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -251,6 +254,9 @@
     </ClInclude>
     <ClInclude Include="Animator.h">
       <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleManager.h">
+      <Filter>SampleGame\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

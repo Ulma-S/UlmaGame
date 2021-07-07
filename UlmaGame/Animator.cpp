@@ -30,14 +30,18 @@ void Animator::RegisterAnimation(Animation& animation) {
 
 
 void Animator::SetAnimation(const std::string& animationName) {
+	if (m_currentAnimation != nullptr) {
+		if (animationName == m_currentAnimation->GetName()) {
+			return;
+		}
+	}
 	auto it = m_animations.find(animationName);
-
+	
 	if(it != m_animations.end()) {
 		for (auto& animation : m_animations) {
 			animation.second->enable = false;
-			animation.second->Inactivate();
 		}
-
+		if(m_currentAnimation != nullptr) m_currentAnimation->enable = false;
 		m_currentAnimation = m_animations[animationName];
 		m_currentAnimation->enable = true;
 		m_currentAnimation->Activate();
