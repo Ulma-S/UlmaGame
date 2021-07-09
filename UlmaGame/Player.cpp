@@ -59,7 +59,7 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 	auto currPos = this->GetTransform().position;
 	this->GetTransform().position.y -= 800.0f * deltaTime;
 	if(col != nullptr) {
-		if(col->GetIsHit()) {
+		if(col->IsHit()) {
 			this->GetTransform().position.y = currPos.y;
 		}
 	}
@@ -79,5 +79,13 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 
 	}else {
 		this->GetComponent<Animator>()->SetAnimation("idle");
+	}
+
+	if(this->GetComponent<Collider2D>()->IsHit("Enemy")) {
+		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
+	}
+
+	if(m_inputManager->GetKeyDown(EKeyCode::Space)) {
+		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 }

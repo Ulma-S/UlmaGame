@@ -133,6 +133,18 @@
     <ClCompile Include="TitleManager.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverManager.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage01Scene.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -256,6 +268,21 @@
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
     <ClInclude Include="TitleManager.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>UlmaEngine\Header\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverManager.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage01Scene.h">
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,7 +28,9 @@ namespace UlmaEngine {
 
 		void Update(float deltaTime) override;
 
-		inline bool GetIsHit() const { return m_isHit; }
+		inline bool IsHit() const { return m_isHit; }
+
+		bool IsHit(const std::string& name) const;
 
 	protected:
 		bool m_isHit;

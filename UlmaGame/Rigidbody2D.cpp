@@ -28,14 +28,14 @@ void Rigidbody2D::Update(float deltaTime) {
 	auto currVel = m_velocity;
 	auto currPos = m_owner->GetTransform().position;
 
-	//ŽŸ‚ÌƒtƒŒ[ƒ€‚ÌxÀ•W‚ðŒvŽZ‚µAÕ“Ë”»’è
+	//ï¿½ï¿½ï¿½Ìƒtï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½Wï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½Aï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	m_velocity.x += m_acceleration.x;
 	m_owner->GetTransform().position.x += m_velocity.x * deltaTime;
 
-	//Õ“Ë‚µ‚Ä‚¢‚½‚ç’¼‘O‚Ìó‘Ô‚É–ß‚·.
+	//ï¿½Õ“Ë‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ç’¼ï¿½Oï¿½Ìï¿½Ô‚É–ß‚ï¿½.
 	auto col = m_owner->GetComponent<Collider2D>();
 	if(col != nullptr) {
-		if(col->GetIsHit()) {
+		if(col->IsHit()) {
 			m_acceleration.x = 0.0f;
 			m_velocity.x = 0.0f;
 			m_owner->GetTransform().position.x = currPos.x;
@@ -48,16 +48,16 @@ void Rigidbody2D::Update(float deltaTime) {
 	}
 
 	
-	//ŽŸ‚ÌƒtƒŒ[ƒ€‚ÌyÀ•W‚ðŒvŽZ‚µAÕ“Ë”»’è
+	//ï¿½ï¿½ï¿½Ìƒtï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½Wï¿½ï¿½vï¿½Zï¿½ï¿½ï¿½Aï¿½Õ“Ë”ï¿½ï¿½ï¿½
 	if (m_enableGravity) {
 		m_acceleration.y -= m_gravityScale;
 	}
 	m_velocity.y += m_acceleration.y;
 	m_owner->GetTransform().position.y += m_velocity.y * deltaTime;
 
-	//Õ“Ë‚µ‚Ä‚¢‚½‚ç’¼‘O‚Ìó‘Ô‚É–ß‚·.
+	//ï¿½Õ“Ë‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ç’¼ï¿½Oï¿½Ìï¿½Ô‚É–ß‚ï¿½.
 	if(col != nullptr) {
-		if(col->GetIsHit()) {
+		if(col->IsHit()) {
 			m_acceleration.y = 0.0f;
 			m_velocity.y = 0.0f;
 			m_owner->GetTransform().position.y = currPos.y;

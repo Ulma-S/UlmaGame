@@ -6,7 +6,7 @@ TitleManager::TitleManager(SceneManagement::Scene& scene)
 	: Actor(scene)
 	, m_input(ServiceLocator::Resolve<InputSystem::IInputManager>())
 {
-	new SpriteComponent(*this, "noodle", ESpriteType::Rectangle);
+	new SpriteComponent(*this, "title", ESpriteType::Rectangle);
 }
 
 
@@ -20,7 +20,7 @@ void TitleManager::Initialize() {
 
 void TitleManager::UpdateActor(float deltaTime) {
 	if(m_input->GetKeyDown(InputSystem::EKeyCode::Space)) {
-		SceneManagement::SceneManager::GetInstance().LoadScene("stage01");
+		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 }
 

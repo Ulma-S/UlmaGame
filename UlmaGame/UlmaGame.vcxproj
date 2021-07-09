@@ -90,14 +90,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)UlmaGame\Library\glm;$(SolutionDir)UlmaGame\Library\glew\include;$(SolutionDir)UlmaGame\Library\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)UlmaGame\Library\glm;$(SolutionDir)UlmaGame\Library\glew\include;$(SolutionDir)UlmaGame\Library\glfw\include;$(SolutionDir)UlmaGame\Library\freetype\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)UlmaGame\Library\glew\lib\Release\x64;$(SolutionDir)UlmaGame\Library\glfw\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)UlmaGame\Library\glew\lib\Release\x64;$(SolutionDir)UlmaGame\Library\glfw\lib-vc2017;$(SolutionDir)UlmaGame\Library\freetype\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,6 +141,8 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FileLoader.cpp" />
+    <ClCompile Include="GameOverManager.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="InputManagerOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
@@ -152,9 +154,11 @@
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Stage01Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureProvider.cpp" />
     <ClCompile Include="TitleManager.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowOpenGL.cpp" />
@@ -169,6 +173,10 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileLoader.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="GameOverManager.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="Stage01Scene.h" />
     <ClInclude Include="TitleManager.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="IApplicationCore.h" />
@@ -194,6 +202,7 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureProvider.h" />
+    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UlmaEngine.h" />
     <ClInclude Include="Vector.h" />

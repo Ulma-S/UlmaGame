@@ -8,11 +8,9 @@
 #include "Scene.h"
 #include "Debug.h"
 
-#include "Player.h"
-#include "Enemy.h"
-#include "Ground.h"
-#include "TitleManager.h"
-
+#include "TitleScene.h"
+#include "Stage01Scene.h"
+#include "GameOverScene.h"
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
@@ -71,6 +69,8 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("noodle", *(new Texture("noodle.png")));
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
+	TextureProvider::GetInstance().RegisterTexture("title", *(new Texture("title.png")));
+	TextureProvider::GetInstance().RegisterTexture("gameOver", *(new Texture("gameOver.png")));
 
 	for (int i = 1; i <= 5; ++i) {
 		auto name = "Idle/idle_00" + std::to_string(i) + ".png";
@@ -88,17 +88,28 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	}
 
 	
-	//Sceneì¬
-	auto title = new Scene(SceneManager::GetInstance(), "title");
-	auto stage01 = new Scene(SceneManager::GetInstance(), "stage01");
-	auto gameClear = new Scene(SceneManager::GetInstance(), "gameClear");
-	auto gamOver = new Scene(SceneManager::GetInstance(), "gameOver");
+	//Scene“o˜^.
+	SceneManagement::SceneManager::GetInstance()
+	.BindScenes([&](const std::string& sceneName) {
+		Scene* scene = nullptr;
+		
+		if(sceneName == "title") {
+			auto title = new SampleGame::TitleScene(SceneManager::GetInstance(), "title");
+			scene = title;
+		}else if(sceneName == "stage01") {
+			auto stage01 = new SampleGame::Stage01Scene(SceneManager::GetInstance(), "stage01");
+			scene = stage01;
+		}else if(sceneName == "gameClear") {
+			auto gameClear = new Scene(SceneManager::GetInstance(), "gameClear");
+			scene = gameClear;
+		}else if(sceneName == "gameOver") {
+			auto gameOver = new SampleGame::GameOverScene(SceneManager::GetInstance(), "gameOver");
+			scene = gameOver;
+		}
 
-	//Actorì¬
-	auto titleManager = new SampleGame::TitleManager(*title);
-	auto player = new SampleGame::Player(*stage01);
-	auto enemy = new SampleGame::Enemy(*stage01);
-	auto ground = new SampleGame::Ground(*stage01);
+		return scene;
+	});
+	
 
 	if (!SceneManager::GetInstance().LoadScene("title")) {
 		Debug::LogError("ƒV[ƒ“‚Ìƒ[ƒh‚ÉŽ¸”s‚µ‚Ü‚µ‚½.");

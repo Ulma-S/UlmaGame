@@ -4,8 +4,6 @@
 #include "SpriteComponent.h"
 #include "Actor.h"
 #include "Collision.h"
-#include "Collider.h"
-#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -40,13 +38,13 @@ void SceneManagement::Scene::OnEnter() {
 
 void SceneManagement::Scene::Update(float deltaTime) {
 	m_isUpdating = true;
-	for (auto actor : m_sceneActors) {
+	for (const auto& actor : m_sceneActors) {
 		actor->Update(deltaTime);
 	}
 	DetectCollision();
 	m_isUpdating = false;
 
-	for (auto actor : m_pendingActors) {
+	for (const auto& actor : m_pendingActors) {
 		m_sceneActors.emplace_back(actor);
 	}
 	m_pendingActors.clear();
@@ -63,6 +61,7 @@ void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
 
 
 void SceneManagement::Scene::OnExit() {
+	m_isUpdating = false;
 	std::vector<Actor*>().swap(m_sceneActors);
 	std::vector<Actor*>().swap(m_pendingActors);
 }

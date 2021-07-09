@@ -12,7 +12,7 @@ SceneManagement::SceneManager::~SceneManager() {
 }
 
 
-void SceneManagement::SceneManager::UpdateScene(float deltaTime){
+void SceneManagement::SceneManager::UpdateScene(float deltaTime) {
 	if (m_currentScene == nullptr) return;
 	m_currentScene->Update(deltaTime);
 }
@@ -24,21 +24,22 @@ void SceneManagement::SceneManager::GenerateOutput(Core::ShaderLoaderOpenGL& sha
 
 
 bool SceneManagement::SceneManager::LoadScene(const std::string& sceneName) {
-	//シーンが存在しなければreturn
-	auto it = m_sceneMap.find(sceneName);
-	if (it == m_sceneMap.end()) {
-		UlmaEngine::Debug::LogError(sceneName + "シーンが存在しません.");
+	if (m_createSceneInstancesFunc == nullptr) {
+		return false;
+	}
+	auto nextScene = m_createSceneInstancesFunc(sceneName);
+
+	if (nextScene == nullptr) {
+		Debug::LogError(sceneName + "シーンが存在しません.");
 		return false;
 	}
 
-	//シーンの終了処理
 	if (m_currentScene != nullptr) {
 		m_currentScene->OnExit();
 	}
 
-	//シーンの読み込み時の処理
-	m_currentScene = it->second;
-	m_currentScene->OnEnter();
+	m_currentScene = nextScene;
+	nextScene->OnEnter();
 	return true;
 }
 

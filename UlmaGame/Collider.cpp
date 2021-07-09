@@ -29,6 +29,18 @@ void Collider2D::Update(float deltaTime) {
 }
 
 
+bool Collider2D::IsHit(const std::string& name) const {
+	if(IsHit()) {
+		for (auto hit : hitData) {
+			if(hit.actor->GetName() == name) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+
 HitData2D::HitData2D(Actor& actor)
 	: actor(&actor)
 	, hitPosition(Math::Vector2(0.0f, 0.0f)) {
