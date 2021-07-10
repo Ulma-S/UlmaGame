@@ -100,9 +100,6 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
-    <ClCompile Include="InputManagerOpenGL.cpp">
-      <Filter>UlmaEngine\Source\InputSystem</Filter>
-    </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
@@ -156,6 +153,9 @@
     </ClCompile>
     <ClCompile Include="GameClearManager.cpp">
       <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InputProviderOpenGL.cpp">
+      <Filter>UlmaEngine\Source\InputSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,12 +231,6 @@
     <ClInclude Include="UlmaEngine.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
-    <ClInclude Include="IInputManager.h">
-      <Filter>UlmaEngine\Header\InputSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManagerOpenGL.h">
-      <Filter>UlmaEngine\Header\InputSystem</Filter>
-    </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
@@ -302,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="GameClearManager.h">
       <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="InputProviderOpenGL.h">
+      <Filter>UlmaEngine\Header\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputProvider.h">
+      <Filter>UlmaEngine\Header\InputSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

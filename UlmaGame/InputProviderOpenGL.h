@@ -1,6 +1,5 @@
 #pragma once
-#include "Singleton.h"
-#include "IInputManager.h"
+#include "IInputProvider.h"
 
 namespace UlmaEngine {
 	namespace Core {
@@ -8,10 +7,10 @@ namespace UlmaEngine {
 	}
 
 	namespace InputSystem {
-		class InputManagerOpenGL : public IInputManager {
+		class InputProviderOpenGL : public IInputProvider {
 		public:
-			InputManagerOpenGL();
-			~InputManagerOpenGL() override;
+			InputProviderOpenGL();
+			~InputProviderOpenGL() override;
 
 			bool GetKey(EKeyCode key) override;
 			bool GetKeyDown(EKeyCode key) override;

@@ -2,7 +2,7 @@
 
 SampleGame::GameOverManager::GameOverManager(SceneManagement::Scene& scene)
 	: Actor(scene)
-	, m_input(ServiceLocator::Resolve<InputSystem::IInputManager>()) {
+	, m_input(ServiceLocator::Resolve<InputSystem::IInputProvider>()) {
 	new SpriteComponent(*this, "gameOver", ESpriteType::Rectangle);
 }
 

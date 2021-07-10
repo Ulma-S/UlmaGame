@@ -13,6 +13,6 @@ namespace SampleGame {
 		void UpdateActor(float deltaTime) override;
 
 	private:
-		InputSystem::IInputManager* m_input;
+		InputSystem::IInputProvider* m_input;
 	};
 }

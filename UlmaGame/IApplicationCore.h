@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 
 namespace UlmaEngine {
 	namespace Core {
@@ -8,7 +9,7 @@ namespace UlmaEngine {
 			virtual ~IApplicationCore() = default;
 
 			//初期化メソッド (UnityのStartメソッド的な感じ)
-			virtual bool Initialize(class IWindow& window) = 0;
+			virtual bool Initialize(class IWindow& window, const std::function<void()>& registerTextureFunc, const std::function<void()>& registerSceneFunc) = 0;
 
 			//ループメソッド (UnityのUpdateメソッド的な感じ)
 			virtual void Update() = 0;

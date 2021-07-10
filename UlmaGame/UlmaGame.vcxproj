@@ -145,7 +145,7 @@
     <ClCompile Include="GameOverManager.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Ground.cpp" />
-    <ClCompile Include="InputManagerOpenGL.cpp" />
+    <ClCompile Include="InputProviderOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -186,8 +186,8 @@
     <ClInclude Include="IApplicationCore.h" />
     <ClInclude Include="ApplicationCore.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="IInputManager.h" />
-    <ClInclude Include="InputManagerOpenGL.h" />
+    <ClInclude Include="IInputProvider.h" />
+    <ClInclude Include="InputProviderOpenGL.h" />
     <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MathExt.h" />

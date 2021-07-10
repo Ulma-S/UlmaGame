@@ -15,7 +15,7 @@ namespace SampleGame {
 		void UpdateActor(float deltaTime) override;
 
 	private:
-		InputSystem::IInputManager* m_inputManager;
+		InputSystem::IInputProvider* m_inputManager;
 		std::vector<Bullet*> m_bullets;
 	};
 };

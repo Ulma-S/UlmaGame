@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include "IApplicationCore.h"
 
 namespace UlmaEngine {
@@ -9,9 +10,9 @@ namespace UlmaEngine {
 		public:
 			ApplicationCore();
 			ApplicationCore(class IWindow& window);
-			~ApplicationCore();
+			~ApplicationCore() override;
 
-			bool Initialize(class IWindow& window) override;
+			bool Initialize(class IWindow& window, const std::function<void()>& registerTextureFunc, const std::function<void()>& registerSceneFunc) override;
 			void Update() override;
 
 		protected:

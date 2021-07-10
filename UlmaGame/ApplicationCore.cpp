@@ -2,19 +2,13 @@
 #include "Actor.h"
 #include "IWindow.h"
 #include "ShaderLoaderOpenGL.h"
-#include "Texture.h"
 #include "TextureProvider.h"
 #include "SceneManager.h"
-#include "Scene.h"
 #include "Debug.h"
-
-#include "TitleScene.h"
-#include "Stage01Scene.h"
-#include "GameClearScene.h"
-#include "GameOverScene.h"
 
 using namespace UlmaEngine;
 using namespace UlmaEngine::SceneManagement;
+
 
 Core::ApplicationCore::ApplicationCore()
 	: m_window(nullptr)
@@ -42,7 +36,7 @@ Core::ApplicationCore::~ApplicationCore(){
 }
 
 
-bool Core::ApplicationCore::Initialize(IWindow& window) {
+bool Core::ApplicationCore::Initialize(IWindow& window, const std::function<void()>& registerTextureFunc, const std::function<void()>& registerSceneFunc) {
 	m_window = &window;
 
 	//ウィンドウ作成
@@ -67,57 +61,15 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	m_spriteShader->Activate();
 
 	//テクスチャ作成
-	TextureProvider::GetInstance().RegisterTexture("noodle", *(new Texture("noodle.png")));
-	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
-	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
-	TextureProvider::GetInstance().RegisterTexture("title", *(new Texture("title.png")));
-	TextureProvider::GetInstance().RegisterTexture("gameClear", *(new Texture("gameClear.png")));
-	TextureProvider::GetInstance().RegisterTexture("gameOver", *(new Texture("gameOver.png")));
-
-	for (int i = 1; i <= 5; ++i) {
-		auto name = "Idle/idle_00" + std::to_string(i) + ".png";
-		TextureProvider::GetInstance().RegisterTexture("idle" + std::to_string(i), *(new Texture(name.c_str())));
-	}
-	
-	for (int i = 1; i <= 10; i++) {
-		if (i <= 9) {
-			auto name = "Run/run_00" + std::to_string(i) + ".png";
-			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
-		}else {
-			auto name = "Run/run_0" + std::to_string(i) + ".png";
-			TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Texture(name.c_str())));
-		}
+	if(registerTextureFunc != nullptr) {
+		registerTextureFunc();
 	}
 
 	
-	//Scene登録.
-	SceneManagement::SceneManager::GetInstance()
-	.BindScenes([&](const std::string& sceneName) {
-		Scene* scene = nullptr;
-		
-		if(sceneName == "title") {
-			auto title = new SampleGame::TitleScene(SceneManager::GetInstance(), "title");
-			scene = title;
-		}else if(sceneName == "stage01") {
-			auto stage01 = new SampleGame::Stage01Scene(SceneManager::GetInstance(), "stage01");
-			scene = stage01;
-		}else if(sceneName == "gameClear") {
-			auto gameClear = new SampleGame::GameClearScene(SceneManager::GetInstance(), "gameClear");
-			scene = gameClear;
-		}else if(sceneName == "gameOver") {
-			auto gameOver = new SampleGame::GameOverScene(SceneManager::GetInstance(), "gameOver");
-			scene = gameOver;
-		}
-
-		return scene;
-	});
-	
-
-	if (!SceneManager::GetInstance().LoadScene("title")) {
-		Debug::LogError("シーンのロードに失敗しました.");
-		return false;
+	//Scene登録
+	if(registerSceneFunc != nullptr) {
+		registerSceneFunc();
 	}
-
 	return true;
 }
 

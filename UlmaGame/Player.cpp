@@ -6,7 +6,7 @@ using namespace UlmaEngine::InputSystem;
 
 SampleGame::Player::Player(SceneManagement::Scene& scene)
 	: Actor::Actor(scene)
-	, m_inputManager(ServiceLocator::Resolve<InputSystem::IInputManager>())
+	, m_inputManager(ServiceLocator::Resolve<InputSystem::IInputProvider>())
 {
 	new BoxCollider2D(*this, Math::Vector3::zero, 80.0, 120.0, 0.0);
 	//new Rigidbody2D(*this);

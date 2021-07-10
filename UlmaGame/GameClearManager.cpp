@@ -4,7 +4,7 @@ using namespace SampleGame;
 
 GameClearManager::GameClearManager(SceneManagement::Scene& owner)
 	: Actor(owner)
-	, m_input(ServiceLocator::Resolve<InputSystem::IInputManager>())
+	, m_input(ServiceLocator::Resolve<InputSystem::IInputProvider>())
 {
 	new SpriteComponent(*this, "gameClear", ESpriteType::Rectangle);
 }

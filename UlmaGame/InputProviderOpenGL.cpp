@@ -1,18 +1,18 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "WindowOpenGL.h"
-#include "InputManagerOpenGL.h"
+#include "InputProviderOpenGL.h"
 
 using namespace UlmaEngine::Core;
 using namespace UlmaEngine::InputSystem;
 
-InputManagerOpenGL::InputManagerOpenGL() : m_window(nullptr), m_isPressed(false) {}
+InputProviderOpenGL::InputProviderOpenGL() : m_window(nullptr), m_isPressed(false) {}
 
 
-InputManagerOpenGL::~InputManagerOpenGL(){}
+InputProviderOpenGL::~InputProviderOpenGL(){}
 
 
-bool InputManagerOpenGL::GetKey(EKeyCode key) {
+bool InputProviderOpenGL::GetKey(EKeyCode key) {
 	bool keyState = false;
 
 	switch (key) {
@@ -203,7 +203,7 @@ bool InputManagerOpenGL::GetKey(EKeyCode key) {
 }
 
 
-bool InputManagerOpenGL::GetKeyDown(EKeyCode key) {
+bool InputProviderOpenGL::GetKeyDown(EKeyCode key) {
 	bool keyState = false;
 	switch (key) {
 	case Q:
@@ -874,7 +874,7 @@ bool InputManagerOpenGL::GetKeyDown(EKeyCode key) {
 }
 
 
-bool InputManagerOpenGL::GetMouseButton(EMouseButton mouse) {
+bool InputProviderOpenGL::GetMouseButton(EMouseButton mouse) {
 	bool mouseState = false;
 
 	switch (mouse) {
@@ -899,7 +899,7 @@ bool InputManagerOpenGL::GetMouseButton(EMouseButton mouse) {
 }
 
 
-bool InputManagerOpenGL::GetMouseButtonDown(EMouseButton mouse) {
+bool InputProviderOpenGL::GetMouseButtonDown(EMouseButton mouse) {
 	bool mouseState = false;
 
 	switch (mouse) {
@@ -957,7 +957,7 @@ bool InputManagerOpenGL::GetMouseButtonDown(EMouseButton mouse) {
 }
 
 
-float InputManagerOpenGL::GetAxis(EAxisType axis) {
+float InputProviderOpenGL::GetAxis(EAxisType axis) {
 	float value = 0.0f;
 
 	switch (axis) {
@@ -993,11 +993,11 @@ float InputManagerOpenGL::GetAxis(EAxisType axis) {
 }
 
 
-const Math::Vector2 InputManagerOpenGL::GetMousePos() {
+const Math::Vector2 InputProviderOpenGL::GetMousePos() {
 	double x, y;
 	glfwGetCursorPos(&(m_window->GetWindow()), &x, &y);
 	
-	//‰æ–ÊŠO‚ÌŽž‚Ì•â³
+	//ï¿½ï¿½ÊŠOï¿½ÌŽï¿½ï¿½Ì•â³
 	if (x >= m_window->GetWindowWidth()) {
 		x = m_window->GetWindowWidth() - 1;
 	}

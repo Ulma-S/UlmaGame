@@ -22,9 +22,9 @@ namespace UlmaEngine {
 			Vertical,
 		};
 
-		class IInputManager {
+		class IInputProvider {
 		public:
-			virtual ~IInputManager() = default;
+			virtual ~IInputProvider() = default;
 
 			virtual bool GetKey(EKeyCode key) = 0;
 			virtual bool GetKeyDown(EKeyCode key) = 0;

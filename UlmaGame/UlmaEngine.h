@@ -1,9 +1,13 @@
 #pragma once
 
 #include "Actor.h"
+#include "ApplicationCore.h"
+#include "WindowOpenGL.h"
 #include "Collider.h"
 #include "Collision.h"
 #include "Rigidbody2D.h"
+#include "Texture.h"
+#include "TextureProvider.h"
 #include "SpriteComponent.h"
 #include "SpriteType.h"
 #include "Transform.h"
@@ -13,7 +17,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Debug.h"
-#include "InputManagerOpenGL.h"
+#include "InputProviderOpenGL.h"
 #include "ServiceLocator.h"
 #include "Animation.h"
 #include "Animator.h"
