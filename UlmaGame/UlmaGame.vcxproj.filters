@@ -50,6 +50,12 @@
     <Filter Include="UlmaEngine\Source\InputSystem">
       <UniqueIdentifier>{de8353a7-2d6d-4c4c-a569-5176de9b3c11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SampleGame\Header\Scene">
+      <UniqueIdentifier>{bfccbd17-2573-440a-804e-16b9673d9411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SampleGame\Source\Scene">
+      <UniqueIdentifier>{cc64a389-ed31-4128-b935-4b6e2eba3e79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApplicationCore.cpp">
@@ -136,13 +142,19 @@
     <ClCompile Include="GameOverManager.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>SampleGame\Source</Filter>
-    </ClCompile>
     <ClCompile Include="GameOverScene.cpp">
-      <Filter>SampleGame\Source</Filter>
+      <Filter>SampleGame\Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>SampleGame\Source\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Stage01Scene.cpp">
+      <Filter>SampleGame\Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearScene.cpp">
+      <Filter>SampleGame\Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearManager.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -277,12 +289,18 @@
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
-      <Filter>SampleGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOverScene.h">
-      <Filter>SampleGame\Header</Filter>
+      <Filter>SampleGame\Header\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Stage01Scene.h">
+      <Filter>SampleGame\Header\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>SampleGame\Header\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearScene.h">
+      <Filter>SampleGame\Header\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearManager.h">
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
   </ItemGroup>

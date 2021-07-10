@@ -141,6 +141,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FileLoader.cpp" />
+    <ClCompile Include="GameClearScene.cpp" />
     <ClCompile Include="GameOverManager.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
+    <ClCompile Include="GameClearManager.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Stage01Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -174,6 +176,8 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="GameClearManager.h" />
+    <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameOverManager.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Stage01Scene.h" />

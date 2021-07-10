@@ -8,7 +8,7 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	: Actor::Actor(scene)
 	, m_inputManager(ServiceLocator::Resolve<InputSystem::IInputManager>())
 {
-	new BoxCollider2D(*this, Math::Vector3::zero, 120.0, 120.0, 0.0);
+	new BoxCollider2D(*this, Math::Vector3::zero, 80.0, 120.0, 0.0);
 	//new Rigidbody2D(*this);
 
 	//Animation初期化
@@ -23,6 +23,8 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	idleAnimation->RegisterSprite(idleSprites);
 	animator->RegisterAnimation(*idleAnimation);
 
+	idleSprites.clear();
+	idleSprites.shrink_to_fit();
 
 	auto runAnimation = new Animation(*this, *animator, "run", 0.1f);
 	std::vector<SpriteComponent*> runSprites;
@@ -33,8 +35,10 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	runAnimation->RegisterSprite(runSprites);
 	animator->RegisterAnimation(*runAnimation);
 
-	animator->SetAnimation("idle");
+	runSprites.clear();
+	runSprites.shrink_to_fit();
 
+	animator->SetAnimation("idle");
 
 	GetTransform().position = Math::Vector3(-300.0f, 100.0f, 0.0f);
 	GetTransform().scale = Math::Vector3(1.0f / 3.0f, 1.0f / 3.0f, 1.0f / 3.0f);
@@ -52,9 +56,11 @@ void SampleGame::Player::Initialize() {
 
 
 void SampleGame::Player::UpdateActor(float deltaTime) {
+	//移動
 	GetTransform().position += m_inputManager->GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * deltaTime
 		+ m_inputManager->GetAxis(EAxisType::Horizontal) * GetTransform().GetRight() * deltaTime * 120.0f;
 
+	//重力
 	auto col = this->GetComponent<Collider2D>();
 	auto currPos = this->GetTransform().position;
 	this->GetTransform().position.y -= 800.0f * deltaTime;
@@ -64,6 +70,7 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 		}
 	}
 
+	//Spriteの向き
 	if (GetTransform().scale.x > 0) {
 		if (m_inputManager->GetKey(EKeyCode::A)) {
 			GetTransform().scale.x = -std::abs(GetTransform().scale.x);
@@ -75,6 +82,7 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 		}
 	}
 
+	//アニメーション再生
 	if (m_inputManager->GetKey(EKeyCode::A) || m_inputManager->GetKey(EKeyCode::D)) {
 		this->GetComponent<Animator>()->SetAnimation("run");
 
@@ -83,11 +91,12 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 		this->GetComponent<Animator>()->SetAnimation("idle");
 	}
 
+	//シーン遷移
 	if (this->GetComponent<Collider2D>()->IsHit("Enemy")) {
 		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 
 	if (m_inputManager->GetKeyDown(EKeyCode::Space)) {
-		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
+		SceneManagement::SceneManager::GetInstance().LoadScene("gameClear");
 	}
 }

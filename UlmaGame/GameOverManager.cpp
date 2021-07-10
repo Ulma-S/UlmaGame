@@ -15,4 +15,3 @@ void SampleGame::GameOverManager::UpdateActor(float deltaTime) {
 		SceneManagement::SceneManager::GetInstance().LoadScene("title");
 	}
 }
-

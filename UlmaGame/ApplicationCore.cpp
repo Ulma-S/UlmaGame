@@ -10,6 +10,7 @@
 
 #include "TitleScene.h"
 #include "Stage01Scene.h"
+#include "GameClearScene.h"
 #include "GameOverScene.h"
 
 using namespace UlmaEngine;
@@ -70,6 +71,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 	TextureProvider::GetInstance().RegisterTexture("brown", *(new Texture("brown.png")));
 	TextureProvider::GetInstance().RegisterTexture("blue", *(new Texture("blue.png")));
 	TextureProvider::GetInstance().RegisterTexture("title", *(new Texture("title.png")));
+	TextureProvider::GetInstance().RegisterTexture("gameClear", *(new Texture("gameClear.png")));
 	TextureProvider::GetInstance().RegisterTexture("gameOver", *(new Texture("gameOver.png")));
 
 	for (int i = 1; i <= 5; ++i) {
@@ -100,7 +102,7 @@ bool Core::ApplicationCore::Initialize(IWindow& window) {
 			auto stage01 = new SampleGame::Stage01Scene(SceneManager::GetInstance(), "stage01");
 			scene = stage01;
 		}else if(sceneName == "gameClear") {
-			auto gameClear = new Scene(SceneManager::GetInstance(), "gameClear");
+			auto gameClear = new SampleGame::GameClearScene(SceneManager::GetInstance(), "gameClear");
 			scene = gameClear;
 		}else if(sceneName == "gameOver") {
 			auto gameOver = new SampleGame::GameOverScene(SceneManager::GetInstance(), "gameOver");
