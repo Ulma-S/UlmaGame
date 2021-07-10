@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 SampleGame::Enemy::Enemy(SceneManagement::Scene& _scene)
-	: Actor::Actor(_scene) 
+	: Actor::Actor(_scene)
 {
 	new SpriteComponent(*this, "brown", ESpriteType::Rectangle, 110);
 	new BoxCollider2D(*this, Math::Vector3(0, -300, 0), 300.0, 300.0, 0.0);
@@ -17,4 +17,5 @@ SampleGame::Enemy::~Enemy(){}
 void SampleGame::Enemy::Initialize(){}
 
 
-void SampleGame::Enemy::UpdateActor(float _deltaTime){}
+void SampleGame::Enemy::UpdateActor(float deltaTime) {
+}

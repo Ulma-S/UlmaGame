@@ -19,7 +19,7 @@ namespace UlmaEngine {
 
 			void OnEnter();
 			void Update(float deltaTime);
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader);
+			void GenerateOutput(const Core::ShaderLoaderOpenGL& shader);
 			void OnExit();
 			
 			void AddActor(Actor& actor);

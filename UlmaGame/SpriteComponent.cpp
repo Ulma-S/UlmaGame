@@ -96,7 +96,7 @@ void SetCircleVertices() {
 	}
 }
 
-void SpriteComponent::Draw(Core::ShaderLoaderOpenGL& shader) const {
+void SpriteComponent::Draw(const Core::ShaderLoaderOpenGL& shader) const {
 	if (!enable) {
 		return;
 	}

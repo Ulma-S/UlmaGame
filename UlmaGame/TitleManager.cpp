@@ -20,7 +20,7 @@ void TitleManager::Initialize() {
 
 void TitleManager::UpdateActor(float deltaTime) {
 	if(m_input->GetKeyDown(InputSystem::EKeyCode::Space)) {
-		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
+		SceneManagement::SceneManager::GetInstance().LoadScene("stage01");
 	}
 }
 

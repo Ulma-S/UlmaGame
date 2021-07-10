@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Vector.h"
 #include "Transform.h"
 
 namespace UlmaEngine {
@@ -20,7 +19,7 @@ namespace UlmaEngine {
 			Inactive,
 		};
 
-		Actor(UlmaEngine::SceneManagement::Scene& _scene);
+		Actor(SceneManagement::Scene& _scene);
 		virtual ~Actor();
 
 		//Actorを初期化するメソッド.
@@ -33,11 +32,11 @@ namespace UlmaEngine {
 		void AddComponent(class Component& _component);
 		
 		//Componentを削除するメソッド.
-		void RemoveComponent(class Component& _component);
+		void RemoveComponent(class Component& component);
 
-		inline UlmaEngine::SceneManagement::Scene& GetScene() const { return *m_scene; }
-		inline const std::string& GetName() { return name; }
-		inline UlmaEngine::Transform& GetTransform() const { return *m_transform; }
+		inline SceneManagement::Scene& GetScene() const { return *m_scene; }
+		inline const std::string& GetName() const { return name; }
+		inline Transform& GetTransform() const { return *m_transform; }
 
 		//アタッチされた中からジェネリクス型に対応するComponentの参照を検索し、返すメソッド.
 		template<class T>
@@ -78,13 +77,13 @@ namespace UlmaEngine {
 		//Actor自身を更新するメソッド(オーバライド可能).
 		virtual void UpdateActor(float deltaTime);
 
-		UlmaEngine::SceneManagement::Scene* m_scene;
+		SceneManagement::Scene* m_scene;
 		std::vector<class Component*> m_components;
 		std::string name;
 
 	private:
 		//ActorにアタッチされたComponentを更新するメソッド.
 		void UpdateComponents(float deltaTime);
-		UlmaEngine::Transform* m_transform;
+		Transform* m_transform;
 	};
 }

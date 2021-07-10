@@ -17,6 +17,4 @@ Component::~Component(){
 }
 
 
-void Component::Update(float deltaTime) {
-
-}
+void Component::Update(float deltaTime) {}

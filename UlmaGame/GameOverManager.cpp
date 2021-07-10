@@ -12,8 +12,7 @@ SampleGame::GameOverManager::~GameOverManager() {}
 
 void SampleGame::GameOverManager::UpdateActor(float deltaTime) {
 	if(m_input->GetKeyDown(InputSystem::Space)) {
-		SceneManagement::SceneManager::GetInstance().LoadScene("stage01");
-		Debug::Log("gameovermanager");
+		SceneManagement::SceneManager::GetInstance().LoadScene("title");
 	}
 }
 

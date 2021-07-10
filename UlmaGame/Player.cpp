@@ -7,37 +7,37 @@ using namespace UlmaEngine::InputSystem;
 SampleGame::Player::Player(SceneManagement::Scene& scene)
 	: Actor::Actor(scene)
 	, m_inputManager(ServiceLocator::Resolve<InputSystem::IInputManager>())
- {
+{
 	new BoxCollider2D(*this, Math::Vector3::zero, 120.0, 120.0, 0.0);
 	//new Rigidbody2D(*this);
 
 	//Animationèâä˙âª
 	auto animator = new Animator(*this);
-	
+
 	auto idleAnimation = new Animation(*this, *animator, "idle", 0.1f);
 	std::vector<SpriteComponent*> idleSprites;
-	for(int i=1; i <= 5; ++i) {
+	for (int i = 1; i <= 5; ++i) {
 		auto name = "idle" + std::to_string(i);
 		idleSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
 	}
 	idleAnimation->RegisterSprite(idleSprites);
 	animator->RegisterAnimation(*idleAnimation);
 
-	
+
 	auto runAnimation = new Animation(*this, *animator, "run", 0.1f);
 	std::vector<SpriteComponent*> runSprites;
-	for(int i=1; i <= 10; ++i) {
+	for (int i = 1; i <= 10; ++i) {
 		auto name = "run" + std::to_string(i);
 		runSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
 	}
 	runAnimation->RegisterSprite(runSprites);
 	animator->RegisterAnimation(*runAnimation);
-	
+
 	animator->SetAnimation("idle");
-	
-	
+
+
 	GetTransform().position = Math::Vector3(-300.0f, 100.0f, 0.0f);
-	GetTransform().scale = Math::Vector3(1.0f/3.0f, 1.0f/3.0f, 1.0f/3.0f);
+	GetTransform().scale = Math::Vector3(1.0f / 3.0f, 1.0f / 3.0f, 1.0f / 3.0f);
 	GetTransform().rotation.z = 0.0f;
 	this->name = "Player";
 }
@@ -54,38 +54,40 @@ void SampleGame::Player::Initialize() {
 void SampleGame::Player::UpdateActor(float deltaTime) {
 	GetTransform().position += m_inputManager->GetAxis(EAxisType::Vertical) * GetTransform().GetUp() * deltaTime
 		+ m_inputManager->GetAxis(EAxisType::Horizontal) * GetTransform().GetRight() * deltaTime * 120.0f;
-	
+
 	auto col = this->GetComponent<Collider2D>();
 	auto currPos = this->GetTransform().position;
 	this->GetTransform().position.y -= 800.0f * deltaTime;
-	if(col != nullptr) {
-		if(col->IsHit()) {
+	if (col != nullptr) {
+		if (col->IsHit()) {
 			this->GetTransform().position.y = currPos.y;
 		}
 	}
 
-	if(GetTransform().scale.x > 0) {
-		if(m_inputManager->GetKey(EKeyCode::A)) {
+	if (GetTransform().scale.x > 0) {
+		if (m_inputManager->GetKey(EKeyCode::A)) {
 			GetTransform().scale.x = -std::abs(GetTransform().scale.x);
 		}
-	}else if(GetTransform().scale.x < 0) {
-		if(m_inputManager->GetKey(EKeyCode::D)) {
+	}
+	else if (GetTransform().scale.x < 0) {
+		if (m_inputManager->GetKey(EKeyCode::D)) {
 			GetTransform().scale.x = std::abs(GetTransform().scale.x);
 		}
 	}
-	
-	if(m_inputManager->GetKey(EKeyCode::A) || m_inputManager->GetKey(EKeyCode::D)) {
+
+	if (m_inputManager->GetKey(EKeyCode::A) || m_inputManager->GetKey(EKeyCode::D)) {
 		this->GetComponent<Animator>()->SetAnimation("run");
 
-	}else {
+	}
+	else {
 		this->GetComponent<Animator>()->SetAnimation("idle");
 	}
 
-	if(this->GetComponent<Collider2D>()->IsHit("Enemy")) {
+	if (this->GetComponent<Collider2D>()->IsHit("Enemy")) {
 		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 
-	if(m_inputManager->GetKeyDown(EKeyCode::Space)) {
+	if (m_inputManager->GetKeyDown(EKeyCode::Space)) {
 		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 }

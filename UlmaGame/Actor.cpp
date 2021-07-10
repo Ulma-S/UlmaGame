@@ -19,9 +19,11 @@ Actor::Actor(SceneManagement::Scene& _scene)
 
 Actor::~Actor(){
 	delete m_transform;
-
+		
+	m_components.clear();
+	m_components.shrink_to_fit();
+	
 	m_scene->RemoveActor(*this);
-	std::vector<Component*>().swap(m_components);
 }
 
 
@@ -30,7 +32,7 @@ void Actor::Initialize(){}
 
 void Actor::Update(float deltaTime) {
 	if (state == EActorState::Active) {
-		for (auto comp : m_components) {
+		for (const auto& comp : m_components) {
 			comp->enable = true;
 		}
 		m_transform->ComputeWorldTransform();
@@ -39,7 +41,7 @@ void Actor::Update(float deltaTime) {
 		m_transform->ComputeWorldTransform();
 	}
 	else {
-		for (auto comp : m_components) {
+		for (const auto& comp : m_components) {
 			comp->enable = false;
 		}
 	}
@@ -50,8 +52,10 @@ void Actor::UpdateActor(float deltaTime) {}
 
 
 void Actor::UpdateComponents(float deltaTime) {
-	for (auto component : m_components) {
-		if(component->enable) component->Update(deltaTime);
+	for (const auto& component : m_components) {
+		if (component->enable) {
+			component->Update(deltaTime);
+		}
 	}
 }
 
@@ -70,10 +74,12 @@ void Actor::AddComponent(Component& _component) {
 }
 
 
-void Actor::RemoveComponent(Component& _component) {
+void Actor::RemoveComponent(Component& component) {
 	//コンポーネントが存在しなければreturn
-	auto it = std::find(m_components.begin(), m_components.end(), &_component);
-	if (it == m_components.end()) return;
+	auto it = std::find(m_components.begin(), m_components.end(), &component);
+	if (it == m_components.end()) {
+		return;
+	}
 	m_components.erase(it);
 }
 

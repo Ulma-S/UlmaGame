@@ -1,6 +1,5 @@
 #pragma once
 #include "UlmaEngine.h"
-#include "IInputManager.h"
 
 using namespace UlmaEngine;
 

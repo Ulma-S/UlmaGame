@@ -1,10 +1,7 @@
 #pragma once
-#include <unordered_map>
 #include <functional>
-#include <typeindex>
 #include "ISceneManager.h"
 #include "Singleton.h"
-#include "Debug.h"
 
 namespace UlmaEngine {
 	namespace Core {
@@ -18,12 +15,10 @@ namespace UlmaEngine {
 		public:
 			~SceneManager() override;
 			void UpdateScene(float deltaTime) override;
-			void GenerateOutput(UlmaEngine::Core::ShaderLoaderOpenGL& shader) override;
+			void GenerateOutput(const Core::ShaderLoaderOpenGL& shader) override;
 			bool LoadScene(const std::string& sceneName) override;
 
-			void AddScene(const std::string& sceneName, class Scene& scene) override;
-			void RemoveScene(const std::string& sceneName) override;
-
+			//シーンのインスタンスを生成する関数を登録するメソッド.
 			void BindScenes(const std::function<Scene*(const std::string&)>& func) override {
 				m_createSceneInstancesFunc = func;
 			}
@@ -33,9 +28,13 @@ namespace UlmaEngine {
 			SceneManager();
 
 		private:
-			std::unordered_map<std::string, class Scene*> m_sceneMap;
+			bool ExecuteLoadScene(const std::string& sceneName);
+			
 			std::function<Scene*(const std::string&)> m_createSceneInstancesFunc;
 			class Scene* m_currentScene;
+			bool m_isUpdating;
+			std::string m_nextSceneName;
+			bool m_isRequestedLoadScene;
 		};
 	}
 }

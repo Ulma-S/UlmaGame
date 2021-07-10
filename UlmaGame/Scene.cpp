@@ -4,6 +4,7 @@
 #include "SpriteComponent.h"
 #include "Actor.h"
 #include "Collision.h"
+#include "Debug.h"
 
 using namespace UlmaEngine;
 
@@ -11,22 +12,17 @@ SceneManagement::Scene::Scene(ISceneManager& sceneManager, const std::string& sc
 	: m_sceneManager(&sceneManager)
 	, m_sceneName(sceneName)
 	, m_isUpdating(false)
-{
-	m_sceneManager->AddScene(sceneName, *this);
-}
+{}
 
 
 SceneManagement::Scene::~Scene() {
-	m_sceneManager->RemoveScene(m_sceneName);
-
-	std::vector<Actor*>().swap(m_sceneActors);
-	std::vector<Actor*>().swap(m_pendingActors);
-	std::vector<SpriteComponent*>().swap(m_sprites);
+	Debug::Log("delete scene");
 }
 
 
 void SceneManagement::Scene::OnEnter() {
 	m_isUpdating = true;
+	
 	for (auto actor : m_sceneActors) {
 		actor->Initialize();
 	}
@@ -38,12 +34,15 @@ void SceneManagement::Scene::OnEnter() {
 
 void SceneManagement::Scene::Update(float deltaTime) {
 	m_isUpdating = true;
-	for (const auto& actor : m_sceneActors) {
-		actor->Update(deltaTime);
+	if (m_isUpdating) {
+		for (const auto& actor : m_sceneActors) {
+			actor->Update(deltaTime);
+		}
+		DetectCollision();
 	}
-	DetectCollision();
 	m_isUpdating = false;
 
+	//追加待機中のインスタンスを追加する.
 	for (const auto& actor : m_pendingActors) {
 		m_sceneActors.emplace_back(actor);
 	}
@@ -51,7 +50,7 @@ void SceneManagement::Scene::Update(float deltaTime) {
 }
 
 
-void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
+void SceneManagement::Scene::GenerateOutput(const Core::ShaderLoaderOpenGL& shader) {
 	auto it = m_sprites.begin();
 
 	for (; it != m_sprites.end(); ++it) {
@@ -62,8 +61,13 @@ void SceneManagement::Scene::GenerateOutput(Core::ShaderLoaderOpenGL& shader) {
 
 void SceneManagement::Scene::OnExit() {
 	m_isUpdating = false;
-	std::vector<Actor*>().swap(m_sceneActors);
-	std::vector<Actor*>().swap(m_pendingActors);
+	
+	m_sceneActors.clear();
+	m_sceneActors.shrink_to_fit();
+
+	m_pendingActors.clear();
+	m_pendingActors.shrink_to_fit();
+	//std::vector<Actor*>().swap(m_pendingActors);
 }
 
 
