@@ -15,25 +15,50 @@ void RegisterTexture() {
 	Core::TextureProvider::GetInstance().RegisterTexture("title", *(new Core::Texture("title.png")));
 	Core::TextureProvider::GetInstance().RegisterTexture("gameClear", *(new Core::Texture("gameClear.png")));
 	Core::TextureProvider::GetInstance().RegisterTexture("gameOver", *(new Core::Texture("gameOver.png")));
+	
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_sky_night", *(new Core::Texture("Background/bg_sky_night.png")));
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_moon", *(new Core::Texture("Background/bg_moon.png")));
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_buildings", *(new Core::Texture("Background/bg_buildings.png")));
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_tower", *(new Core::Texture("Background/bg_tower.png")));
 
 
-
+	//Yu
 	for (int i = 1; i <= 5; ++i) {
-		auto name = "Idle/idle_00" + std::to_string(i) + ".png";
-		Core::TextureProvider::GetInstance().RegisterTexture("idle" + std::to_string(i), *(new Core::Texture(name.c_str())));
+		auto name = "Yu/Idle/idle_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("yu_idle" + std::to_string(i), *(new Core::Texture(name.c_str())));
 	}
 
 	for (int i = 1; i <= 10; i++) {
 		if (i <= 9) {
-			auto name = "Run/run_00" + std::to_string(i) + ".png";
-			Core::TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Core::Texture(name.c_str())));
+			auto name = "Yu/Run/run_00" + std::to_string(i) + ".png";
+			Core::TextureProvider::GetInstance().RegisterTexture("yu_run" + std::to_string(i), *(new Core::Texture(name.c_str())));
 		}
 		else {
-			auto name = "Run/run_0" + std::to_string(i) + ".png";
-			Core::TextureProvider::GetInstance().RegisterTexture("run" + std::to_string(i), *(new Core::Texture(name.c_str())));
+			auto name = "Yu/Run/run_0" + std::to_string(i) + ".png";
+			Core::TextureProvider::GetInstance().RegisterTexture("yu_run" + std::to_string(i), *(new Core::Texture(name.c_str())));
 		}
 	}
 
+	//Sara
+	for (int i = 1; i <= 5; ++i) {
+		auto name = "Sara/Down/down_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("sara_down" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
+
+	for (int i = 1; i <= 5; ++i) {
+		auto name = "Sara/Hang/hang_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("sara_hang" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
+
+	for (int i = 1; i <= 6; ++i) {
+		auto name = "Sara/Idle/idle_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("sara_idle" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
+
+	for (int i = 1; i <= 6; ++i) {
+		auto name = "Sara/Order/order_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("sara_order" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
 }
 
 //ƒV[ƒ“‚ð“o˜^‚·‚éŠÖ”.

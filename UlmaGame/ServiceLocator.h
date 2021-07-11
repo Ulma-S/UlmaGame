@@ -29,6 +29,8 @@ namespace UlmaEngine {
 			return nullptr;
 		}
 
+		~ServiceLocator();
+
 	private:
 		/// <summary>
 		/// ‘ÎÛ‚ÌŒ^‚ªŠù‚É‘¶İ‚µ‚Ä‚¢‚é‚©ŒŸõ‚·‚éƒƒ\ƒbƒh.

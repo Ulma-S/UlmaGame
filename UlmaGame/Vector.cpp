@@ -13,7 +13,7 @@ Math::Vector2::Vector2(float x, float y)
 {}
 
 
-Math::Vector2::Vector2(Math::Vector3& vec)
+Math::Vector2::Vector2(const Math::Vector3& vec)
 	: x(vec.x), y(vec.y)
 {}
 
@@ -83,7 +83,7 @@ Math::Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z)
 {}
 
 
-Math::Vector3::Vector3(Math::Vector2& vec) : x(vec.x), y(vec.y), z(0.0f)
+Math::Vector3::Vector3(const Math::Vector2& vec) : x(vec.x), y(vec.y), z(0.0f)
 {}
 
 

@@ -10,7 +10,7 @@ namespace Math {
 
 		Vector2();
 		Vector2(float x, float y);
-		Vector2(Vector3& vec);
+		Vector2(const Vector3& vec);
 		~Vector2();
 
 		float Magnitude() const;	//‘å‚«‚³‚ð•Ô‚·

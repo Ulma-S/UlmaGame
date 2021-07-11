@@ -17,7 +17,7 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	auto idleAnimation = new Animation(*this, *animator, "idle", 0.1f);
 	std::vector<SpriteComponent*> idleSprites;
 	for (int i = 1; i <= 5; ++i) {
-		auto name = "idle" + std::to_string(i);
+		auto name = "yu_idle" + std::to_string(i);
 		idleSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
 	}
 	idleAnimation->RegisterSprite(idleSprites);
@@ -29,7 +29,7 @@ SampleGame::Player::Player(SceneManagement::Scene& scene)
 	auto runAnimation = new Animation(*this, *animator, "run", 0.1f);
 	std::vector<SpriteComponent*> runSprites;
 	for (int i = 1; i <= 10; ++i) {
-		auto name = "run" + std::to_string(i);
+		auto name = "yu_run" + std::to_string(i);
 		runSprites.emplace_back(new SpriteComponent(*this, name.c_str(), ESpriteType::Rectangle, 90));
 	}
 	runAnimation->RegisterSprite(runSprites);
@@ -66,6 +66,9 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 	this->GetTransform().position.y -= 800.0f * deltaTime;
 	if (col != nullptr) {
 		if (col->IsHit()) {
+			for (const auto& hit : col->hitData) {
+				Debug::Log(hit.actor->GetName());
+			}
 			this->GetTransform().position.y = currPos.y;
 		}
 	}
@@ -92,7 +95,7 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 	}
 
 	//ƒV[ƒ“‘JˆÚ
-	if (this->GetComponent<Collider2D>()->IsHit("Enemy")) {
+	if (this->GetComponent<Collider2D>()->IsHit("wall")) {
 		SceneManagement::SceneManager::GetInstance().LoadScene("gameOver");
 	}
 

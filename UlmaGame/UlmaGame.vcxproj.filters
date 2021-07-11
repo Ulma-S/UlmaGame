@@ -157,6 +157,12 @@
     <ClCompile Include="InputProviderOpenGL.cpp">
       <Filter>UlmaEngine\Source\InputSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -302,6 +308,12 @@
     </ClInclude>
     <ClInclude Include="IInputProvider.h">
       <Filter>UlmaEngine\Header\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>SampleGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

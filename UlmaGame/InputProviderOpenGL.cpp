@@ -997,7 +997,6 @@ const Math::Vector2 InputProviderOpenGL::GetMousePos() {
 	double x, y;
 	glfwGetCursorPos(&(m_window->GetWindow()), &x, &y);
 	
-	//��ʊO�̎��̕␳
 	if (x >= m_window->GetWindowWidth()) {
 		x = m_window->GetWindowWidth() - 1;
 	}
