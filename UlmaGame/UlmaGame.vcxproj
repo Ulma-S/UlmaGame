@@ -160,6 +160,7 @@
     <ClCompile Include="Stage01Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureProvider.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TitleManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="GameOverManager.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Stage01Scene.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="TitleManager.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="IApplicationCore.h" />

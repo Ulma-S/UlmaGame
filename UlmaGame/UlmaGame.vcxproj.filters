@@ -163,6 +163,9 @@
     <ClCompile Include="Background.cpp">
       <Filter>SampleGame\Source</Filter>
     </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>UlmaEngine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -314,6 +317,9 @@
     </ClInclude>
     <ClInclude Include="Background.h">
       <Filter>SampleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>UlmaEngine\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

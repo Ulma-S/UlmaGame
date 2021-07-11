@@ -67,7 +67,7 @@ void SampleGame::Player::UpdateActor(float deltaTime) {
 	if (col != nullptr) {
 		if (col->IsHit()) {
 			for (const auto& hit : col->hitData) {
-				Debug::Log(hit.actor->GetName());
+				//Debug::Log(hit.actor->GetName());
 			}
 			this->GetTransform().position.y = currPos.y;
 		}

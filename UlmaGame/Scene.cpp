@@ -67,7 +67,6 @@ void SceneManagement::Scene::OnExit() {
 
 	m_pendingActors.clear();
 	m_pendingActors.shrink_to_fit();
-	//std::vector<Actor*>().swap(m_pendingActors);
 }
 
 

@@ -20,6 +20,8 @@ void RegisterTexture() {
 	Core::TextureProvider::GetInstance().RegisterTexture("bg_moon", *(new Core::Texture("Background/bg_moon.png")));
 	Core::TextureProvider::GetInstance().RegisterTexture("bg_buildings", *(new Core::Texture("Background/bg_buildings.png")));
 	Core::TextureProvider::GetInstance().RegisterTexture("bg_tower", *(new Core::Texture("Background/bg_tower.png")));
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_tile_1", *(new Core::Texture("Background/bg_tile_1.png")));
+	Core::TextureProvider::GetInstance().RegisterTexture("bg_tile_2", *(new Core::Texture("Background/bg_tile_2.png")));
 
 
 	//Yu
