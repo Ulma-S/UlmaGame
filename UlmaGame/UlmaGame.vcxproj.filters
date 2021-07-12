@@ -41,9 +41,6 @@
     <Filter Include="UlmaEngine\Header\Core">
       <UniqueIdentifier>{3298f5e7-af29-446c-82c2-cb9e0e3c8a69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UlmaEngine\SceneManagement">
-      <UniqueIdentifier>{9da47c53-688c-4133-b2f4-8645d2443117}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UlmaEngine\Header\InputSystem">
       <UniqueIdentifier>{be51d7d2-1b27-4adc-8935-5f05440c9245}</UniqueIdentifier>
     </Filter>
@@ -55,6 +52,9 @@
     </Filter>
     <Filter Include="SampleGame\Source\Scene">
       <UniqueIdentifier>{cc64a389-ed31-4128-b935-4b6e2eba3e79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UlmaEngine\Header\SceneManagement">
+      <UniqueIdentifier>{9da47c53-688c-4133-b2f4-8645d2443117}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +166,12 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>UlmaEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Shooter.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableTower.cpp">
+      <Filter>SampleGame\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationCore.h">
@@ -175,10 +181,10 @@
       <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="ISceneManager.h">
-      <Filter>UlmaEngine\SceneManagement</Filter>
+      <Filter>UlmaEngine\Header\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>UlmaEngine\SceneManagement</Filter>
+      <Filter>UlmaEngine\Header\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="IWindow.h">
       <Filter>UlmaEngine\Header\Core</Filter>
@@ -187,7 +193,7 @@
       <Filter>UlmaEngine\Header\Core</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>UlmaEngine\SceneManagement</Filter>
+      <Filter>UlmaEngine\Header\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>UlmaEngine\Header\Math</Filter>
@@ -232,7 +238,7 @@
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="SceneList.h">
-      <Filter>UlmaEngine\SceneManagement</Filter>
+      <Filter>UlmaEngine\Header\SceneManagement</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>SampleGame\Header</Filter>
@@ -315,11 +321,17 @@
     <ClInclude Include="Wall.h">
       <Filter>SampleGame\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
-      <Filter>SampleGame</Filter>
-    </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>UlmaEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Shooter.h">
+      <Filter>SampleGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableTower.h">
+      <Filter>SampleGame\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace UlmaEngine {
 	
 	class TileMap : public SpriteComponent {
 	public:
-		TileMap(Actor& owner, int row = 10, int col = 10, float width = 100, float height = 100);
+		TileMap(Actor& owner, int drawOrder = 100, int row = 10, int col = 10, float width = 100, float height = 100);
 		~TileMap() override;
 
 		void Draw(const Core::ShaderLoaderOpenGL& shader) const override;

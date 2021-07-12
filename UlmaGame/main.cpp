@@ -41,6 +41,19 @@ void RegisterTexture() {
 		}
 	}
 
+	for (int i = 1; i <= 15; i++) {
+		if (i <= 9) {
+			auto name = "Yu/WeakAttack/weakAttack_00" + std::to_string(i) + ".png";
+			Core::TextureProvider::GetInstance().RegisterTexture("yu_weakAttack" + std::to_string(i), *(new Core::Texture(name.c_str())));
+		}
+		else {
+			auto name = "Yu/WeakAttack/weakAttack_0" + std::to_string(i) + ".png";
+			Core::TextureProvider::GetInstance().RegisterTexture("yu_weakAttack" + std::to_string(i), *(new Core::Texture(name.c_str())));
+		}
+	}
+
+	
+
 	//Sara
 	for (int i = 1; i <= 5; ++i) {
 		auto name = "Sara/Down/down_00" + std::to_string(i) + ".png";
@@ -60,6 +73,17 @@ void RegisterTexture() {
 	for (int i = 1; i <= 6; ++i) {
 		auto name = "Sara/Order/order_00" + std::to_string(i) + ".png";
 		Core::TextureProvider::GetInstance().RegisterTexture("sara_order" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
+
+	//Shooter
+	for (int i = 1; i <= 5; ++i) {
+		auto name = "Shooter/Ready/ready_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("shooter_ready" + std::to_string(i), *(new Core::Texture(name.c_str())));
+	}
+
+	for (int i = 1; i <= 3; ++i) {
+		auto name = "Shooter/Shot/shot_00" + std::to_string(i) + ".png";
+		Core::TextureProvider::GetInstance().RegisterTexture("shooter_shot" + std::to_string(i), *(new Core::Texture(name.c_str())));
 	}
 }
 

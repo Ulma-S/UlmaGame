@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+
+#include "Animation.h"
 #include "Component.h"
 
 
@@ -18,6 +20,20 @@ namespace UlmaEngine {
 		void SetAnimation(const std::string& animationName);
 
 		inline Animation& GetCurrentAnimation() const { return *m_currentAnimation; }
+
+		inline std::string GetCurrentAnimationName() const {
+			if(m_currentAnimation != nullptr) {
+				return m_currentAnimation->GetName();
+			}
+			return "";
+		}
+		
+		inline bool IsEnd() const {
+			if(m_currentAnimation != nullptr) {
+				return m_currentAnimation->IsEnd();
+			}
+			return false;
+		}
 
 	private:
 		Animation* m_currentAnimation;

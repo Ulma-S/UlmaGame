@@ -149,6 +149,7 @@
     <ClCompile Include="InputProviderOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="MovableTower.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rigidbody2D.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="ShaderLoaderOpenGL.cpp" />
     <ClCompile Include="GameClearManager.cpp" />
+    <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Stage01Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -184,6 +186,8 @@
     <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameOverManager.h" />
     <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="MovableTower.h" />
+    <ClInclude Include="Shooter.h" />
     <ClInclude Include="Stage01Scene.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TitleManager.h" />

@@ -7,9 +7,7 @@ using namespace UlmaEngine;
 Animator::Animator(Actor& owner)
 	: Component(owner)
 	, m_currentAnimation(nullptr)
-{
-	
-}
+{}
 
 
 Animator::~Animator() {

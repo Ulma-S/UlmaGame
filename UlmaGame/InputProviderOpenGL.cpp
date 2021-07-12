@@ -2,14 +2,20 @@
 #include <GLFW/glfw3.h>
 #include "WindowOpenGL.h"
 #include "InputProviderOpenGL.h"
+#include "Debug.h"
 
 using namespace UlmaEngine::Core;
 using namespace UlmaEngine::InputSystem;
 
-InputProviderOpenGL::InputProviderOpenGL() : m_window(nullptr), m_isPressed(false) {}
+InputProviderOpenGL::InputProviderOpenGL() : m_window(nullptr), m_isPressed(false) {
+	m_isPressedArray = std::vector<bool>(100, false);	
+}
 
 
-InputProviderOpenGL::~InputProviderOpenGL(){}
+InputProviderOpenGL::~InputProviderOpenGL() {
+	m_isPressedArray.clear();
+	m_isPressedArray.shrink_to_fit();
+}
 
 
 bool InputProviderOpenGL::GetKey(EKeyCode key) {
@@ -205,11 +211,12 @@ bool InputProviderOpenGL::GetKey(EKeyCode key) {
 
 bool InputProviderOpenGL::GetKeyDown(EKeyCode key) {
 	bool keyState = false;
+	
 	switch (key) {
 	case Q:
 		if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_Q) == GLFW_PRESS) {
-			if (!m_isPressed) {
-				m_isPressed = true;
+			if (!m_isPressedArray[0]) {
+				m_isPressedArray[0] = true;
 				keyState = true;
 			}
 			else {
@@ -217,37 +224,43 @@ bool InputProviderOpenGL::GetKeyDown(EKeyCode key) {
 			}
 		}
 		else {
-			m_isPressed = false;
+			m_isPressedArray[0] = false;
 		}
 		break;
 
 	case W:
 		if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_W) == GLFW_PRESS) {
-			if (!m_isPressed) {
-				m_isPressed = true;
-				keyState = true;
+			if (m_isPressedArray[1]) {
+				keyState = false;
+				return false;
 			}
 			else {
-				keyState = false;
+				m_isPressedArray[1] = true;
+				keyState = true;
+				return true;
 			}
 		}
 		else {
-			m_isPressed = false;
+			m_isPressedArray[1] = false;
+			return false;
 		}
 		break;
 
 	case E:
 		if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_E) == GLFW_PRESS) {
-			if (!m_isPressed) {
-				m_isPressed = true;
+			if (!m_isPressedArray[2]) {
+				m_isPressedArray[2] = true;
 				keyState = true;
+				return true;
 			}
 			else {
 				keyState = false;
+				return false;
 			}
 		}
 		else {
-			m_isPressed = false;
+			m_isPressedArray[2] = false;
+			return false;
 		}
 		break;
 
@@ -762,19 +775,19 @@ bool InputProviderOpenGL::GetKeyDown(EKeyCode key) {
 		break; 
 	
 	case LeftCtrl:
-			if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
-				if (!m_isPressed) {
-					m_isPressed = true;
-					keyState = true;
-				}
-				else {
-					keyState = false;
-				}
+		if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+			if (!m_isPressed) {
+				m_isPressed = true;
+				keyState = true;
 			}
 			else {
-				m_isPressed = false;
+				keyState = false;
 			}
-			break;
+		}
+		else {
+			m_isPressed = false;
+		}
+		break;
 
 	case RightCtrl:
 		if (glfwGetKey(&(m_window->GetWindow()), GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS) {

@@ -26,6 +26,8 @@ namespace UlmaEngine {
 		inline bool GetLoop() const { return m_loop; }
 		inline void SetLoop(bool value) { m_loop = value; }
 
+		inline bool IsEnd() const { return m_isEnd; }
+
 	private:
 		Animator* m_animator;
 		float m_duration;
@@ -34,5 +36,6 @@ namespace UlmaEngine {
 		std::vector<SpriteComponent*> m_sprites;
 		std::string m_animationName;
 		bool m_loop;
+		bool m_isEnd;
 	};
 }

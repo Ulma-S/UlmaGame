@@ -13,6 +13,7 @@ Animation::Animation(Actor& owner, Animator& animator, float duration, const cha
 	, m_spriteIdx(0)
 	, m_animationName(animationName)
 	, m_loop(loop)
+	, m_isEnd(false)
 {}
 
 
@@ -24,11 +25,13 @@ Animation::Animation(Actor& owner, Animator& animator, const char* animationName
 	, m_spriteIdx(0)
 	, m_animationName(animationName)
 	, m_loop(loop)
+	, m_isEnd(false)
 {}
 
 
 Animation::~Animation() {
-	std::vector<SpriteComponent*>().swap(m_sprites);
+	m_sprites.clear();
+	m_sprites.shrink_to_fit();
 }
 
 
@@ -56,8 +59,12 @@ void Animation::Update(float deltaTime) {
 			if (m_loop) {
 				m_spriteIdx = 0;
 			}
+			m_isEnd = false;
 		}else {
 			m_spriteIdx++;
+			if(m_spriteIdx == m_sprites.size() - 1) {
+				m_isEnd = true;
+			}
 		}
 	}
 }

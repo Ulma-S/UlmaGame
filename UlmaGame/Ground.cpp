@@ -11,14 +11,14 @@ SampleGame::Ground::Ground(SceneManagement::Scene& _scene)
 
 	auto row = 30;
 	auto col = 2;
-	auto tileMap = new TileMap(*this, row, col, 50.f, 50.f);
+	auto tileMap = new TileMap(*this, 100, row, col, 50.f, 50.f);
 	std::vector<std::vector<std::string>> tileArray = std::vector(col, std::vector<std::string>(row));
 	for(int i=0; i < col; ++i) {
 		for (int j = 0; j < row; ++j) {
-			if (i == 0) {
-				tileArray[i][j] = "bg_tile_1";
-			}else if(i == 1) {
+			if (j % 4 == 0) {
 				tileArray[i][j] = "bg_tile_2";
+			}else {
+				tileArray[i][j] = "bg_tile_1";
 			}
 		}
 	}

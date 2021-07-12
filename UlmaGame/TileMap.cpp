@@ -9,8 +9,8 @@
 using namespace UlmaEngine;
 
 
-TileMap::TileMap(Actor& owner, int row, int col, float width, float height)
-	: SpriteComponent(owner)
+TileMap::TileMap(Actor& owner, int drawOrder, int row, int col, float width, float height)
+	: SpriteComponent(owner, drawOrder)
 	, m_row(row)
 	, m_col(col)
 	, m_width(width)

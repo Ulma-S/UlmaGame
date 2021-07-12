@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "IInputProvider.h"
 
 namespace UlmaEngine {
@@ -27,7 +28,7 @@ namespace UlmaEngine {
 
 		private:
 			Core::WindowOpenGL* m_window;
-
+			std::vector<bool> m_isPressedArray;
 			bool m_isPressed;
 		};
 
